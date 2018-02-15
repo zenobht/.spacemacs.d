@@ -222,22 +222,4 @@ values."
 
 )
 
-(defun dotspacemacs/emacs-custom-settings ()
-  "Emacs custom settings.
-This is an auto-generated function, do not modify its content directly, use
-Emacs customize menu instead.
-This function is called at the very end of Spacemacs initialization."
-(custom-set-variables
- ;; custom-set-variables was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- '(package-selected-packages
-   '(yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum wgrep web-mode web-beautify vue-mode edit-indirect ssass-mode vue-html-mode volatile-highlights vmd-mode uuidgen unfill treemacs-projectile treemacs-evil treemacs pfuture toc-org tide typescript-mode tagedit symon subatomic-theme string-inflection spaceline-all-the-icons all-the-icons memoize spaceline powerline smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reveal-in-osx-finder restart-emacs request reason-mode rbenv ranger rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode pretty-mode popwin pippel pip-requirements persp-mode pcre2el pbcopy password-generator paradox spinner pandoc-mode ox-reveal ox-pandoc ox-gfm overseer osx-trash osx-dictionary orgit org-projectile org-category-capture org-present org-pomodoro alert log4e gntp org-mime org-journal org-download org-bullets org-brain open-junk-file nameless mwim mvn multi-term move-text molokai-theme mmm-mode minitest meghanada maven-test-mode markdown-toc markdown-mode magit-gitflow macrostep lorem-ipsum livid-mode skewer-mode live-py-mode link-hint ledger-mode launchctl json-mode json-snatcher json-reformat js2-refactor multiple-cursors js2-mode js-doc ivy-purpose window-purpose imenu-list ivy-hydra indent-guide importmagic epc ctable concurrent deferred impatient-mode simple-httpd ibuffer-projectile hy-mode hungry-delete htmlize hl-todo highlight-parentheses highlight-numbers parent-mode highlight-indentation highlight-indent-guides helm-make haml-mode groovy-mode groovy-imports pcache gradle-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe+ git-gutter-fringe fringe-helper git-gutter+ git-gutter gh-md fuzzy flyspell-correct-ivy flyspell-correct flycheck-pos-tip pos-tip flycheck-package package-lint flycheck-ledger flycheck-flow flycheck flx-ido flx fill-column-indicator fancy-battery eyebrowse expand-region exotica-theme evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-multiedit evil-mc evil-matchit evil-magit magit magit-popup git-commit ghub with-editor evil-lisp-state evil-lion evil-indent-plus evil-iedit-state iedit evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens smartparens paredit evil-args evil-anzu anzu eval-sexp-fu highlight eshell-z eshell-prompt-extras esh-help ensime sbt-mode scala-mode emojify ht emoji-cheat-sheet-plus helm helm-core emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff which-key use-package org-plus-contrib hydra font-lock+ exec-path-from-shell evil diminish diff-hl cython-mode csv-mode counsel-projectile counsel-css company-web company-tern company-statistics company-emoji company-emacs-eclim company-anaconda column-enforce-mode color-identifiers-mode coffee-mode clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote bind-map auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile async aggressive-indent adaptive-wrap ace-window ace-link ac-ispell)))
-(custom-set-faces
- ;; custom-set-faces was added by Custom.
- ;; If you edit it by hand, you could mess it up, so be careful.
- ;; Your init file should contain only one such instance.
- ;; If there is more than one, they won't work right.
- )
-)
+
