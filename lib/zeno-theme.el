@@ -215,7 +215,7 @@
  `(helm-swoop-target-line-face ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
 
  ;; ivy
- `(ivy-current-match ((t (:background ,fullBlack :foreground ,face10 :slant ,slantType))))
+ `(ivy-current-match ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
  `(ivy-highlight-face ((t (:background ,fullBlack :foreground ,face3 :slant ,slantType))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,m2))))
  `(ivy-virtual ((t (:inherit default ))))
@@ -223,7 +223,7 @@
  `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face7))))
  `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face7))))
  `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face7))))
- `(swiper-line-face ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
+ `(swiper-line-face ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
  `(swiper-match-face-2 ((t (:foreground ,face7))))
 
 
@@ -231,7 +231,7 @@
   `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
   `(company-tooltip-mouse ((t (:foreground ,face8))))
   `(company-template-field ((t (:background: ,bg :foreground ,fullWhite))))
-  `(company-tooltip-selection ((t (:background ,fullBlack :foreground ,face10 :slant ,slantType))))
+  `(company-tooltip-selection ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
   `(company-echo-common ((t (:foreground ,face3))))
   `(company-scrollbar-bg ((t (:background ,seperator))))
   `(company-scrollbar-fg ((t (:background ,line-highlight))))
