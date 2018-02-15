@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: BeginHtml 
+# key: beginhtml
+# --
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>$1</title>
+  </head> 
+  <body> 
+  </body>
+</html>

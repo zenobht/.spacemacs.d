@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+#name : divId
+#key : iddiv
+#contributor : bharat
+# --
+<div id="$1">
+</div>

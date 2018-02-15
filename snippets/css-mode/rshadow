@@ -1,0 +1,8 @@
+# -*- mode: snippet -*-
+#name : rshadow
+#key : rshadow
+#contributor : bharat
+# --
+-webkit-box-shadow: $1px $2px $3px $4;
+-moz-box-shadow: $1px $2px $3px $4;
+box-shadow: $1px $2px $3px $4;

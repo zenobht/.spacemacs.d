@@ -1,0 +1,871 @@
+#+PROPERTY header-args :tangle yes
+ 
+* Global Variables
+  #+BEGIN_SRC emacs-lisp
+
+    (setq evilNormalColor "#D2527F") 
+    (setq evilInsertColor "#2ABB9B")
+
+  #+END_SRC
+* Custom Functions
+  #+BEGIN_SRC emacs-lisp
+
+     (defvar my/skippable-buffers '("*Messages*" "*scratch*" "*Help*")
+       "Buffer names ignored by `my/next-buffer' and `my/previous-buffer'.")
+
+     ;; buffer changer function
+     (defun my/change-buffer (change-buffer)
+       "Call CHANGE-BUFFER until current buffer is not in `my/skippable-buffers'."
+       (let ((initial (current-buffer)))
+         (funcall change-buffer)
+         (let ((first-change (current-buffer)))
+           (catch 'loop
+             (while (member (buffer-name) my/skippable-buffers)
+               (funcall change-buffer)
+               (when (eq (current-buffer) first-change)
+                 (switch-to-buffer initial)
+                 (throw 'loop t)))))))
+
+     ;; custom next-buffer
+     (defun my/next-buffer ()
+       "Variant of `next-buffer' that skips `my/skippable-buffers'."
+       (interactive)
+       (my/change-buffer 'next-buffer))
+
+     ;; custom previous-buffer
+     (defun my/previous-buffer ()
+       "Variant of `previous-buffer' that skips `my/skippable-buffers'."
+       (interactive)
+       (my/change-buffer 'previous-buffer))
+
+     (defun my/evil-paste-after-from-0 ()
+       (interactive)
+       (let ((evil-this-register ?0))
+         (call-interactively 'evil-paste-after)))
+
+
+     (defun my/escape-and-save ()
+       (interactive)
+       (evil-escape)
+       (save-buffer)
+       )
+
+     (defun my/run-projectile-invalidate-cache (&rest _args)
+       ;; We ignore the args to `magit-checkout'.
+       (projectile-invalidate-cache nil))
+
+
+     (defun my/enable-visual-line-mode ()
+       "enables visual-line-navigation which is word-wrap"
+       (spacemacs/toggle-visual-line-navigation)
+       )
+
+
+     (defun my/newline-and-indent ()
+       "inserts a newline between the brackets"
+       (interactive)
+       (newline)
+       (save-excursion
+         (newline)
+         (indent-for-tab-command))
+       (indent-for-tab-command)
+       )
+
+
+     (defun my/scroll-half-page-down ()
+       "scroll down half the page"
+       (interactive)
+       (scroll-down (/ (window-body-height) 2)))
+
+     ;; scroll half page up
+     (defun my/scroll-half-page-up ()
+       "scroll up half the page"
+       (interactive)
+       (scroll-up (/ (window-body-height) 2)))
+
+
+     (defun my/modify-underscore-syntax () 
+       (modify-syntax-entry ?_ "w" (syntax-table)))
+
+     (defun my/block-comment-setup ()
+       "Configure multi-line comments."
+       (setq comment-start       "// "
+             comment-multi-line  t
+             comment-padding     nil
+             comment-style       'extra-line
+             comment-continue    " * "
+             comment-empty-lines t))
+
+
+     (defun my/indent-setup (n)
+       ;; java/c/c++
+       (setq c-basic-offset n)
+       ;; web development
+       (setq coffee-tab-width n) ; coffeescript
+       (setq javascript-indent-level n) ; javascript-mode
+       (setq js-indent-level n) ; js-mode
+       (setq js2-basic-offset n) ; js2-mode, in latest js2-mode, it's alias of js-indent-level
+       (setq web-mode-markup-indent-offset n) ; web-mode, html tag in html file
+       (setq web-mode-css-indent-offset n) ; web-mode, css in html file
+       (setq web-mode-code-indent-offset n) ; web-mode, js code in html file
+       (setq css-indent-offset n) ; css-mode
+       ) 
+
+     (defun my/js-symbols-setup () 
+       (interactive)
+       (mapc (lambda (pair) (push pair prettify-symbols-alist))
+             '(
+               ;;("<=" . ?≤)
+               ;;(">=" . ?≥)
+               ("=>" . ?⇒)
+               ;;("->" . ?→)
+               ;;("<-" . ?←)
+               )))
+
+     (defun my/react-mode-setup ()
+       (prettier-js-mode t)
+       (my/eslint-setup)
+       (my/js-symbols-setup)
+       (my/block-comment-setup)
+       )
+
+     (setq tab-always-indent t)
+
+
+     (defun my/eslint-setup ()
+       (flycheck-mode t)
+       (when (and  (executable-find "eslint") (flycheck-eslint-config-exists-p))
+         (flycheck-select-checker 'javascript-eslint)
+       ))
+
+
+     (defun my/org-heading-setup ()
+       "Stop the org-level headers from increasing in height relative to the other text."
+       (dolist (face '(
+                       org-level-1
+                       org-level-2
+                       org-level-3
+                       org-level-4
+                       org-level-5
+                       org-level-6
+                       org-level-7
+                       org-level-8))
+         (set-face-attribute face nil :weight 'bold)))
+
+     (defun my/set-cursor-after-ranger (&optional args) 
+       (setf cursor-type '(bar . 3))
+       )
+
+  #+END_SRC
+* Org-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package org
+      :ensure t
+      :diminish org-mode
+      :bind 
+      (:map org-mode-map 
+            ("H-i" . org-meta-return))
+      :config
+      (progn 
+
+        (setq org-todo-keywords
+              (quote ((sequence "☛ TODO(t)" "➜ STARTED(s!)" "|" "✔ DONE(d@)")
+                      (sequence "⚑ WAITING(w)" "|")
+                      (sequence "|" "✘ CANCELED(c)"))))
+
+        (setq org-todo-keyword-faces
+              (quote (("☛ TODO" :foreground "#FFCACA" :weight bold)
+                      ("➜ STARTED" :foreground "#CADAFF" :weight bold)
+                      ("✔ DONE" :foreground "#CAFFE9" :weight bold)
+                      ("⚑ WAITING" :foreground "#FFE2CA" :weight bold)
+                      ("✘ CANCELED" :foreground "#FFCAF9" :weight bold)))) 
+
+        ;; set up org-bullet symbols
+        (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+
+        (setq org-enforce-todo-dependencies t)
+        (setq org-agenda-dim-blocked-tasks t)
+
+        (setq org-clock-persist 'history)
+        (org-clock-persistence-insinuate)
+
+        ;; enable pretty entities by default in org-mode 
+        (add-hook 'org-mode-hook (setq org-pretty-entities t))
+
+        ;; modify org heading in org-mode
+        ;; (add-hook 'org-mode-hook 'my/org-heading-setup)
+
+        (evil-define-key 'normal org-mode-map ",v" 'org-todo)
+
+        ))
+
+  #+END_SRC
+* Spaceline config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package spaceline
+      :ensure t
+      :config
+      (progn 
+
+        ;;spaceline/modeline segment config
+        (spaceline-toggle-point-position-on)
+        (spaceline-toggle-process-off)
+        (spaceline-toggle-buffer-encoding-off)
+        (spaceline-toggle-buffer-encoding-abbrev-off)
+        (spaceline-toggle-purpose-off)
+        (spaceline-toggle-minor-modes-on)
+        (spaceline-toggle-persp-name-off)
+        (setq display-time-default-load-average nil)
+
+
+        (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+
+        (set-face-attribute
+         'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
+        (set-face-attribute
+         'spaceline-evil-visual nil :background "#344256" :foreground "white")
+        (set-face-attribute
+         'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
+
+        ;; fix for odd symbol in modeline in linux
+        ;; NOTE: odd, stopped working recently, and also it is not needed
+        ;; (setq ns-use-srgb-colorspace nil)
+        ;;(setq powerline-default-separator 'utf-8)
+
+        ))
+
+    ;; (use-package spaceline-all-the-icons 
+    ;;   :after spaceline
+    ;;   :config 
+    ;;   (progn
+    ;;     (setq ns-use-srgb-colorspace nil)
+    ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+
+    ;;     (set-face-attribute
+    ;;      'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
+    ;;     (set-face-attribute
+    ;;      'spaceline-evil-visual nil :background "#344256" :foreground "black")
+    ;;     (set-face-attribute
+    ;;      'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
+    ;;     (spaceline-all-the-icons-theme)
+    ;;     (spaceline-all-the-icons--setup-anzu)  
+    ;;     (spaceline-all-the-icons--setup-package-updates)
+    ;;     (spaceline-all-the-icons--setup-git-ahead)      
+    ;;     ;; (spaceline-all-the-icons--setup-paradox)        
+    ;;     (spaceline-all-the-icons--setup-neotree)
+    ;;     (spaceline-toggle-all-the-icons-buffer-position-on)
+    ;;     (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+    ;;     (setq spaceline-all-the-icons-icon-set-modified 'circle)
+    ;;     (spaceline-toggle-all-the-icons-minor-modes-on)
+    ;;     (spaceline-toggle-all-the-icons-narrowed-on)
+    ;;     (setq spaceline-all-the-icons-separator-type 'none)
+    ;;     ))
+
+
+  #+END_SRC
+* Yasnippet config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package yasnippet
+      :ensure t
+      :config
+      (progn 
+
+        (setq yas-snippet-dirs
+              '("~/.spacemacs.d/snippets" 
+                ))
+        (yas-global-mode 1) 
+
+        ))
+
+  #+END_SRC
+* Rainbow mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package rainbow-mode
+      :ensure t
+      :config
+      (progn 
+
+        (dolist (hook 
+                 '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
+          (add-hook hook 'rainbow-mode))
+
+        ))
+
+  #+END_SRC
+* Flycheck config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package flycheck
+      :ensure t
+      :config
+      (progn 
+
+        ;; flycheck enabled by default
+        (add-hook 'after-init-hook #'global-flycheck-mode)
+        (setq flycheck-check-syntax-automatically '(mode-enabled save))
+
+        ))
+
+  #+END_SRC
+* Projectile config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package projectile
+      :ensure t
+      :config
+      (progn 
+
+        (setq projectile-enable-caching t)
+
+        ;; invalidates projectile cache on git actions
+        (advice-add 'magit-checkout
+                    :after #'my/run-projectile-invalidate-cache)
+        (advice-add 'magit-branch-and-checkout ; This is `b c'.
+                    :after #'my/run-projectile-invalidate-cache)
+
+        ))
+
+  #+END_SRC
+* Ivy config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package ivy
+      :ensure t
+      :bind 
+      (:map ivy-mode-map  
+            ("H-j" . ivy-next-line)
+            ("H-k" . ivy-previous-line))
+      :config
+      (progn 
+
+        ;; ivy config
+        (setq ivy-re-builders-alist
+              '((t . ivy--regex-ignore-order)))
+        (add-to-list 'ivy-highlight-functions-alist
+                     '(swiper--re-builder . ivy--highlight-ignore-order))
+
+        (setq dumb-jump-selector 'ivy)
+
+        ))
+
+  #+END_SRC
+* Encoding config
+  #+BEGIN_SRC emacs-lisp
+
+    ;; setup encoding
+    (setq locale-coding-system 'utf-8)
+    (set-terminal-coding-system 'utf-8)
+    (set-keyboard-coding-system 'utf-8)
+    (set-selection-coding-system 'utf-8)
+    (prefer-coding-system 'utf-8)
+
+  #+END_SRC
+* Wgrep config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package wgrep
+      :ensure t
+      :config
+      (progn 
+
+        ;; wgrep binding to save all buffers after edit
+        (setq wgrep-auto-save-buffer t)
+
+        ))
+
+  #+END_SRC
+* Indent-guide config
+  #+BEGIN_SRC emacs-lisp
+
+    ;;(use-package highlight-indent-guides
+    ;;  :ensure t
+    ;;  :config
+    ;;  (progn 
+    ;;
+    ;;    (setq highlight-indent-guides-method 'character)
+    ;;    (setq highlight-indent-guides-character ?\|)
+    ;;    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
+    ;;    (add-hook 'text-mode-hook 'highlight-indent-guides-mode)
+    ;;
+    ;;    ;;(setq highlight-indent-guides-auto-enabled nil)
+    ;;    (set-face-foreground 'highlight-indent-guides-character-face "#132947")
+    ;;
+    ;;    (add-hook 'evil-visual-state-entry-hook (lambda() (highlight-indent-guides-mode -1)))
+    ;;    (add-hook 'evil-visual-state-exit-hook (lambda() (highlight-indent-guides-mode +1)))
+    ;;
+    ;;    ))
+
+
+    ;;(use-package indent-guide
+    ;;  :ensure t
+    ;;  :config
+    ;;  (progn 
+    ;;
+    ;;    (setq indent-guide-char "|")
+    ;;    (setq indent-guide-delay 0.4)
+    ;;    (spacemacs/toggle-indent-guide-globally-on)
+    ;;
+
+
+  #+END_SRC
+* Treemacs config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package treemacs
+      :ensure t
+      :bind (:map treemacs-mode-map
+             ("H-e" . treemacs-toggle)
+             )
+      :config
+      (progn 
+        (setq treemacs-git-mode nil)
+        (setq treemacs-show-hidden-files t)
+        (setq-default treemacs-width 25)))
+
+  #+END_SRC
+* Markdown config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package markdown-mode
+      :ensure t
+      :commands (markdown-mode gfm-mode)
+      :mode (("README\\.md\\'" . gfm-mode)
+             ("\\.md\\'" . markdown-mode)
+             ("\\.markdown\\'" . markdown-mode))
+      :bind 
+      (:map markdown-mode-map  
+            ("H-i" . markdown-insert-list-item))
+      :config 
+      (progn
+
+        (setq markdown-command "multimarkdown")
+        (prettier-js-mode t)
+
+        ))
+
+  #+END_SRC
+* Ledger config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package ledger-mode
+      :ensure t
+      :commands (ledger-mode)
+      :mode ("\\.ledger$\\'" . ledger-mode))
+
+  #+END_SRC
+* Ranger config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package ranger
+      :ensure t
+      :bind 
+      (:map ranger-normal-mode-map  
+            ("+" . dired-create-directory)
+            ("H-e" . ranger-disable)
+            )
+      :config
+      (progn
+       (setq ranger-hide-cursor nil)
+       (setq ranger-cleanup-on-disable t)
+       (setq ranger-cleanup-eagerly t)
+       (advice-add #'ranger-close :after #'my/set-cursor-after-ranger)
+       (advice-add #'ranger-find-file :after #'my/set-cursor-after-ranger)
+       (advice-add #'ranger-disable :after #'my/set-cursor-after-ranger)
+      ))
+
+  #+END_SRC
+* Evil-mc config
+  #+BEGIN_SRC emacs-lisp
+
+    ;; (use-package evil-mc
+    ;;   :ensure t
+    ;;   :diminish evil-mc-mode "[m]"
+    ;;   :init 
+    ;;   (progn
+    ;;     (global-evil-mc-mode t)
+    ;;     (add-hook 'after-init-hook #'global-evil-mc-mode))
+    ;;   :bind (:map evil-mc-key-map
+    ;;               ("C-g" . evil-mc-undo-all-cursors)
+
+    ;;   ))
+
+  #+END_SRC
+* Multiedit
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package evil-multiedit
+      :ensure t
+      :config
+      (progn
+        (evil-multiedit-default-keybinds)
+        ))
+
+  #+END_SRC
+* Dumb-jump config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package dumb-jump
+      :ensure t
+      :config
+      (progn 
+
+        ;; dumb jump config set to SPC d
+        (spacemacs/set-leader-keys "dj" #'dumb-jump-go)
+        (spacemacs/set-leader-keys "dq" #'dumb-jump-quick-look)
+        (spacemacs/set-leader-keys "db" #'dumb-jump-back)
+
+        ))
+
+  #+END_SRC
+* Rjsx-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    ;;(use-package rjsx-mode
+    ;;  :ensure t
+    ;;  :commands (rjsx-mode)
+    ;;  :mode ("\\.js\\'" . rjsx-mode)      
+    ;;  :bind 
+    ;;  (:map rjsx-mode-map  
+    ;;        ("H-i" . js2-line-break))
+    ;;  :config
+    ;;  (progn 
+    ;;
+    ;;    (add-hook 'js2-mode-hook 'my/block-comment-setup)
+    ;;
+    ;;    (add-hook 'rjsx-mode-hook #'my/react-mode-setup)
+    ;;
+    ;;    (require 'flycheck-flow)
+    ;;    (add-hook 'rjsx-mode-hook 'flycheck-mode)
+    ;;
+    ;;    ;; (add-hook 'web-mode-hook 'prettier-js-mode)
+    ;;
+    ;;    (my/indent-setup 2)
+    ;;
+    ;;    ))
+
+
+  #+END_SRC
+* Javascript config
+  #+BEGIN_SRC emacs-lisp
+
+
+    (setq js2-strict-missing-semi-warning nil) ;; semi-colon warnings not shown
+    (setq js2-strict-trailing-comma-warning nil) ;; trailing comma warnings not shown
+    (my/indent-setup 2)
+
+    ;; react-mode setup
+     (add-to-list 'magic-mode-alist '("\\(import.*from \'react\';\\|\/\/ @flow\nimport.*from \'react\';\\)" . react-mode))
+    ;;(add-to-list 'magic-mode-alist '("import React" . react-mode))
+    (add-hook 'react-mode-hook #'my/react-mode-setup)
+    (add-hook 'react-mode-hook #'setup-project-paths)
+
+    ;; js2-mode setup
+    (add-to-list 'auto-mode-alist '("\\.js\\'" . react-mode))
+    (add-hook 'js2-mode-hook #'my/react-mode-setup)
+    (add-hook 'js2-mode-hook #'setup-project-paths)
+
+    ;; json-mode setup
+    (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
+    (add-hook 'json-mode-hook 'prettier-js-mode)
+
+    ;; css-mode setup
+    (add-hook 'css-mode-hook 'prettier-js-mode)
+    (setq css-fontify-colors nil)
+
+    ;;(add-hook 'web-mode-hook 'prettier-js-mode)
+
+    ;; ---------flow flycheck setup --------------------
+    ;;;; flycheck, eslint along with flow setup
+    ;;(require 'f)
+    ;;(require 'json)
+    ;;(require 'flycheck)
+    ;;
+    ;;(defun flycheck-parse-flow (output checker buffer)
+    ;;  (let ((json-array-type 'list))
+    ;;    (let ((o (json-read-from-string output)))
+    ;;      (mapcar #'(lambda (errp)
+    ;;                  (let ((err (cadr (assoc 'message errp))))
+    ;;                    (flycheck-error-new
+    ;;                     :line (cdr (assoc 'line err))
+    ;;                     :column (cdr (assoc 'start err))
+    ;;                     :level 'error
+    ;;                     :message (cdr (assoc 'descr err))
+    ;;                     :filename (f-relative
+    ;;                                (cdr (assoc 'path err))
+    ;;                                (f-dirname (file-truename
+    ;;                                            (buffer-file-name))))
+    ;;                     :buffer buffer
+    ;;                     :checker checker)))
+    ;;              (cdr (assoc 'errors o))))))
+    ;;
+    ;;(flycheck-define-checker javascript-flow
+    ;;  "Javascript type checking using Flow."
+    ;;  :command ("flow" "--json" source-original)
+    ;;  :error-parser flycheck-parse-flow
+    ;;  :modes react-mode
+    ;;  :next-checkers ((error . javascript-eslint))
+    ;;  )
+    ;;
+    ;;(add-to-list 'flycheck-checkers 'javascript-flow)
+    ;;(add-hook 'react-mode-hook 'flycheck-mode)
+
+    ;; -----------flow flycheck setup
+
+    (setq prettier-js-show-errors (quote buffer))
+
+    ;;(setq prettier-js-args '(
+    ;;                         "--prettier-last" "true"
+    ;;                         "--single-quote"
+    ;;                         "--semi" "true"
+    ;;                         "--trailing-comma" "all"
+    ;;                         "--bracket-spacing" "true"
+    ;;                         ))
+
+  #+END_SRC
+* Reason config
+  #+BEGIN_SRC emacs-lisp
+
+    ;; reason setup
+    (defun shell-cmd (cmd)
+      "Returns the stdout output of a shell command or nil if the command returned
+     an error"
+      (car (ignore-errors (apply 'process-lines (split-string cmd)))))
+
+    (let* ((refmt-bin (or (shell-cmd "refmt ----where")
+                          (shell-cmd "which refmt")))
+           (merlin-bin (or (shell-cmd "ocamlmerlin ----where")
+                           (shell-cmd "which ocamlmerlin")))
+           (merlin-base-dir (when merlin-bin
+                              (replace-regexp-in-string "bin/ocamlmerlin$" "" merlin-bin))))
+      ;; Add npm merlin.el to the emacs load path and tell emacs where to find ocamlmerlin
+      (when merlin-bin
+        (add-to-list 'load-path (concat merlin-base-dir "share/emacs/site-lisp/"))
+        (setq merlin-command merlin-bin))
+
+      (when refmt-bin
+        (setq refmt-command refmt-bin)))
+
+    (require 'reason-mode)
+    (require 'merlin)
+    (add-hook 'reason-mode-hook (lambda ()
+                                  (add-hook 'before-save-hook 'refmt-before-save)
+                                  (merlin-mode)))
+
+    (setq merlin-ac-setup t)
+    (add-hook 'reason-mode-hook (lambda ()
+                                  (add-hook 'before-save-hook 'refmt-before-save)))
+    (setq merlin-report-warnings nil)
+
+  #+END_SRC
+* Java-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (add-hook 'java-mode-hook 'my/block-comment-setup)
+
+  #+END_SRC
+* Python-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (defun my/python-indent ()
+      (interactive)
+      (setq-default indent-tabs-mode nil
+                    tab-width 2)
+      )
+
+    (add-hook 'python-mode-hook #'my/python-indent)
+
+  #+END_SRC
+* Company config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package company
+      :ensure t
+      :init (global-company-mode)
+      :bind (:map company-mode-map  
+                  ("H-j" . company-select-next)
+                  ("H-k" . company-select-previous))
+      )
+
+  #+END_SRC
+* Web-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package web-mode
+      :ensure t
+      :bind (:map web-mode-map  
+                  ("H-;" . nil)))
+
+  #+END_SRC
+* Evil
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package evil
+      :ensure t
+      :bind (:map evil-normal-state-map
+                  ("H-J" . evil-jump-forward)
+                  ("H-K" . evil-jump-backward)
+                  ("H-j" . move-text-down)
+                  ("H-k" . move-text-up)
+                  ("H-u" . evil-scroll-page-up)
+                  ("H-d" . evil-scroll-page-down)
+                  ("H-U" . upcase-word)
+                  ("H-D" . downcase-word)
+                  ("H" . my/previous-buffer)
+                  ("L" . my/next-buffer)
+                  ("H-h" . evil-first-non-blank)
+                  ("H-l" . evil-last-non-blank)
+                  :map evil-visual-state-map
+                  ("H-U" . upcase-region)
+                  ("H-D" . downcase-region)
+                  ("H-u" . evil-scroll-page-up)
+                  ("H-d" . evil-scroll-page-down)
+                  ("p" . my/evil-paste-after-from-0)
+                  ("H-j" . drag-stuff-down)
+                  ("H-k" . drag-stuff-up)
+                  :map evil-insert-state-map
+                  ("C-d" . nil)
+                  )
+      :config
+      (progn 
+
+        ;; default cursor as bar 
+        (setq-default cursor-type '(bar . 3))
+        (setq evil-normal-state-cursor `((bar . 3) ,evilNormalColor)) 
+        (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
+        (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
+        (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
+        (setq evil-motion-state-cursor `((bar . 3) ,evilNormalColor)) 
+        (setq evil-lisp-state-cursor '((bar . 3) "HotPink1")) 
+
+        (setq evil-move-cursor-back nil)
+
+        (evil-leader/set-key
+          "od" 'make-directory
+          "of" 'toggle-frame-fullscreen
+          "om" 'markdown-mode
+          "oo" 'org-mode
+          "os" 'just-one-space
+          "ot" 'text-mode
+          "si" 'counsel-grep-or-swiper
+          ) 
+
+        ))
+
+  #+END_SRC
+* Others
+  #+BEGIN_SRC emacs-lisp
+
+    (global-unset-key (kbd "H-H"))
+    (global-unset-key (kbd "H-L"))
+
+    ;; treat _ as word
+    (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
+    (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
+
+    ;; set line-spacing to 1
+    (setq-default line-spacing 0.1)
+
+    (add-hook 'text-mode-hook 'auto-fill-mode)
+    (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
+
+    (global-hl-line-mode +1)
+
+    (setq blink-cursor-blinks 500)
+    (blink-cursor-mode +1)
+
+    (push '(?\' . ?\') electric-pair-pairs)
+    (electric-pair-mode 1)
+
+    (setq package-check-signature nil)
+    (setq frame-resize-pixelwise t)
+
+    ;; native line number configuration
+    (setq display-line-numbers (quote relative))
+    (setq display-line-numbers-grow-only t)
+    (setq display-line-numbers-type (quote relative))
+    (setq display-line-numbers-widen t)
+    (setq display-line-numbers-width nil)
+    (setq display-line-numbers-width-start nil)
+
+    ;;(global-display-line-numbers-mode 1)
+
+    ;; because of react regex line-numbers wont show in react-mode or web-mode 
+    ;; even though it is derived from prog-mode, so below fix
+    (dolist (hook 
+      '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
+        (add-hook hook 'display-line-numbers-mode))
+
+    (setq-default evil-escape-delay 0.2)
+
+    ;; visual-line-mode for all text-modes
+    (add-hook 'text-mode-hook #'my/enable-visual-line-mode)
+
+    ;; company-tern property marker
+    (setq company-tern-property-marker " =>")
+
+    ;; enable symbols by default
+    (global-prettify-symbols-mode 1)
+
+    ;; global move visual block up/down: life-saver
+    (drag-stuff-global-mode 1)
+
+    ;; set bold to semibold as source code pro bold is too strong
+    ;;(set-face-attribute 'bold nil :weight 'semibold)
+
+    ;; set italics on for exotica
+    ;; (setq exotica-theme-enable-italics t)
+    ;; (spacemacs/load-theme 'exotica)
+
+    (setq zeno-theme-enable-italics t)
+    (spacemacs/load-theme 'zeno)
+    ;; (setq create-lockfiles nil)
+
+    ;; scale text
+    (define-key global-map (kbd "C-+") 'text-scale-increase)
+    (define-key global-map (kbd "C--") 'text-scale-decrease)
+
+    ;; custom escape and save key-binding
+    (define-key global-map (kbd "H-;") 'my/escape-and-save)
+
+    ;; key-binding to insert new line between brackets and indent
+    (global-set-key (kbd "H-I") 'my/newline-and-indent)
+
+    ;; key-bindings for scrolling half page
+    (global-set-key [?\H-p] 'my/scroll-half-page-down)
+    (global-set-key [?\H-n] 'my/scroll-half-page-up)
+
+    ;; remap next-buffer to custom buffer functions
+    (global-set-key [remap next-buffer] 'my/next-buffer)
+    (global-set-key [remap previous-buffer] 'my/previous-buffer)
+
+    ;; faster shifting between windows
+    (global-set-key [?\H-f] 'other-window)
+
+    ;; as spacemacs is running as daemon, binding qq to kill frame
+    ;; (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
+
+    ;; bind snippet expand to H-y
+    (global-set-key [?\H-y] 'hippie-expand)
+    (global-set-key [?\C-\H-y] 'dabbrev-completion)
+
+    (setq-default indent-tabs-mode nil)
+    (setq-default tab-width 4)
+
+    ;; map Command-g to escape 
+    (global-set-key [?\H-e] 'evil-escape)
+
+    ;; beautify titlebar of emacs :heart-eyes:
+    (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
+    (add-to-list 'default-frame-alist '(ns-appearance . 'nil))
+
+    (spacemacs|diminish drag-stuff-mode " dr")
+    (spacemacs|diminish emoji-cheat-sheet-plus-display-mode " EM")
+    (spacemacs|diminish prettier-mode " PR")
+
+    (setq projectile-indexing-method 'alien)
+
+  #+END_SRC

@@ -1,0 +1,7 @@
+# -*- mode: snippet -*-
+# name: BlockComment 
+# key: bc
+# --
+/*
+* $0
+*/ 

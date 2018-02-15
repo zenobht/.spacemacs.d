@@ -1,0 +1,13 @@
+# -*- mode: snippet -*-
+# name: LoremText  
+# key: lorem
+# --
+Lorem ipsum dolor sit amet, consectetur adipiscing elit. Nunc euismod nunc sed
+lectus cursus, quis mollis urna ullamcorper. Vestibulum malesuada sed lorem a
+vehicula. Mauris varius lacus vitae lacus lacinia efficitur. Nulla ligula magna,
+suscipit in nisi nec, hendrerit tincidunt odio. Nam tincidunt lacinia purus ut
+volutpat. Phasellus ultricies, enim at egestas sollicitudin, eros tellus
+sagittis nisl, ac laoreet tortor orci eget mi. Vivamus fringilla quam ac massa
+blandit, ac blandit nisl tempor. Sed pellentesque vel nibh tempor tincidunt.
+Proin cursus, lorem eu tempor vehicula, nunc turpis volutpat nibh, sed faucibus
+velit orci in diam. 
