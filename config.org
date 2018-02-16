@@ -126,22 +126,20 @@
       (prettier-js-mode t)
       (my/js-symbols-setup)
       (my/block-comment-setup)
-      (my/project-path-eslint)
+      (flycheck-mode)
       )
 
     (setq tab-always-indent t)
 
-
     (defun my/eslint-setup ()
-      (flycheck-mode t)
-      (when (and  (executable-find "eslint") (flycheck-eslint-config-exists-p))
-        (flycheck-select-checker 'javascript-eslint)
-        ))
-
-    (defun my/project-path-eslint () 
-      (setup-project-paths)
-      (my/eslint-setup)
-      )
+      (let* ((root (locate-dominating-file
+                    (or (buffer-file-name) default-directory)
+                    "node_modules"))
+             (eslint (and root
+                          (expand-file-name "node_modules/eslint/bin/eslint.js"
+                                            root))))
+        (when (and eslint (file-executable-p eslint))
+          (setq-local flycheck-javascript-eslint-executable eslint))))
 
     (defun my/org-heading-setup ()
       "Stop the org-level headers from increasing in height relative to the other text."
@@ -311,6 +309,13 @@
         ;; flycheck enabled by default
         (add-hook 'after-init-hook #'global-flycheck-mode)
         (setq flycheck-check-syntax-automatically '(mode-enabled save))
+        (setq-default flycheck-disabled-checkers
+                      (append flycheck-disabled-checkers
+                              '(javascript-jshint)))
+
+
+        (flycheck-add-mode 'javascript-eslint 'react-mode)
+        (add-hook 'flycheck-mode-hook #'my/eslint-setup)
 
         ))
 
@@ -322,9 +327,11 @@
       :ensure t
       :config
       (progn 
-       
+
         (setq projectile-indexing-method 'alien)
         (setq projectile-enable-caching t)
+
+        (add-hook 'projectile-after-switch-project-hook #'setup-project-paths)
 
         ;; invalidates projectile cache on git actions
         (advice-add 'magit-checkout
