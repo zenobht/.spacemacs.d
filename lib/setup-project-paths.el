@@ -43,7 +43,7 @@ If it's found, then add it to the `exec-path'."
   ;; root path for each project clearing previous path
   (if (not (boundp 'base-path))
       (setq base-path exec-path)
-      (add-to-list 'base-path "~/")
+      ;;(add-to-list 'base-path "~/")
     )
   ;; set exec-path for 
   (setq exec-path base-path)

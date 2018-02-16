@@ -189,7 +189,7 @@
  `(rainbow-delimiters-depth-9-face ((t (:foreground ,face1))))
 
  ;; others
- `(secondary-selection ((t (:foreground ,face8))))
+ `(secondary-selection ((t (:foreground ,fg))))
  `(shadow ((t (:foreground ,comment-face))))
  `(widget-inactive ((t (:background ,m7))))
  `(widget-button-pressed ((t (:foreground ,m8))))
