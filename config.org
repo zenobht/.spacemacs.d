@@ -211,6 +211,14 @@
       :config
       (progn 
 
+        ;;spaceline-all-the-icons setup
+        (setq spaceline-all-the-icons-clock-always-visible nil)
+        (setq spaceline-all-the-icons-eyebrowse-display-name nil)
+        (setq spaceline-all-the-icons-flycheck-alternate t)
+        (setq spaceline-all-the-icons-hide-long-buffer-path t)
+        (setq spaceline-all-the-icons-slim-render t)
+        (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+
         ;;spaceline/modeline segment config
         (spaceline-toggle-point-position-on)
         (spaceline-toggle-process-off)
@@ -227,6 +235,8 @@
         (set-face-attribute
          'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
         (set-face-attribute
+         'spaceline-evil-motion nil :background evilNormalColor :foreground "black")
+        (set-face-attribute
          'spaceline-evil-visual nil :background "#344256" :foreground "white")
         (set-face-attribute
          'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
@@ -237,34 +247,6 @@
         ;;(setq powerline-default-separator 'utf-8)
 
         ))
-
-    ;; (use-package spaceline-all-the-icons 
-    ;;   :after spaceline
-    ;;   :config 
-    ;;   (progn
-    ;;     (setq ns-use-srgb-colorspace nil)
-    ;;     (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
-
-    ;;     (set-face-attribute
-    ;;      'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
-    ;;     (set-face-attribute
-    ;;      'spaceline-evil-visual nil :background "#344256" :foreground "black")
-    ;;     (set-face-attribute
-    ;;      'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
-    ;;     (spaceline-all-the-icons-theme)
-    ;;     (spaceline-all-the-icons--setup-anzu)  
-    ;;     (spaceline-all-the-icons--setup-package-updates)
-    ;;     (spaceline-all-the-icons--setup-git-ahead)      
-    ;;     ;; (spaceline-all-the-icons--setup-paradox)        
-    ;;     (spaceline-all-the-icons--setup-neotree)
-    ;;     (spaceline-toggle-all-the-icons-buffer-position-on)
-    ;;     (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
-    ;;     (setq spaceline-all-the-icons-icon-set-modified 'circle)
-    ;;     (spaceline-toggle-all-the-icons-minor-modes-on)
-    ;;     (spaceline-toggle-all-the-icons-narrowed-on)
-    ;;     (setq spaceline-all-the-icons-separator-type 'none)
-    ;;     ))
-
 
   #+END_SRC
 * Yasnippet config
