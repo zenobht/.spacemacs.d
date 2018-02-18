@@ -736,6 +736,7 @@
         (setq evil-move-cursor-back nil)
 
         (evil-leader/set-key
+          "jj" 'evil-avy-goto-char
           "od" 'make-directory
           "of" 'toggle-frame-fullscreen
           "om" 'markdown-mode
