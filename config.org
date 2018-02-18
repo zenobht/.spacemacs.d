@@ -184,7 +184,8 @@
                       ("✘ CANCELED" :foreground "#FFCAF9" :weight bold)))) 
 
         ;; set up org-bullet symbols
-        (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+        ;; (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
+        (setq org-bullets-bullet-list '("◓" "◑" "◒" "◐" ))
 
         (setq org-enforce-todo-dependencies t)
         (setq org-agenda-dim-blocked-tasks t)
@@ -382,14 +383,14 @@
     ;;
     ;;    (setq highlight-indent-guides-method 'character)
     ;;    (setq highlight-indent-guides-character ?\|)
-    ;;    (add-hook 'prog-mode-hook 'highlight-indent-guides-mode)
-    ;;    (add-hook 'text-mode-hook 'highlight-indent-guides-mode)
     ;;
-    ;;    ;;(setq highlight-indent-guides-auto-enabled nil)
-    ;;    (set-face-foreground 'highlight-indent-guides-character-face "#132947")
+    ;;    (dolist (hook 
+    ;;             '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
+    ;;      (add-hook hook 'highlight-indent-guides-mode))
     ;;
-    ;;    (add-hook 'evil-visual-state-entry-hook (lambda() (highlight-indent-guides-mode -1)))
-    ;;    (add-hook 'evil-visual-state-exit-hook (lambda() (highlight-indent-guides-mode +1)))
+    ;;    (setq highlight-indent-guides-auto-enabled t)
+    ;;
+    ;;    ;;(set-face-foreground 'highlight-indent-guides-character-face "#132947")
     ;;
     ;;    ))
 

@@ -165,7 +165,7 @@ values."
    dotspacemacs-mode-line-unicode-symbols nil 
    dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
-   dotspacemacs-folding-method 'evil
+   dotspacemacs-folding-method 'origami
    dotspacemacs-smartparens-strict-mode nil 
    dotspacemacs-smart-closing-parenthesis nil 
    dotspacemacs-highlight-delimiters 'all
@@ -174,7 +174,7 @@ values."
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
    dotspacemacs-mode-line-theme '(all-the-icons
-                                  :separator cup  
+                                  :separator arrow  
                                   )
    dotspacemacs-frame-title-format ""
    ))
