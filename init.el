@@ -194,9 +194,6 @@ values."
   )
 
 (defun dotspacemacs/user-config ()
-  ;; set symbola font to be used for all unicode symbols
-  ;; other than 
-  (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-17") 
 
   ;; set up emacs path using system's path
   (exec-path-from-shell-copy-env "PATH")

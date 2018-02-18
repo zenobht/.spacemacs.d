@@ -185,7 +185,7 @@
 
         ;; set up org-bullet symbols
         ;; (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
-        (setq org-bullets-bullet-list '("◓" "◑" "◒" "◐" ))
+        (setq org-bullets-bullet-list '("◒" "◐" "◓" "◑" ))
 
         (setq org-enforce-todo-dependencies t)
         (setq org-agenda-dim-blocked-tasks t)
@@ -857,5 +857,12 @@
     (spacemacs|diminish drag-stuff-mode " dr")
     (spacemacs|diminish emoji-cheat-sheet-plus-display-mode " EM")
     (spacemacs|diminish prettier-mode " PR")
+
+    ;; set symbola font to be used for all unicode symbols
+    ;; other than 
+    (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-17") 
+    ;; native pixel scroll mode
+    (pixel-scroll-mode t)
+
 
   #+END_SRC
