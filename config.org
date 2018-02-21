@@ -348,6 +348,18 @@
         ))
 
   #+END_SRC
+* Helm config
+  #+BEGIN_SRC emacs-lisp
+
+    ;;(use-package helm
+    ;;  :ensure t
+    ;;  :bind 
+    ;;  (:map helm-map  
+    ;;        ("H-j" . helm-next-line)
+    ;;        ("H-k" . helm-previous-line))
+    ;;  )
+
+  #+END_SRC
 * Encoding config
   #+BEGIN_SRC emacs-lisp
 
@@ -445,10 +457,10 @@
 * Ledger config
   #+BEGIN_SRC emacs-lisp
 
-    (use-package ledger-mode
-      :ensure t
-      :commands (ledger-mode)
-      :mode ("\\.ledger$\\'" . ledger-mode))
+    ;; (use-package ledger-mode
+    ;;   :ensure t
+    ;;   :commands (ledger-mode)
+    ;;   :mode ("\\.ledger$\\'" . ledger-mode))
 
   #+END_SRC
 * Ranger config

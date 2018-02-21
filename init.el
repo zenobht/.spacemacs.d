@@ -20,8 +20,8 @@
      emacs-lisp
      emoji
      evil-commentary
-     finance
      git
+     ;;(helm :variables helm-no-header t)
      html
      (ibuffer :variables ibuffer-group-buffers-by nil)
      (ivy :variables
