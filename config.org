@@ -10,7 +10,7 @@
 * Custom Functions
   #+BEGIN_SRC emacs-lisp
 
-    (defvar my/skippable-buffers '("*Messages*" "*scratch*" "*Help*")
+    (defvar my/skippable-buffers '("*spacemacs*" "*Messages*" "*scratch*" "*Help*")
       "Buffer names ignored by `my/next-buffer' and `my/previous-buffer'.")
 
     ;; buffer changer function
