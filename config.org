@@ -407,15 +407,15 @@
     ;;    ))
 
 
-    ;;(use-package indent-guide
-    ;;  :ensure t
-    ;;  :config
-    ;;  (progn 
-    ;;
-    ;;    (setq indent-guide-char "|")
-    ;;    (setq indent-guide-delay 0.4)
-    ;;    (spacemacs/toggle-indent-guide-globally-on)
-    ;;
+    (use-package indent-guide
+      :ensure t
+      :config
+      (progn 
+
+        (setq indent-guide-char "|")
+        (setq indent-guide-delay 0.4)
+        (spacemacs/toggle-indent-guide-globally-on)))
+
 
 
   #+END_SRC
@@ -772,7 +772,7 @@
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
     ;; set line-spacing to 1
-    (setq-default line-spacing 0.1)
+    (setq-default line-spacing 2)
 
     (add-hook 'text-mode-hook 'auto-fill-mode)
     (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)

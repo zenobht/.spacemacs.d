@@ -127,7 +127,7 @@ values."
                          )
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Operator Mono"
-                               :size 17
+                               :size 16
                                :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"
