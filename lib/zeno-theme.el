@@ -294,8 +294,8 @@
 
 
   ;; indent-guide faces
-  `(indent-guide-face ((t (:foreground ,face9 :weight bold))))
-  `(highlight-indent-guides-character-face ((t (:foreground ,face9 :weight bold))))
+  `(indent-guide-face ((t (:foreground ,face9 ))))
+  `(highlight-indent-guides-character-face ((t (:foreground ,face9 ))))
 
   `(link ((t (:foreground ,face8 :background ,bg :underline t))))
 

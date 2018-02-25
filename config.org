@@ -413,10 +413,8 @@
       (progn 
 
         (setq indent-guide-char "|")
-        (setq indent-guide-delay 0.4)
+        (setq indent-guide-delay 0.2)
         (spacemacs/toggle-indent-guide-globally-on)))
-
-
 
   #+END_SRC
 * Treemacs config
