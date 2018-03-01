@@ -269,12 +269,12 @@
   `(web-mode-html-tag-custom-face ((t (:inherit web-mode-html-tag-face))))
 
   ;; linum relative line number face
-  `(linum-relative-current-face ((t (:inherit linum :foreground ,face4 :weight normal))))
+  `(linum-relative-current-face ((t (:inherit linum :foreground ,face2 :weight normal))))
   `(linum ((t (:background ,bg :foreground ,line-number-face :weight normal))))
 
   ;; native line number face
   `(line-number ((t :background ,bg :foreground ,line-number-face :weight normal)))
-  `(line-number-current-line ((t :background ,bg :foreground, face4, :weight normal)))
+  `(line-number-current-line ((t :background ,bg :foreground, face2, :weight normal)))
 
   ;; imenu-list
   `(imenu-list-entry-subalist-face-0 ((t (:foreground ,face2))))

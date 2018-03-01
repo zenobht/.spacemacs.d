@@ -75,6 +75,10 @@
      yaml
      )
    dotspacemacs-additional-packages '(
+                                      vue-mode
+                                      lsp-mode
+                                      lsp-vue
+                                      company-lsp
                                       drag-stuff
                                       evil-multiedit
                                       exotica-theme
