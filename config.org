@@ -748,7 +748,7 @@
 
         ;; default cursor as bar 
         (setq-default cursor-type '(bar . 3))
-        (setq evil-normal-state-cursor `((bar . 3) ,evilNormalColor)) 
+        (setq evil-normal-state-cursor `(box ,evilNormalColor)) 
         (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
         (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
         (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
