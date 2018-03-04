@@ -473,12 +473,12 @@
             )
       :config
       (progn
-       (setq ranger-hide-cursor nil)
+       ;;(setq ranger-hide-cursor nil)
        (setq ranger-cleanup-on-disable t)
        (setq ranger-cleanup-eagerly t)
-       (advice-add #'ranger-close :after #'my/set-cursor-after-ranger)
-       (advice-add #'ranger-find-file :after #'my/set-cursor-after-ranger)
-       (advice-add #'ranger-disable :after #'my/set-cursor-after-ranger)
+       ;;(advice-add #'ranger-close :after #'my/set-cursor-after-ranger)
+       ;;(advice-add #'ranger-find-file :after #'my/set-cursor-after-ranger)
+       ;;(advice-add #'ranger-disable :after #'my/set-cursor-after-ranger)
       ))
 
   #+END_SRC
@@ -635,7 +635,7 @@
     (require 'lsp-vue)
     (add-hook 'vue-mode-hook #'lsp-vue-mmm-enable)
     (with-eval-after-load 'lsp-mode
-      (require 'lsp-flycheck))
+      (require 'lsp-ui))
     (require 'company-lsp)
     (push 'company-lsp company-backends)
 
@@ -752,10 +752,10 @@
         (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
         (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
         (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
-        (setq evil-motion-state-cursor `((bar . 3) ,evilNormalColor)) 
+        (setq evil-motion-state-cursor `((bar . 3) "HotPink1")) 
         (setq evil-lisp-state-cursor '((bar . 3) "HotPink1")) 
 
-        (setq evil-move-cursor-back nil)
+        ;;(setq evil-move-cursor-back nil)
 
         (evil-leader/set-key
           "jj" 'evil-avy-goto-char
@@ -789,8 +789,8 @@
 
     (global-hl-line-mode +1)
 
-    (setq blink-cursor-blinks 500)
-    (blink-cursor-mode +1)
+    ;;(setq blink-cursor-blinks 500)
+    ;;(blink-cursor-mode +1)
 
     (electric-pair-mode 1)
     (push '(?\' . ?\') electric-pair-pairs)

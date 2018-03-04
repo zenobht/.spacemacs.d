@@ -78,7 +78,9 @@
                                       vue-mode
                                       lsp-mode
                                       lsp-vue
+                                      lsp-ui
                                       company-lsp
+                                      dracula-theme
                                       drag-stuff
                                       evil-multiedit
                                       exotica-theme
@@ -178,7 +180,7 @@ values."
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
    dotspacemacs-mode-line-theme '(all-the-icons
-                                  :separator arrow  
+                                  :separator slant  
                                   )
    dotspacemacs-frame-title-format ""
    ))
