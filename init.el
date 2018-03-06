@@ -27,10 +27,12 @@
      (ivy :variables
           ivy-wrap t
           ivy-height 15
+          ;; ivy-enable-advanced-buffer-information t
           ivy-use-virtual-buffers t
-          ivy-enable-advanced-buffer-information nil)
+          )
      java
      (javascript :variables javascript-disable-tern-port-files t)
+     kotlin
      (markdown :variables
                markdown-command 'pandoc
                markdown-live-preview-engine 'vmd)
@@ -179,8 +181,8 @@ values."
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
-   dotspacemacs-mode-line-theme '(all-the-icons
-                                  :separator slant  
+   dotspacemacs-mode-line-theme '(spacemacs
+                                  :separator alternate  
                                   )
    dotspacemacs-frame-title-format ""
    ))
@@ -223,6 +225,7 @@ values."
   ;;(set-frame-parameter (selected-frame) 'alpha '(90 . 50))
   ;;(add-to-list 'default-frame-alist '(alpha . (90 . 50)))
 
+  (setq kotlin-tab-width 2)
 )
 
 

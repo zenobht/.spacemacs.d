@@ -225,6 +225,8 @@
  `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face7))))
  `(swiper-line-face ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
  `(swiper-match-face-2 ((t (:foreground ,face7))))
+ `(ivy-modified-buffer ((t (:inherit default :foreground ,face3))))
+
 
 
   ;; company
@@ -251,7 +253,7 @@
   `(treemacs-directory-face ((t (:foreground ,face10 ))))
 
   ;; parentheses matching
-  `(show-paren-match ((t (:underline ,face6 :foreground ,face6 :weight bold))))
+  `(show-paren-match ((t (:inherit default :foreground ,face6 :underline ,face6))))
   `(show-paren-mismatch ((t (:background ,m7 :foreground ,fullWhite))))
   `(rainbow-delimiters-mismatched-face ((t (:inherit show-paren-mismatch :underline t))))
   `(rainbow-delimiters-unmatched-face ((t (:inherit show-paren-mismatch))))

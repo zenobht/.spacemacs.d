@@ -218,7 +218,7 @@
         (setq spaceline-all-the-icons-flycheck-alternate t)
         (setq spaceline-all-the-icons-hide-long-buffer-path t)
         (setq spaceline-all-the-icons-slim-render t)
-        (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+        ;; (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
 
         ;;spaceline/modeline segment config
         (spaceline-toggle-point-position-on)
@@ -788,6 +788,7 @@
     (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
 
     (global-hl-line-mode +1)
+    (show-paren-mode +1)
 
     ;;(setq blink-cursor-blinks 500)
     ;;(blink-cursor-mode +1)
