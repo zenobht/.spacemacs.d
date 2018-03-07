@@ -66,7 +66,7 @@
      (treemacs :variables
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t
-               treemacs-git-mode nil
+               treemacs-git-mode 'extended 
                treemacs-use-collapsed-directories 3
                )
      typescript
@@ -135,7 +135,7 @@ values."
                          )
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Operator Mono"
-                               :size 16
+                               :size 17
                                :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -162,7 +162,7 @@ values."
    dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar t
+   dotspacemacs-loading-progress-bar nil
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup t
@@ -171,7 +171,7 @@ values."
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols nil 
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'origami
    dotspacemacs-smartparens-strict-mode nil 
@@ -229,3 +229,22 @@ values."
 )
 
 
+(defun dotspacemacs/emacs-custom-settings ()
+  "Emacs custom settings.
+This is an auto-generated function, do not modify its content directly, use
+Emacs customize menu instead.
+This function is called at the very end of Spacemacs initialization."
+(custom-set-variables
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(package-selected-packages
+   '(pip-requirements yasnippet-snippets yapfify yaml-mode xterm-color ws-butler winum which-key wgrep web-mode web-beautify vue-mode volatile-highlights vmd-mode uuidgen use-package unfill treemacs-projectile treemacs-evil toc-org tide tagedit symon subatomic-theme string-inflection spaceline-all-the-icons smex smeargle slim-mode shell-pop scss-mode sass-mode rvm ruby-tools ruby-test-mode ruby-refactor ruby-hash-syntax rubocop rspec-mode robe reveal-in-osx-finder restart-emacs request reason-mode rbenv ranger rake rainbow-mode rainbow-identifiers rainbow-delimiters pyvenv pytest pyenv-mode py-isort pug-mode pretty-mode popwin pippel pipenv persp-mode pbcopy password-generator paradox pandoc-mode ox-reveal ox-pandoc ox-gfm overseer osx-trash osx-dictionary origami orgit org-projectile org-present org-pomodoro org-mime org-journal org-download org-bullets org-brain open-junk-file nameless mwim mvn multi-term move-text molokai-theme minitest meghanada maven-test-mode markdown-toc magit-gitflow macrostep lsp-vue lsp-ui lsp-python lorem-ipsum livid-mode live-py-mode link-hint launchctl kotlin-mode json-mode js2-refactor js-doc ivy-xref ivy-purpose ivy-hydra indent-guide importmagic impatient-mode ibuffer-projectile hy-mode hungry-delete hl-todo highlight-parentheses highlight-numbers highlight-indentation highlight-indent-guides helm-make groovy-mode groovy-imports gradle-mode google-translate golden-ratio gnuplot gitignore-mode gitconfig-mode gitattributes-mode git-timemachine git-messenger git-link git-gutter-fringe git-gutter-fringe+ gh-md fuzzy font-lock+ flyspell-correct-ivy flycheck-pos-tip flycheck-package flycheck-kotlin flycheck-flow flx-ido fill-column-indicator fancy-battery eyebrowse expand-region exotica-theme exec-path-from-shell evil-visualstar evil-visual-mark-mode evil-unimpaired evil-tutor evil-surround evil-search-highlight-persist evil-org evil-numbers evil-multiedit evil-mc evil-matchit evil-magit evil-lisp-state evil-lion evil-indent-plus evil-iedit-state evil-exchange evil-escape evil-ediff evil-commentary evil-cleverparens evil-args evil-anzu eval-sexp-fu eshell-z eshell-prompt-extras esh-help ensime emojify emoji-cheat-sheet-plus emmet-mode elisp-slime-nav editorconfig dumb-jump drag-stuff dracula-theme diminish diff-hl cython-mode csv-mode counsel-projectile counsel-css company-web company-tern company-statistics company-lsp company-emoji company-emacs-eclim company-anaconda column-enforce-mode color-identifiers-mode coffee-mode clean-aindent-mode chruby centered-cursor-mode bundler browse-at-remote auto-yasnippet auto-highlight-symbol auto-dictionary auto-compile aggressive-indent adaptive-wrap ace-link ac-ispell)))
+(custom-set-faces
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ )
+)

@@ -473,7 +473,7 @@
             )
       :config
       (progn
-       ;;(setq ranger-hide-cursor nil)
+       (setq ranger-hide-cursor nil)
        (setq ranger-cleanup-on-disable t)
        (setq ranger-cleanup-eagerly t)
        ;;(advice-add #'ranger-close :after #'my/set-cursor-after-ranger)
@@ -844,7 +844,7 @@
     (define-key global-map (kbd "C--") 'text-scale-decrease)
 
     ;; custom escape and save key-binding
-    (define-key global-map (kbd "H-;") 'my/escape-and-save)
+    ;;(define-key global-map (kbd "H-;") 'my/escape-and-save)
 
     ;; key-binding to insert new line between brackets and indent
     (global-set-key (kbd "H-I") 'my/newline-and-indent)
