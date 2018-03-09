@@ -115,11 +115,7 @@
       (interactive)
       (mapc (lambda (pair) (push pair prettify-symbols-alist))
             '(
-              ;;("<=" . ?≤)
-              ;;(">=" . ?≥)
               ("=>" . ?⇒)
-              ;;("->" . ?→)
-              ;;("<-" . ?←)
               )))
 
     (defun my/react-mode-setup ()
@@ -167,7 +163,7 @@
       :diminish org-mode
       :bind 
       (:map org-mode-map 
-            ("H-i" . org-meta-return))
+            ("s-i" . org-meta-return))
       :config
       (progn 
 
@@ -241,11 +237,6 @@
          'spaceline-evil-visual nil :background "#344256" :foreground "white")
         (set-face-attribute
          'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
-
-        ;; fix for odd symbol in modeline in linux
-        ;; NOTE: odd, stopped working recently, and also it is not needed
-        ;; (setq ns-use-srgb-colorspace nil)
-        ;;(setq powerline-default-separator 'utf-8)
 
         ))
 
@@ -332,8 +323,8 @@
       :ensure t
       :bind 
       (:map ivy-mode-map  
-            ("H-j" . ivy-next-line)
-            ("H-k" . ivy-previous-line))
+            ("s-j" . ivy-next-line)
+            ("s-k" . ivy-previous-line))
       :config
       (progn 
 
@@ -355,8 +346,8 @@
     ;;  :ensure t
     ;;  :bind 
     ;;  (:map helm-map  
-    ;;        ("H-j" . helm-next-line)
-    ;;        ("H-k" . helm-previous-line))
+    ;;        ("s-j" . helm-next-line)
+    ;;        ("s-k" . helm-previous-line))
     ;;  )
 
   #+END_SRC
@@ -385,45 +376,13 @@
         ))
 
   #+END_SRC
-* Indent-guide config
-  #+BEGIN_SRC emacs-lisp
-
-    ;;(use-package highlight-indent-guides
-    ;;  :ensure t
-    ;;  :config
-    ;;  (progn 
-    ;;
-    ;;    (setq highlight-indent-guides-method 'character)
-    ;;    (setq highlight-indent-guides-character ?\|)
-    ;;
-    ;;    (dolist (hook 
-    ;;             '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
-    ;;      (add-hook hook 'highlight-indent-guides-mode))
-    ;;
-    ;;    (setq highlight-indent-guides-auto-enabled t)
-    ;;
-    ;;    ;;(set-face-foreground 'highlight-indent-guides-character-face "#132947")
-    ;;
-    ;;    ))
-
-
-    ;;(use-package indent-guide
-    ;;  :ensure t
-    ;;  :config
-    ;;  (progn 
-    ;;
-    ;;    (setq indent-guide-char "|")
-    ;;    (setq indent-guide-delay 0.2)
-    ;;    (spacemacs/toggle-indent-guide-globally-on)))
-
-  #+END_SRC
 * Treemacs config
   #+BEGIN_SRC emacs-lisp
 
     (use-package treemacs
       :ensure t
       :bind (:map treemacs-mode-map
-             ("H-e" . treemacs-toggle)
+             ("s-e" . treemacs-toggle)
              )
       :config
       (progn 
@@ -442,7 +401,7 @@
              ("\\.markdown\\'" . markdown-mode))
       :bind 
       (:map markdown-mode-map  
-            ("H-i" . markdown-insert-list-item))
+            ("s-i" . markdown-insert-list-item))
       :config 
       (progn
 
@@ -450,15 +409,6 @@
         (prettier-js-mode t)
 
         ))
-
-  #+END_SRC
-* Ledger config
-  #+BEGIN_SRC emacs-lisp
-
-    ;; (use-package ledger-mode
-    ;;   :ensure t
-    ;;   :commands (ledger-mode)
-    ;;   :mode ("\\.ledger$\\'" . ledger-mode))
 
   #+END_SRC
 * Ranger config
@@ -469,33 +419,14 @@
       :bind 
       (:map ranger-normal-mode-map  
             ("+" . dired-create-directory)
-            ("H-e" . ranger-disable)
+            ("s-e" . ranger-disable)
             )
       :config
       (progn
        (setq ranger-hide-cursor nil)
        (setq ranger-cleanup-on-disable t)
        (setq ranger-cleanup-eagerly t)
-       ;;(advice-add #'ranger-close :after #'my/set-cursor-after-ranger)
-       ;;(advice-add #'ranger-find-file :after #'my/set-cursor-after-ranger)
-       ;;(advice-add #'ranger-disable :after #'my/set-cursor-after-ranger)
       ))
-
-  #+END_SRC
-* Evil-mc config
-  #+BEGIN_SRC emacs-lisp
-
-    ;; (use-package evil-mc
-    ;;   :ensure t
-    ;;   :diminish evil-mc-mode "[m]"
-    ;;   :init 
-    ;;   (progn
-    ;;     (global-evil-mc-mode t)
-    ;;     (add-hook 'after-init-hook #'global-evil-mc-mode))
-    ;;   :bind (:map evil-mc-key-map
-    ;;               ("C-g" . evil-mc-undo-all-cursors)
-
-    ;;   ))
 
   #+END_SRC
 * Multiedit
@@ -523,34 +454,6 @@
         (spacemacs/set-leader-keys "db" #'dumb-jump-back)
 
         ))
-
-  #+END_SRC
-* Rjsx-mode config
-  #+BEGIN_SRC emacs-lisp
-
-    ;;(use-package rjsx-mode
-    ;;  :ensure t
-    ;;  :commands (rjsx-mode)
-    ;;  :mode ("\\.js\\'" . rjsx-mode)      
-    ;;  :bind 
-    ;;  (:map rjsx-mode-map  
-    ;;        ("H-i" . js2-line-break))
-    ;;  :config
-    ;;  (progn 
-    ;;
-    ;;    (add-hook 'js2-mode-hook 'my/block-comment-setup)
-    ;;
-    ;;    (add-hook 'rjsx-mode-hook #'my/react-mode-setup)
-    ;;
-    ;;    (require 'flycheck-flow)
-    ;;    (add-hook 'rjsx-mode-hook 'flycheck-mode)
-    ;;
-    ;;    ;; (add-hook 'web-mode-hook 'prettier-js-mode)
-    ;;
-    ;;    (my/indent-setup 2)
-    ;;
-    ;;    ))
-
 
   #+END_SRC
 * Javascript config
@@ -700,8 +603,8 @@
       :ensure t
       :init (global-company-mode)
       :bind (:map company-mode-map  
-                  ("H-j" . company-select-next)
-                  ("H-k" . company-select-previous))
+                  ("s-j" . company-select-next)
+                  ("s-k" . company-select-previous))
       )
 
   #+END_SRC
@@ -711,7 +614,7 @@
     (use-package web-mode
       :ensure t
       :bind (:map web-mode-map  
-                  ("H-;" . nil)))
+                  ("s-;" . nil)))
 
   #+END_SRC
 * Evil
@@ -720,26 +623,26 @@
     (use-package evil
       :ensure t
       :bind (:map evil-normal-state-map
-                  ("H-J" . evil-jump-forward)
-                  ("H-K" . evil-jump-backward)
-                  ("H-j" . move-text-down)
-                  ("H-k" . move-text-up)
-                  ("H-u" . evil-scroll-page-up)
-                  ("H-d" . evil-scroll-page-down)
-                  ("H-U" . upcase-word)
-                  ("H-D" . downcase-word)
+                  ("s-J" . evil-jump-forward)
+                  ("s-K" . evil-jump-backward)
+                  ("s-j" . move-text-down)
+                  ("s-k" . move-text-up)
+                  ("s-u" . evil-scroll-page-up)
+                  ("s-d" . evil-scroll-page-down)
+                  ("s-U" . upcase-word)
+                  ("s-D" . downcase-word)
                   ("H" . my/previous-buffer)
                   ("L" . my/next-buffer)
-                  ("H-h" . evil-first-non-blank)
-                  ("H-l" . evil-last-non-blank)
+                  ("s-h" . evil-first-non-blank)
+                  ("s-l" . evil-last-non-blank)
                   :map evil-visual-state-map
-                  ("H-U" . upcase-region)
-                  ("H-D" . downcase-region)
-                  ("H-u" . evil-scroll-page-up)
-                  ("H-d" . evil-scroll-page-down)
+                  ("s-U" . upcase-region)
+                  ("s-D" . downcase-region)
+                  ("s-u" . evil-scroll-page-up)
+                  ("s-d" . evil-scroll-page-down)
                   ("p" . my/evil-paste-after-from-0)
-                  ("H-j" . drag-stuff-down)
-                  ("H-k" . drag-stuff-up)
+                  ("s-j" . drag-stuff-down)
+                  ("s-k" . drag-stuff-up)
                   :map evil-insert-state-map
                   ("C-d" . nil)
                   )
@@ -774,8 +677,8 @@
 * Others
   #+BEGIN_SRC emacs-lisp
 
-    (global-unset-key (kbd "H-H"))
-    (global-unset-key (kbd "H-L"))
+    (global-unset-key (kbd "s-H"))
+    (global-unset-key (kbd "s-L"))
 
     ;; treat _ as word
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
@@ -790,9 +693,6 @@
     (global-hl-line-mode +1)
     (show-paren-mode +1)
 
-    ;;(setq blink-cursor-blinks 500)
-    ;;(blink-cursor-mode +1)
-
     (electric-pair-mode 1)
     (push '(?\' . ?\') electric-pair-pairs)
 
@@ -806,13 +706,9 @@
     (setq display-line-numbers-width nil)
     (setq display-line-numbers-width-start nil)
 
-    ;;(global-display-line-numbers-mode 1)
-
-    ;; because of react regex line-numbers wont show in react-mode or web-mode 
-    ;; even though it is derived from prog-mode, so below fix
     (dolist (hook 
-      '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
-        (add-hook hook 'display-line-numbers-mode))
+             '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
+      (add-hook hook 'display-line-numbers-mode))
 
     (setq-default evil-escape-delay 0.2)
 
@@ -828,50 +724,42 @@
     ;; global move visual block up/down: life-saver
     (drag-stuff-global-mode 1)
 
-    ;; set bold to semibold as source code pro bold is too strong
-    ;;(set-face-attribute 'bold nil :weight 'semibold)
-
-    ;; set italics on for exotica
-    ;; (setq exotica-theme-enable-italics t)
-    ;; (spacemacs/load-theme 'exotica)
-
     (setq zeno-theme-enable-italics t)
     (spacemacs/load-theme 'zeno)
-    ;; (setq create-lockfiles nil)
 
     ;; scale text
     (define-key global-map (kbd "C-+") 'text-scale-increase)
     (define-key global-map (kbd "C--") 'text-scale-decrease)
 
     ;; custom escape and save key-binding
-    ;;(define-key global-map (kbd "H-;") 'my/escape-and-save)
+    ;;(define-key global-map (kbd "s-;") 'my/escape-and-save)
 
     ;; key-binding to insert new line between brackets and indent
-    (global-set-key (kbd "H-I") 'my/newline-and-indent)
+    (global-set-key (kbd "s-I") 'my/newline-and-indent)
 
     ;; key-bindings for scrolling half page
-    (global-set-key [?\H-p] 'my/scroll-half-page-down)
-    (global-set-key [?\H-n] 'my/scroll-half-page-up)
+    (global-set-key [?\s-p] 'my/scroll-half-page-down)
+    (global-set-key [?\s-n] 'my/scroll-half-page-up)
 
     ;; remap next-buffer to custom buffer functions
     (global-set-key [remap next-buffer] 'my/next-buffer)
     (global-set-key [remap previous-buffer] 'my/previous-buffer)
 
     ;; faster shifting between windows
-    (global-set-key [?\H-f] 'other-window)
+    (global-set-key [?\s-f] 'other-window)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
-    ;; (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
+    (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
 
-    ;; bind snippet expand to H-y
-    (global-set-key [?\H-y] 'hippie-expand)
-    (global-set-key [?\C-\H-y] 'dabbrev-completion)
+    ;; bind snippet expand to s-y
+    (global-set-key [?\s-y] 'hippie-expand)
+    (global-set-key [?\C-\s-y] 'dabbrev-completion)
 
     (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
 
     ;; map Command-g to escape 
-    (global-set-key [?\H-e] 'evil-escape)
+    (global-set-key [?\s-e] 'evil-escape)
 
     ;; beautify titlebar of emacs :heart-eyes:
     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
@@ -887,5 +775,7 @@
     ;; native pixel scroll mode
     (pixel-scroll-mode t)
 
+    (setq frame-title-format 
+       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
 
   #+END_SRC
