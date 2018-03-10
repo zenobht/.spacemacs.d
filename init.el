@@ -1,3 +1,5 @@
+(setq gc-cons-threshold 402653184
+      gc-cons-percentage 0.6)
 
 (defun dotspacemacs/layers ()
   (setq-default
@@ -78,6 +80,7 @@
      yaml
      )
    dotspacemacs-additional-packages '(
+                                      telephone-line
                                       vue-mode
                                       lsp-mode
                                       lsp-vue
@@ -107,7 +110,7 @@
                                     smartparens
                                     vi-tilde-fringe
                                     )
-   dotspacemacs-install-packages 'used-only))
+   dotspacemacs-install-packages 'used-but-keep-unused))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -182,10 +185,7 @@ values."
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
-   dotspacemacs-mode-line-theme '(spacemacs
-                                  :separator alternate  
-                                  :separator-scale 1.2
-                                  )
+   dotspacemacs-mode-line-theme '(spacemacs :separator slant)
    dotspacemacs-frame-title-format ""
    ))
 
@@ -224,7 +224,8 @@ values."
   (load-directory "~/.spacemacs.d/lib")
   (org-babel-load-file "~/.spacemacs.d/config.org")
 
-  (setq kotlin-tab-width 2)
+  (add-hook 'emacs-startup-hook
+             (setq gc-cons-threshold 16777216
+                   gc-cons-percentage 0.1))
 )
-
 

@@ -237,8 +237,7 @@
          'spaceline-evil-visual nil :background "#344256" :foreground "white")
         (set-face-attribute
          'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
-
-        ))
+       ))
 
   #+END_SRC
 * Yasnippet config
@@ -635,6 +634,7 @@
                   ("L" . my/next-buffer)
                   ("s-h" . evil-first-non-blank)
                   ("s-l" . evil-last-non-blank)
+                  ("s-;" . spacemacs/evil-search-clear-highlight)
                   :map evil-visual-state-map
                   ("s-U" . upcase-region)
                   ("s-D" . downcase-region)
