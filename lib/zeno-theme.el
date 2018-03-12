@@ -75,6 +75,7 @@
      (fullBlack              "#000000")
      (hl-line-highlight      "#1F2029")
      (line-highlight         "#1F2029")
+     (mode-line-background   "#363340")
      
      (slantType (if zeno-theme-enable-italics 'italic 'normal))
 
@@ -112,10 +113,12 @@
  `(minibuffer-prompt ((t (:foreground ,face1))))
 
  ;; powerline/modeline
- `(mode-line ((t (:foreground ,fg :background ,line-highlight
-                              :box (:line-width 1 :color ,seperator :style released-button)))))
- `(mode-line-inactive ((t (:foreground ,ml-inactive-face :background ,bg
-                                 :box (:line-width 1 :color ,seperator)))))
+ ;; `(mode-line ((t (:foreground ,fg :background ,line-highlight
+ ;;            :box (:line-width 1 :color ,seperator :style released-button)))))
+ ;; `(mode-line-inactive ((t (:foreground ,ml-inactive-face :background ,bg
+ ;;            :box (:line-width 1 :color ,seperator)))))
+ `(mode-line ((t (:foreground ,fg :background ,mode-line-background :box nil))))
+ `(mode-line-inactive ((t (:foreground ,ml-inactive-face :background ,bg :box nil))))
  `(powerline-active0 ((t (:inherit mode-line :background ,bg))))
  `(powerline-active1 ((t (:inherit mode-line :background ,bg))))
  `(powerline-active2 ((t (:inherit mode-line :background ,bg))))

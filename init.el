@@ -9,6 +9,8 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
+     theming
+     doom-modeline
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
@@ -80,7 +82,7 @@
      yaml
      )
    dotspacemacs-additional-packages '(
-                                      telephone-line
+                                      shrink-path
                                       vue-mode
                                       lsp-mode
                                       lsp-vue
@@ -106,11 +108,12 @@
                                       )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
+                                    spaceline
                                     linum-relative
                                     smartparens
                                     vi-tilde-fringe
                                     )
-   dotspacemacs-install-packages 'used-but-keep-unused))
+   dotspacemacs-install-packages 'used-only))
 
 (defun dotspacemacs/init ()
   "Initialization function.
@@ -219,13 +222,21 @@ values."
         (cond
          ((and (eq isdir t) (not ignore-dir))
           (load-directory fullpath))
-       ((and (eq isdir nil) (string= (substring path -3) ".el"))
+         ((and (eq isdir nil) (string= (substring path -3) ".el"))
           (load (file-name-sans-extension fullpath)))))))
   (load-directory "~/.spacemacs.d/lib")
   (org-babel-load-file "~/.spacemacs.d/config.org")
+  (setq theming-modifications
+        `((zeno
+           ;; (doom-modeline-bar :background "#F92672")
+           (doom-modeline-bracket :foreground "#BDBAAD")
+           ;; (doom-modeline-panel :background "#F92672")
+           (doom-modeline-panel :background "#D2527F")
+           (doom-modeline-persp :foreground "#F8F8F2"))))
+
 
   (add-hook 'emacs-startup-hook
-             (setq gc-cons-threshold 16777216
-                   gc-cons-percentage 0.1))
-)
+            (setq gc-cons-threshold 16777216
+                  gc-cons-percentage 0.1))
+  )
 

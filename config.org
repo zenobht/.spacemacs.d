@@ -5,6 +5,7 @@
 
     (setq evilNormalColor "#D2527F") 
     (setq evilInsertColor "#2ABB9B")
+    (setq evilVisualColor "#344256")
 
   #+END_SRC
 * Custom Functions
@@ -204,40 +205,43 @@
   #+BEGIN_SRC emacs-lisp
 
     (use-package spaceline
-      :ensure t
-      :config
-      (progn 
+       :ensure t)
 
-        ;;spaceline-all-the-icons setup
-        (setq spaceline-all-the-icons-clock-always-visible nil)
-        (setq spaceline-all-the-icons-eyebrowse-display-name nil)
-        (setq spaceline-all-the-icons-flycheck-alternate t)
-        (setq spaceline-all-the-icons-hide-long-buffer-path t)
-        (setq spaceline-all-the-icons-slim-render t)
-        ;; (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+    ;; (use-package spaceline
+    ;;   :ensure t
+    ;;   :config
+    ;;   (progn 
 
-        ;;spaceline/modeline segment config
-        (spaceline-toggle-point-position-on)
-        (spaceline-toggle-process-off)
-        (spaceline-toggle-buffer-encoding-off)
-        (spaceline-toggle-buffer-encoding-abbrev-off)
-        (spaceline-toggle-purpose-off)
-        (spaceline-toggle-minor-modes-on)
-        (spaceline-toggle-persp-name-off)
-        (setq display-time-default-load-average nil)
+    ;;     ;; ;;spaceline-all-the-icons setup
+    ;;     ;; (setq spaceline-all-the-icons-clock-always-visible nil)
+    ;;     ;; (setq spaceline-all-the-icons-eyebrowse-display-name nil)
+    ;;     ;; (setq spaceline-all-the-icons-flycheck-alternate t)
+    ;;     ;; (setq spaceline-all-the-icons-hide-long-buffer-path t)
+    ;;     ;; (setq spaceline-all-the-icons-slim-render t)
+    ;;     ;; ;; (spaceline-toggle-all-the-icons-eyebrowse-workspace-off)
+
+    ;;     ;; ;;spaceline/modeline segment config
+    ;;     ;; (spaceline-toggle-point-position-on)
+    ;;     ;; (spaceline-toggle-process-off)
+    ;;     ;; (spaceline-toggle-buffer-encoding-off)
+    ;;     ;; (spaceline-toggle-buffer-encoding-abbrev-off)
+    ;;     ;; (spaceline-toggle-purpose-off)
+    ;;     ;; (spaceline-toggle-minor-modes-on)
+    ;;     ;; (spaceline-toggle-persp-name-off)
+    ;;     ;; (setq display-time-default-load-average nil)
 
 
-        (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
+    ;;     ;; (setq spaceline-highlight-face-func 'spaceline-highlight-face-evil-state)
 
-        (set-face-attribute
-         'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
-        (set-face-attribute
-         'spaceline-evil-motion nil :background evilNormalColor :foreground "black")
-        (set-face-attribute
-         'spaceline-evil-visual nil :background "#344256" :foreground "white")
-        (set-face-attribute
-         'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
-       ))
+    ;;     ;; (set-face-attribute
+    ;;     ;;  'spaceline-evil-normal nil :background evilNormalColor :foreground "black")
+    ;;     ;; (set-face-attribute
+    ;;     ;;  'spaceline-evil-motion nil :background evilNormalColor :foreground "black")
+    ;;     ;; (set-face-attribute
+    ;;     ;;  'spaceline-evil-visual nil :background evilVisualColor :foreground "white")
+    ;;     ;; (set-face-attribute
+    ;;     ;;  'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
+    ;;    ))
 
   #+END_SRC
 * Yasnippet config
