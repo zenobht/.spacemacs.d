@@ -25,6 +25,7 @@
      emoji
      evil-commentary
      git
+     groovy
      ;;(helm :variables helm-no-header t)
      html
      (ibuffer :variables ibuffer-group-buffers-by nil)
@@ -67,7 +68,7 @@
             shell-default-position 'bottom)
      spacemacs-org
      (spell-checking :variables spell-checking-enable-by-default nil)
-     (syntax-checking :variables syntax-checking-enable-by-default nil)
+     (syntax-checking :variables syntax-checking-enable-by-default t)
      (treemacs :variables
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t
@@ -234,9 +235,7 @@ values."
            (doom-modeline-panel :background "#D2527F")
            (doom-modeline-persp :foreground "#F8F8F2"))))
 
-
-  (add-hook 'emacs-startup-hook
-            (setq gc-cons-threshold 16777216
+  (add-hook 'emacs-startup-hook (setq gc-cons-threshold 16777216
                   gc-cons-percentage 0.1))
   )
 

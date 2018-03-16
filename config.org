@@ -459,6 +459,30 @@
         ))
 
   #+END_SRC
+* Kotlin config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package kotlin-mode 
+      :ensure t
+      :config
+      ( progn 
+        (require 'flycheck-kotlin)
+        (flycheck-kotlin-setup)
+        (flycheck-mode t)
+        (setq kotlin-tab-width 2)))
+
+
+  #+END_SRC
+* Groovy config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package groovy-mode 
+      :ensure t
+      :config
+      ( progn 
+        (setq groovy-indent-offset 2)))
+
+  #+END_SRC
 * Javascript config
   #+BEGIN_SRC emacs-lisp
 

@@ -538,9 +538,9 @@ directory, the file name, and its state (modified, read-only or non-existent)."
 (def-modeline-segment! buffer-encoding
   "Displays the encoding and eol style of the buffer the same way Atom does."
   (concat (pcase (coding-system-eol-type buffer-file-coding-system)
-            (0 "LF  ")
-            (1 "CRLF  ")
-            (2 "CR  "))
+            (0 "LF ")
+            (1 "CRLF ")
+            (2 "CR "))
           (let ((sys (coding-system-plist buffer-file-coding-system)))
             (cond ((memq (plist-get sys :category) '(coding-category-undecided coding-category-utf-8))
                    "UTF-8")
@@ -827,6 +827,7 @@ Returns \"\" to not break --no-window-system."
 (def-modeline! main
   (bar matches persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info)
   (buffer-encoding major-mode vcs flycheck))
+  ;; (major-mode vcs flycheck))
 
 (def-modeline! minimal
   (bar matches " " buffer-info)
