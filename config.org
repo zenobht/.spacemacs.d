@@ -717,6 +717,8 @@
 
     (add-hook 'text-mode-hook 'auto-fill-mode)
     (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
+    (add-hook 'web-mode-hook (lambda () (flycheck-mode -1)))
+
 
     (global-hl-line-mode +1)
     (show-paren-mode +1)
