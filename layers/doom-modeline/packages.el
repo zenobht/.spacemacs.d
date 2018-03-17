@@ -11,7 +11,7 @@
     :demand t
     :init
     (setq +doom-modeline-buffer-file-name-style 'file-name
-          +doom-modeline-height 26
-          +doom-modeline-bar-width 3)
+          +doom-modeline-height 30
+          +doom-modeline-bar-width 6)
     :config
     (+doom-modeline|init)))

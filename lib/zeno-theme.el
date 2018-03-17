@@ -67,7 +67,7 @@
      (m7                     "#FF0000")
      (m8                     "#FFCACA")
      (diff1                  "#232526")
-     (ml-inactive-face       "#BCBCBC")
+     (ml-inactive-face       "#7a7a7a")
      (comment-face           "#6F7181")
      (line-number-face       "#6883A8")
      (warning-bg-face        "#333333")
@@ -75,7 +75,8 @@
      (fullBlack              "#000000")
      (hl-line-highlight      "#1F2029")
      (line-highlight         "#1F2029")
-     (mode-line-color        "#2A3146")
+     (mode-line-active       "#2A3146")
+     (mode-line-inactive     "#1d2130")
      
      (slantType (if zeno-theme-enable-italics 'italic 'normal))
 
@@ -113,8 +114,8 @@
  `(minibuffer-prompt ((t (:foreground ,face1))))
 
  ;; powerline/modeline
- `(mode-line ((t (:foreground ,fg :background ,mode-line-color))))
- `(mode-line-inactive ((t (:foreground ,ml-inactive-face :background ,bg :box nil))))
+ `(mode-line ((t (:foreground ,fg :background ,mode-line-active))))
+ `(mode-line-inactive ((t (:foreground ,ml-inactive-face :background ,mode-line-inactive :box nil))))
  `(powerline-active0 ((t (:inherit mode-line :background ,bg))))
  `(powerline-active1 ((t (:inherit mode-line :background ,bg))))
  `(powerline-active2 ((t (:inherit mode-line :background ,bg))))

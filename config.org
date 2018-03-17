@@ -691,7 +691,6 @@
         (evil-leader/set-key
           "jj" 'evil-avy-goto-char
           "od" 'make-directory
-          "of" 'toggle-frame-fullscreen
           "om" 'markdown-mode
           "oo" 'org-mode
           "os" 'just-one-space
@@ -700,7 +699,6 @@
           ) 
 
         ))
-
   #+END_SRC
 * Others
   #+BEGIN_SRC emacs-lisp
@@ -777,6 +775,7 @@
 
     ;; faster shifting between windows
     (global-set-key [?\s-f] 'other-window)
+    (global-set-key [?\C-\s-f] 'toggle-frame-fullscreen)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
     (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
@@ -807,5 +806,9 @@
 
     (setq frame-title-format 
        '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
+
+    ;; (setq golden-ratio-auto-scale t)
+    (golden-ratio-mode 1)
+
 
   #+END_SRC
