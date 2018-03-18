@@ -134,9 +134,8 @@ values."
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
-   dotspacemacs-startup-lists '((recents . 5)
-                                (projects . 7))
-   dotspacemacs-startup-buffer-responsive t
+   dotspacemacs-startup-lists nil
+   dotspacemacs-startup-buffer-responsive nil
    dotspacemacs-scratch-mode 'org-mode
    dotspacemacs-themes '(
                          exotica
@@ -242,5 +241,6 @@ values."
   (add-hook 'emacs-startup-hook (setq gc-cons-threshold 16777216
                   gc-cons-percentage 0.1))
 
+  (setq initial-buffer-choice t)
 )
 
