@@ -300,6 +300,7 @@
   `(highlight-indent-guides-character-face ((t (:foreground ,face9 ))))
 
   `(link ((t (:foreground ,face8 :background ,bg :underline t))))
+
   ;; diredp
   `(diredp-dir-heading ((t (:foreground ,face4 :underline t))))
   `(diredp-dir-name ((t (:foreground ,face10 ))))
@@ -309,8 +310,12 @@
   `(diredp-flag-mark-line ((t (:foreground ,face2))))
   `(diredp-deletion ((t (:foreground ,face7))))
   `(diredp-deletion-file-name ((t (:foreground ,face7))))
-
-
+  `(diredp-number ((t (:foreground ,face1 ))))
+  `(diredp-read-priv ((t (:foreground ,face6))))
+  `(diredp-exec-priv ((t (:foreground ,face8))))
+  `(diredp-dir-priv ((t (:foreground ,face10))))
+  `(diredp-write-priv ((t (:foreground ,face3))))
+  `(diredp-no-priv ((t (:foreground ,fg))))
 
  ))
 

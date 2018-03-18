@@ -844,5 +844,7 @@
     ;; use font awesome folder icon
     (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
 
+    ;; required to kill customize buffers on pressing q
+    (setq custom-buffer-done-kill t)
 
   #+END_SRC
