@@ -58,13 +58,13 @@
      (python :variables
              python-sort-imports-on-save t
              python-enable-yapf-format-on-save t)
-     (ranger :variables ranger-override-dired t)
+     ;; (ranger :variables ranger-override-dired t)
      react
      ruby
      (shell :variables
             shell-default-shell 'eshell
-            shell-default-full-span nil
             shell-default-height 20
+            shell-default-term-shell "/bin/zsh"
             shell-default-position 'bottom)
      spacemacs-org
      (spell-checking :variables spell-checking-enable-by-default nil)
@@ -83,7 +83,11 @@
      yaml
      )
    dotspacemacs-additional-packages '(
+                                      all-the-icons-dired
+                                      all-the-icons-ivy
+                                      virtualenvwrapper
                                       shrink-path
+                                      pcre2el
                                       vue-mode
                                       lsp-mode
                                       lsp-vue
@@ -112,7 +116,6 @@
                                     spaceline
                                     linum-relative
                                     smartparens
-                                    vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
 
@@ -191,7 +194,9 @@ values."
    dotspacemacs-whitespace-cleanup nil
    dotspacemacs-mode-line-theme '(spacemacs :separator slant)
    dotspacemacs-frame-title-format ""
-   ))
+   )
+
+  )
 
 (defun dotspacemacs/user-init ()
   ;; required to disable to spacelpa
@@ -227,15 +232,15 @@ values."
           (load (file-name-sans-extension fullpath)))))))
   (load-directory "~/.spacemacs.d/lib")
   (org-babel-load-file "~/.spacemacs.d/config.org")
-  (setq theming-modifications
-        `((zeno
+  (setq theming-modifications `((zeno
            ;; (doom-modeline-bar :background "#F92672")
            (doom-modeline-bracket :foreground "#BDBAAD")
-           ;; (doom-modeline-panel :background "#F92672")
+           ;; (doom-modeline-panel :background "#F92672") 
            (doom-modeline-panel :background "#D2527F")
            (doom-modeline-persp :foreground "#F8F8F2"))))
 
   (add-hook 'emacs-startup-hook (setq gc-cons-threshold 16777216
                   gc-cons-percentage 0.1))
-  )
+
+)
 

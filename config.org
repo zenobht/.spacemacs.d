@@ -151,9 +151,9 @@
                       org-level-8))
         (set-face-attribute face nil :weight 'bold)))
 
-    (defun my/set-cursor-after-ranger (&optional args) 
-      (setf cursor-type '(bar . 3))
-      )
+    ;; (defun my/set-cursor-after-ranger (&optional args) 
+    ;;   (setf cursor-type '(bar . 3))
+    ;;   )
 
   #+END_SRC
 * Org-mode config
@@ -339,6 +339,10 @@
 
         (setq dumb-jump-selector 'ivy)
 
+        (use-package all-the-icons-ivy
+          :config
+          (all-the-icons-ivy-setup))
+    
         ))
 
   #+END_SRC
@@ -389,6 +393,8 @@
              )
       :config
       (progn 
+        (spacemacs/set-leader-keys "ft" #'treemacs)
+        (spacemacs/set-leader-keys "fT" #'treemacs-toggle)
         (setq treemacs-show-hidden-files t)
         (setq-default treemacs-width 25)))
 
@@ -417,19 +423,30 @@
 * Ranger config
   #+BEGIN_SRC emacs-lisp
 
-    (use-package ranger
+    ;; (use-package ranger
+    ;;   :ensure t
+    ;;   :bind 
+    ;;   (:map ranger-normal-mode-map  
+    ;;         ("+" . dired-create-directory)
+    ;;         ("s-e" . ranger-disable)
+    ;;         )
+    ;;   :config
+    ;;   (progn
+    ;;    (setq ranger-hide-cursor nil)
+    ;;    (setq ranger-cleanup-on-disable t)
+    ;;    (setq ranger-cleanup-eagerly t)
+    ;;   ))
+
+  #+END_SRC
+* Pcre2el
+  Converts lisp regex to normal regex
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package pcre2el
       :ensure t
-      :bind 
-      (:map ranger-normal-mode-map  
-            ("+" . dired-create-directory)
-            ("s-e" . ranger-disable)
-            )
       :config
-      (progn
-       (setq ranger-hide-cursor nil)
-       (setq ranger-cleanup-on-disable t)
-       (setq ranger-cleanup-eagerly t)
-      ))
+      (pcre-mode)
+      )
 
   #+END_SRC
 * Multiedit
@@ -620,6 +637,9 @@
                     tab-width 2)
       )
 
+    (venv-initialize-interactive-shells) ;; if you want interactive shell support
+    (venv-initialize-eshell)
+
     (add-hook 'python-mode-hook #'my/python-indent)
 
   #+END_SRC
@@ -801,14 +821,23 @@
     ;; set symbola font to be used for all unicode symbols
     ;; other than 
     (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-17") 
+    (global-pretty-mode t)
     ;; native pixel scroll mode
     (pixel-scroll-mode t)
 
     (setq frame-title-format 
-       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
+          '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
 
-    ;; (setq golden-ratio-auto-scale t)
     (golden-ratio-mode 1)
 
+    ;; use font awesome folder icon
+    (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
+
+    ;; use all-the-icons in dired
+    (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
+
+    ;; minimize creating new buffer in dired mode
+    (define-key dired-mode-map (kbd "f") 'dired-find-alternate-file) ; was dired-advertised-find-file
+    (define-key dired-mode-map (kbd "F") (lambda () (find-alternate-file ".."))) 
 
   #+END_SRC
