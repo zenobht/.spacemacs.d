@@ -315,6 +315,8 @@
                     :after #'my/run-projectile-invalidate-cache)
         (advice-add 'magit-branch-and-checkout ; This is `b c'.
                     :after #'my/run-projectile-invalidate-cache)
+      
+       (setq magit-bury-buffer-function 'magit-mode-quit-window)
 
         ))
 
@@ -348,6 +350,14 @@
   #+END_SRC
 * Dired config
   #+BEGIN_SRC emacs-lisp
+
+    (use-package dired-x
+      :config
+      (progn
+        (setq dired-omit-verbose nil)
+        (add-hook 'dired-mode-hook #'dired-omit-mode)
+        (setq dired-omit-files
+              (concat dired-omit-files "\\|^.DS_STORE$\\|^.projectile$"))))
 
     ;; use all-the-icons in dired
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
@@ -394,14 +404,35 @@
         ))
 
   #+END_SRC
+* Winum config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package winum 
+      :ensure t
+      :bind (:map winum-keymap
+                  ("s-0" . #'treemacs-select-window)
+                  ("s-1" . winum-select-window-1)
+                  ("s-2" . winum-select-window-2)
+                  ("s-3" . winum-select-window-3)
+                  ("s-4" . winum-select-window-4)
+                  ("s-5" . winum-select-window-5)
+                  ("s-6" . winum-select-window-6)
+                  ("s-7" . winum-select-window-7)
+                  ("s-8" . winum-select-window-8)
+                  ("s-9" . winum-select-window-9)
+                  )
+      )
+
+
+  #+END_SRC
 * Treemacs config
   #+BEGIN_SRC emacs-lisp
 
     (use-package treemacs
       :ensure t
       :bind (:map treemacs-mode-map
-             ("s-e" . treemacs-toggle)
-             )
+                  ("s-e" . treemacs-toggle)
+                  )
       :config
       (progn 
         (spacemacs/set-leader-keys "ft" #'treemacs)
