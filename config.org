@@ -440,6 +440,11 @@
         (setq treemacs-show-hidden-files t)
         (setq-default treemacs-width 25)))
 
+    (with-eval-after-load 'treemacs
+      (defun treemacs-ignore-gitignore (file _)
+        (string= file ".DS_Store"))
+      (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
+
   #+END_SRC
 * Markdown config
   #+BEGIN_SRC emacs-lisp
