@@ -181,7 +181,6 @@
                       ("✘ CANCELED" :foreground "#FFCAF9" :weight bold)))) 
 
         ;; set up org-bullet symbols
-        ;; (setq org-bullets-bullet-list '("■" "◆" "▲" "▶"))
         (setq org-bullets-bullet-list '("◒" "◐" "◓" "◑" ))
 
         (setq org-enforce-todo-dependencies t)
@@ -430,9 +429,6 @@
 
     (use-package treemacs
       :ensure t
-      :bind (:map treemacs-mode-map
-                  ("s-e" . treemacs-toggle)
-                  )
       :config
       (progn 
         (spacemacs/set-leader-keys "ft" #'treemacs)
@@ -690,6 +686,16 @@
     (add-hook 'python-mode-hook #'my/python-indent)
 
   #+END_SRC
+* Docker-mode config
+  #+BEGIN_SRC emacs-lisp
+
+    (use-package dockerfile-mode
+      :ensure t
+      :commands (markdown-mode gfm-mode)
+      :mode (("Dockerfile\\'" . dockerfile-mode))
+      )
+
+  #+END_SRC
 * Company config
   #+BEGIN_SRC emacs-lisp
 
@@ -729,7 +735,7 @@
                   ("L" . my/next-buffer)
                   ("s-h" . evil-first-non-blank)
                   ("s-l" . evil-last-non-blank)
-                  ("s-;" . spacemacs/evil-search-clear-highlight)
+                  ("fd" . spacemacs/evil-search-clear-highlight)
                   :map evil-visual-state-map
                   ("s-U" . upcase-region)
                   ("s-D" . downcase-region)
@@ -772,6 +778,7 @@
 
     (global-unset-key (kbd "s-H"))
     (global-unset-key (kbd "s-L"))
+    (global-unset-key (kbd "s-e"))
 
     ;; treat _ as word
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
@@ -853,9 +860,6 @@
 
     (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
-
-    ;; map Command-g to escape 
-    (global-set-key [?\s-e] 'evil-escape)
 
     ;; beautify titlebar of emacs :heart-eyes:
     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))

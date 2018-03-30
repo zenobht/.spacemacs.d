@@ -85,14 +85,8 @@
    dotspacemacs-additional-packages '(
                                       all-the-icons-dired
                                       all-the-icons-ivy
-                                      virtualenvwrapper
-                                      shrink-path
-                                      pcre2el
-                                      vue-mode
-                                      lsp-mode
-                                      lsp-vue
-                                      lsp-ui
                                       company-lsp
+                                      dockerfile-mode
                                       dracula-theme
                                       drag-stuff
                                       evil-multiedit
@@ -100,15 +94,21 @@
                                       flycheck-flow
                                       flycheck-package
                                       highlight-indent-guides
+                                      lsp-mode
+                                      lsp-ui
+                                      lsp-vue
                                       molokai-theme
                                       org-mime
+                                      pcre2el
                                       pretty-mode
                                       (reason-mode
                                        :location (recipe
                                                   :repo "reasonml-editor/reason-mode"
                                                   :fetcher github
                                                   :files ("reason-mode.el" "refmt.el" "reason-indent.el" "reason-interaction.el")))
+                                      shrink-path
                                       subatomic-theme
+                                      virtualenvwrapper
                                       vue-mode
                                       )
    dotspacemacs-frozen-packages '()
