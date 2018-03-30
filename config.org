@@ -360,10 +360,13 @@
 
     ;; use all-the-icons in dired
     (add-hook 'dired-mode-hook 'all-the-icons-dired-mode)
-    (diredp-toggle-find-file-reuse-dir 1)
-    (define-key dired-mode-map (kbd "F") 'diredp-up-directory-reuse-dir-buffer) 
-    (define-key dired-mode-map (kbd "q") 'kill-this-buffer)
-    (define-key dired-mode-map (kbd "Q") 'quit-window)
+
+    (require 'dired+)
+    (toggle-diredp-find-file-reuse-dir 1)
+    (evil-define-key 'normal dired-mode-map
+      (kbd "h") 'diredp-up-directory-reuse-dir-buffer
+      (kbd "l") 'dired-find-alternate-file
+      (kbd "q") 'kill-this-buffer)
 
   #+END_SRC
 * Helm config
