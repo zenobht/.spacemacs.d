@@ -9,8 +9,6 @@
    dotspacemacs-configuration-layer-path '()
    dotspacemacs-configuration-layers
    '(
-     theming
-     doom-modeline
      (auto-completion :variables
                       auto-completion-return-key-behavior 'complete
                       auto-completion-tab-key-behavior 'complete
@@ -21,6 +19,7 @@
                       better-defaults-move-to-end-of-code-first nil)
      colors
      csv
+     doom-modeline
      emacs-lisp
      emoji
      evil-commentary
@@ -37,6 +36,7 @@
           )
      java
      (javascript :variables javascript-disable-tern-port-files t)
+     journal
      kotlin
      (markdown :variables
                markdown-command 'pandoc
@@ -69,6 +69,7 @@
      spacemacs-org
      (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default t)
+     theming
      (treemacs :variables
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t
