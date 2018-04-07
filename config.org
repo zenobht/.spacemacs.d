@@ -163,8 +163,6 @@
       :ensure t
       :diminish org-mode
       :bind 
-      (:map org-mode-map 
-            ("s-i" . org-meta-return))
       :config
       (progn 
 
@@ -454,9 +452,6 @@
       :mode (("README\\.md\\'" . gfm-mode)
              ("\\.md\\'" . markdown-mode)
              ("\\.markdown\\'" . markdown-mode))
-      :bind 
-      (:map markdown-mode-map  
-            ("s-i" . markdown-insert-list-item))
       :config 
       (progn
 
@@ -840,7 +835,7 @@
     ;;(define-key global-map (kbd "s-;") 'my/escape-and-save)
 
     ;; key-binding to insert new line between brackets and indent
-    (global-set-key (kbd "s-I") 'my/newline-and-indent)
+    (global-set-key (kbd "s-i") 'my/newline-and-indent)
 
     ;; key-bindings for scrolling half page
     (global-set-key [?\s-p] 'my/scroll-half-page-down)

@@ -36,7 +36,6 @@
           )
      java
      (javascript :variables javascript-disable-tern-port-files t)
-     journal
      kotlin
      (markdown :variables
                markdown-command 'pandoc
