@@ -457,10 +457,31 @@ Example:
                       (when relative-path (propertize relative-path 'face relative-props))
                       (propertize filename 'face file-props)))))))))
 
+(defun window-unicode-number (str)
+  "Return a nice unicode representation of a single-digit number STR."
+  (cond
+   ((string= "1" str) "➊")
+   ((string= "2" str) "➋")
+   ((string= "3" str) "➌")
+   ((string= "4" str) "➍")
+   ((string= "5" str) "➎")
+   ((string= "6" str) "➏")
+   ((string= "7" str) "➐")
+   ((string= "8" str) "➑")
+   ((string= "9" str) "➒")
+   ((string= "10" str) "➓")
+   (t str)))
 
 ;;
 ;; Segments
 ;;
+
+(def-modeline-segment! window-number
+ "Displays `window number'. This is for numbering the windows"
+ (propertize
+  (concat " "
+         (number-to-string (winum-get-number)) " ")
+  'face (if (active) 'doom-modeline-buffer-file)))
 
 (def-modeline-segment! buffer-project
   "Displays `projectile-project-root'. This is for special buffers like the scratch
@@ -825,16 +846,16 @@ Returns \"\" to not break --no-window-system."
 ;;
 
 (def-modeline! main
-  (bar matches persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info)
+  (bar matches window-number persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info)
   (buffer-encoding major-mode vcs flycheck))
   ;; (major-mode vcs flycheck))
 
 (def-modeline! minimal
-  (bar matches " " buffer-info)
+  (bar matches window-number " " buffer-info)
   (media-info major-mode))
 
 (def-modeline! special
-  (bar matches " " buffer-info-simple "  %l:%c %p  " selection-info)
+  (bar matches window-number " " buffer-info-simple "  %l:%c %p  " selection-info)
   (buffer-encoding major-mode flycheck))
 
 (def-modeline! project
