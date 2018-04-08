@@ -733,7 +733,6 @@
                   ("L" . my/next-buffer)
                   ("s-h" . evil-first-non-blank)
                   ("s-l" . evil-last-non-blank)
-                  ("fd" . spacemacs/evil-search-clear-highlight)
                   :map evil-visual-state-map
                   ("s-U" . upcase-region)
                   ("s-D" . downcase-region)
