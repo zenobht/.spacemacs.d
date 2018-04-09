@@ -435,7 +435,7 @@
         (spacemacs/set-leader-keys "ft" #'treemacs)
         (spacemacs/set-leader-keys "fT" #'treemacs-toggle)
         (setq treemacs-show-hidden-files t)
-        (setq-default treemacs-width 25)))
+        (setq-default treemacs-width 35)))
 
     (with-eval-after-load 'treemacs
       (defun treemacs-ignore-gitignore (file _)
@@ -876,7 +876,7 @@
     (setq frame-title-format 
           '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
 
-    (golden-ratio-mode 1)
+    ;; (golden-ratio-mode 1)
 
     ;; use font awesome folder icon
     (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")

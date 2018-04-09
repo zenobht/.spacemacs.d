@@ -244,4 +244,3 @@ values."
   (setq initial-buffer-choice t)
 
 )
-

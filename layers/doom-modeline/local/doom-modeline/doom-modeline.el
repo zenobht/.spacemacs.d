@@ -477,11 +477,14 @@ Example:
 ;;
 
 (def-modeline-segment! window-number
- "Displays `window number'. This is for numbering the windows"
- (propertize
-  (concat " "
-         (number-to-string (winum-get-number)) " ")
-  'face (if (active) 'doom-modeline-buffer-file)))
+  "Displays `window number'. This is for numbering the windows"
+   (concat
+    (propertize "<" 'face 'doom-modeline-bracket)
+    (propertize (number-to-string (winum-get-number)) 'face 'doom-modeline-buffer-file)
+    (propertize ">" 'face 'doom-modeline-bracket)
+    " "
+   )
+ )
 
 (def-modeline-segment! buffer-project
   "Displays `projectile-project-root'. This is for special buffers like the scratch
