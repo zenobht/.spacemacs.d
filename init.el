@@ -145,7 +145,7 @@ values."
                          )
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Operator Mono"
-                               :size 17
+                               :size 14
                                :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -198,6 +198,9 @@ values."
   )
 
 (defun dotspacemacs/user-init ()
+
+  (defun spacemacs/title-prepare (TITLE-FORMAT) ())
+
   ;; required to disable to spacelpa
   (setq configuration-layer-elpa-archives
           '(("melpa"    . "melpa.org/packages/")

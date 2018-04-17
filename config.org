@@ -846,7 +846,7 @@
 
     ;; faster shifting between windows
     (global-set-key [?\s-f] 'other-window)
-    (global-set-key [?\C-\s-f] 'toggle-frame-fullscreen)
+    (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
     (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
@@ -868,7 +868,7 @@
 
     ;; set symbola font to be used for all unicode symbols
     ;; other than 
-    (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-17") 
+    (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-15") 
     ;; (global-pretty-mode t)
     ;; native pixel scroll mode
     (pixel-scroll-mode t)
