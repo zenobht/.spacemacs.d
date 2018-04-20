@@ -27,6 +27,13 @@
                 (switch-to-buffer initial)
                 (throw 'loop t)))))))
 
+    (defun my/switch-journal () 
+     (interactive)
+     (if (string-equal org-journal-dir "~/Documents/journal")
+         (setq org-journal-dir "~/Documents/hjournal")
+       (setq org-journal-dir "~/Documents/journal")
+     ))
+
     ;; custom next-buffer
     (defun my/next-buffer ()
       "Variant of `next-buffer' that skips `my/skippable-buffers'."
@@ -856,6 +863,9 @@
     ;; bind snippet expand to s-y
     (global-set-key [?\s-y] 'hippie-expand)
     (global-set-key [?\C-\s-y] 'dabbrev-completion)
+
+    ;; switch org-journal using a function and keybinding
+    (global-set-key [?\s-H] 'my/switch-journal)
 
     (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
