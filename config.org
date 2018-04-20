@@ -194,6 +194,7 @@
         ;; (add-hook 'org-mode-hook 'my/org-heading-setup)
 
         (evil-define-key 'normal org-mode-map ",v" 'org-todo)
+        (evil-define-key 'insert org-mode-map (kbd "s-<return>") 'org-insert-item)
 
         ))
 
@@ -846,7 +847,8 @@
 
     ;; faster shifting between windows
     (global-set-key [?\s-f] 'other-window)
-    (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
+    (global-set-key [?\C-\s-f] 'toggle-frame-fullscreen)
+    ;; (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
     (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
