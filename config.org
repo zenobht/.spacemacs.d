@@ -30,8 +30,14 @@
     (defun my/switch-journal () 
      (interactive)
      (if (string-equal org-journal-dir "~/Documents/journal")
-         (setq org-journal-dir "~/Documents/hjournal")
-       (setq org-journal-dir "~/Documents/journal")
+         (progn 
+           (setq org-journal-dir "~/Documents/hjournal")
+           (print "Setting hjournal")
+         )
+       (progn 
+         (setq org-journal-dir "~/Documents/journal")
+         (print "Setting journal")
+       )
      ))
 
     ;; custom next-buffer
