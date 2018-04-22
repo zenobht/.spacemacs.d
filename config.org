@@ -29,16 +29,17 @@
 
     (defun my/switch-journal () 
      (interactive)
-     (if (string-equal org-journal-dir "~/Documents/journal")
+     (if (string-equal org-journal-dir (getenv "wo15"))
          (progn 
-           (setq org-journal-dir "~/Documents/hjournal")
-           (print "Setting hjournal")
+           (setq org-journal-dir (getenv "ho15"))
+           (print "Setting hj")
          )
        (progn 
-         (setq org-journal-dir "~/Documents/journal")
-         (print "Setting journal")
+         (setq org-journal-dir (getenv "wo15"))
+         (print "Setting wj")
        )
-     ))
+     )
+    )
 
     ;; custom next-buffer
     (defun my/next-buffer ()

@@ -49,6 +49,7 @@
           org-journal-date-format "%A, %B %d %Y"
           org-journal-time-prefix "* "
           org-journal-time-format "%I:%M%p%n"
+          org-journal-dir (getenv "ho15")
           org-enable-reveal-js-support t
           org-enable-github-support t)
      (osx :variables
