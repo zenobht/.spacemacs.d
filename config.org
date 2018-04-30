@@ -450,7 +450,7 @@
         (spacemacs/set-leader-keys "ft" #'treemacs)
         (spacemacs/set-leader-keys "fT" #'treemacs-toggle)
         (setq treemacs-show-hidden-files t)
-        (setq-default treemacs-width 35)))
+        (setq-default treemacs-width 30)))
 
     (with-eval-after-load 'treemacs
       (defun treemacs-ignore-gitignore (file _)
@@ -796,6 +796,9 @@
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
+    (setq-default left-fringe-width  15)
+    (setq-default right-fringe-width 15)
+
     ;; set line-spacing to 1
     (setq-default line-spacing 2)
 
@@ -814,15 +817,15 @@
     (setq frame-resize-pixelwise t)
 
     ;; native line number configuration
-    (setq display-line-numbers-grow-only t)
-    (setq display-line-numbers-type t)
-    (setq display-line-numbers-widen t)
-    (setq display-line-numbers-width nil)
-    (setq display-line-numbers-width-start nil)
+    ;; (setq display-line-numbers-grow-only t)
+    ;; (setq display-line-numbers-type t)
+    ;; (setq display-line-numbers-widen t)
+    ;; (setq display-line-numbers-width nil)
+    ;; (setq display-line-numbers-width-start nil)
 
-    (dolist (hook 
-             '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
-      (add-hook hook 'display-line-numbers-mode))
+    ;; (dolist (hook 
+    ;;          '(prog-mode-hook text-mode-hook react-mode-hook web-mode-hook))
+    ;;   (add-hook hook 'display-line-numbers-mode))
 
     (setq-default evil-escape-delay 0.2)
 

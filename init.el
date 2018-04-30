@@ -114,6 +114,7 @@
                                       )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
+                                    evil-escape
                                     spaceline
                                     linum-relative
                                     smartparens
