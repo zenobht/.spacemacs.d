@@ -194,7 +194,7 @@ values."
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-default-package-repository nil
    dotspacemacs-whitespace-cleanup nil
-   dotspacemacs-mode-line-theme '(spacemacs :separator slant)
+   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
    dotspacemacs-frame-title-format ""
    )
 

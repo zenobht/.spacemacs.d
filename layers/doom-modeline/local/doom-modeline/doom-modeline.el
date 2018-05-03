@@ -597,7 +597,7 @@ directory, the file name, and its state (modified, read-only or non-existent)."
            (state   (vc-state buffer-file-name backend))
            (face    'mode-line-inactive)
            (active  (active))
-           (all-the-icons-scale-factor 1.0)
+           (all-the-icons-scale-factor 0.8)
            (all-the-icons-default-adjust -0.1))
       (concat "  "
               (cond ((memq state '(edited added))
@@ -850,7 +850,8 @@ Returns \"\" to not break --no-window-system."
 
 (def-modeline! main
   (bar matches window-number persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info)
-  (buffer-encoding major-mode vcs flycheck))
+  ;; (buffer-encoding major-mode vcs flycheck))
+  (major-mode vcs flycheck))
   ;; (major-mode vcs flycheck))
 
 (def-modeline! minimal
