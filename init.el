@@ -115,6 +115,7 @@
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
                                     evil-escape
+                                    vi-tilde-fringe
                                     spaceline
                                     linum-relative
                                     smartparens
@@ -147,7 +148,7 @@ values."
                          )
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Operator Mono"
-                               :size 14
+                               :size 15
                                :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"

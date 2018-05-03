@@ -379,6 +379,7 @@
     (evil-define-key 'normal dired-mode-map
       (kbd "h") 'diredp-up-directory-reuse-dir-buffer
       (kbd "l") 'dired-find-alternate-file
+      (kbd "<escape>") 'kill-this-buffer
       (kbd "q") 'kill-this-buffer)
 
   #+END_SRC
@@ -796,8 +797,8 @@
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
-    (setq-default left-fringe-width  15)
-    (setq-default right-fringe-width 15)
+    (setq-default left-fringe-width  20)
+    (setq-default right-fringe-width 20)
 
     ;; set line-spacing to 1
     (setq-default line-spacing 2)
