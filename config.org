@@ -165,10 +165,6 @@
                       org-level-8))
         (set-face-attribute face nil :height 1.0)))
 
-    ;; (defun my/set-cursor-after-ranger (&optional args) 
-    ;;   (setf cursor-type '(bar . 3))
-    ;;   )
-
   #+END_SRC
 * Org-mode config
   #+BEGIN_SRC emacs-lisp
@@ -339,9 +335,6 @@
     (use-package ivy
       :ensure t
       :bind 
-      (:map ivy-mode-map  
-            ("s-j" . ivy-next-line)
-            ("s-k" . ivy-previous-line))
       :config
       (progn 
 
@@ -352,10 +345,6 @@
                      '(swiper--re-builder . ivy--highlight-ignore-order))
 
         (setq dumb-jump-selector 'ivy)
-
-        ;; (use-package all-the-icons-ivy
-        ;;   :config
-        ;;   (all-the-icons-ivy-setup))
 
         ))
 
@@ -383,18 +372,6 @@
       (kbd "q") 'kill-this-buffer)
 
   #+END_SRC
-* Helm config
-  #+BEGIN_SRC emacs-lisp
-
-    ;;(use-package helm
-    ;;  :ensure t
-    ;;  :bind 
-    ;;  (:map helm-map  
-    ;;        ("s-j" . helm-next-line)
-    ;;        ("s-k" . helm-previous-line))
-    ;;  )
-
-  #+END_SRC
 * Encoding config
   #+BEGIN_SRC emacs-lisp
 
@@ -418,27 +395,6 @@
         (setq wgrep-auto-save-buffer t)
 
         ))
-
-  #+END_SRC
-* Winum config
-  #+BEGIN_SRC emacs-lisp
-
-    (use-package winum 
-      :ensure t
-      :bind (:map winum-keymap
-                  ("s-0" . #'treemacs-select-window)
-                  ("s-1" . winum-select-window-1)
-                  ("s-2" . winum-select-window-2)
-                  ("s-3" . winum-select-window-3)
-                  ("s-4" . winum-select-window-4)
-                  ("s-5" . winum-select-window-5)
-                  ("s-6" . winum-select-window-6)
-                  ("s-7" . winum-select-window-7)
-                  ("s-8" . winum-select-window-8)
-                  ("s-9" . winum-select-window-9)
-                  )
-      )
-
 
   #+END_SRC
 * Treemacs config
@@ -475,24 +431,6 @@
         (prettier-js-mode t)
 
         ))
-
-  #+END_SRC
-* Ranger config
-  #+BEGIN_SRC emacs-lisp
-
-    ;; (use-package ranger
-    ;;   :ensure t
-    ;;   :bind 
-    ;;   (:map ranger-normal-mode-map  
-    ;;         ("+" . dired-create-directory)
-    ;;         ("s-e" . ranger-disable)
-    ;;         )
-    ;;   :config
-    ;;   (progn
-    ;;    (setq ranger-hide-cursor nil)
-    ;;    (setq ranger-cleanup-on-disable t)
-    ;;    (setq ranger-cleanup-eagerly t)
-    ;;   ))
 
   #+END_SRC
 * Pcre2el
@@ -737,23 +675,23 @@
     (use-package evil
       :ensure t
       :bind (:map evil-normal-state-map
-                  ("s-J" . evil-jump-forward)
-                  ("s-K" . evil-jump-backward)
+                  ("C-S-j" . evil-jump-forward)
+                  ("C-S-k" . evil-jump-backward)
                   ("s-j" . move-text-down)
                   ("s-k" . move-text-up)
-                  ("s-u" . evil-scroll-page-up)
-                  ("s-d" . evil-scroll-page-down)
-                  ("s-U" . upcase-word)
-                  ("s-D" . downcase-word)
+                  ("C-u" . evil-scroll-page-up)
+                  ("C-d" . evil-scroll-page-down)
+                  ("C-S-u" . upcase-word)
+                  ("C-S-d" . downcase-word)
                   ("H" . my/previous-buffer)
                   ("L" . my/next-buffer)
                   ("s-h" . evil-first-non-blank)
                   ("s-l" . evil-last-non-blank)
                   :map evil-visual-state-map
-                  ("s-U" . upcase-region)
-                  ("s-D" . downcase-region)
-                  ("s-u" . evil-scroll-page-up)
-                  ("s-d" . evil-scroll-page-down)
+                  ("C-S-u" . upcase-region)
+                  ("C-S-d" . downcase-region)
+                  ("C-u" . evil-scroll-page-up)
+                  ("C-d" . evil-scroll-page-down)
                   ("p" . my/evil-paste-after-from-0)
                   ("s-j" . drag-stuff-down)
                   ("s-k" . drag-stuff-up)
@@ -796,9 +734,6 @@
     ;; treat _ as word
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
-
-    (setq-default left-fringe-width  20)
-    (setq-default right-fringe-width 20)
 
     ;; set line-spacing to 1
     (setq-default line-spacing 2)
@@ -849,30 +784,20 @@
     (define-key global-map (kbd "C-+") 'text-scale-increase)
     (define-key global-map (kbd "C--") 'text-scale-decrease)
 
-    ;; custom escape and save key-binding
-    ;;(define-key global-map (kbd "s-;") 'my/escape-and-save)
-
     ;; key-binding to insert new line between brackets and indent
-    (global-set-key (kbd "s-i") 'my/newline-and-indent)
-
-    ;; key-bindings for scrolling half page
-    (global-set-key [?\s-p] 'my/scroll-half-page-down)
-    (global-set-key [?\s-n] 'my/scroll-half-page-up)
+    (global-set-key (kbd "C-i") 'my/newline-and-indent)
 
     ;; remap next-buffer to custom buffer functions
     (global-set-key [remap next-buffer] 'my/next-buffer)
     (global-set-key [remap previous-buffer] 'my/previous-buffer)
 
-    ;; faster shifting between windows
-    (global-set-key [?\s-f] 'other-window)
     (global-set-key [?\C-\s-f] 'toggle-frame-fullscreen)
-    ;; (global-set-key (kbd "s-<return>") 'toggle-frame-fullscreen)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
     (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
 
     ;; bind snippet expand to s-y
-    (global-set-key [?\s-y] 'hippie-expand)
+    (global-set-key [?\C-y] 'hippie-expand)
     (global-set-key [?\C-\s-y] 'dabbrev-completion)
 
     ;; switch org-journal using a function and keybinding
@@ -892,14 +817,12 @@
     ;; set symbola font to be used for all unicode symbols
     ;; other than 
     (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-15") 
-    ;; (global-pretty-mode t)
+
     ;; native pixel scroll mode
     (pixel-scroll-mode t)
 
     (setq frame-title-format 
           '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
-
-    ;; (golden-ratio-mode 1)
 
     ;; use font awesome folder icon
     (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
