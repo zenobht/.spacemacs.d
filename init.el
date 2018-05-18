@@ -23,6 +23,7 @@
      emacs-lisp
      emoji
      evil-commentary
+     (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      git
      groovy
      ;;(helm :variables helm-no-header t)

@@ -478,9 +478,9 @@
       :ensure t
       :config
       ( progn 
-        (require 'flycheck-kotlin)
-        (flycheck-kotlin-setup)
-        (flycheck-mode t)
+        ;; (require 'flycheck-kotlin)
+        ;; (flycheck-mode t)
+        ;; (flycheck-kotlin-setup)
         (setq kotlin-tab-width 2)))
 
 
@@ -677,24 +677,24 @@
       :bind (:map evil-normal-state-map
                   ("C-S-j" . evil-jump-forward)
                   ("C-S-k" . evil-jump-backward)
-                  ("s-j" . move-text-down)
-                  ("s-k" . move-text-up)
+                  ("C-j" . move-text-down)
+                  ("C-k" . move-text-up)
                   ("C-u" . evil-scroll-page-up)
                   ("C-d" . evil-scroll-page-down)
                   ("C-S-u" . upcase-word)
                   ("C-S-d" . downcase-word)
                   ("H" . my/previous-buffer)
                   ("L" . my/next-buffer)
-                  ("s-h" . evil-first-non-blank)
-                  ("s-l" . evil-last-non-blank)
+                  ("C-h" . evil-first-non-blank)
+                  ("C-l" . evil-last-non-blank)
                   :map evil-visual-state-map
                   ("C-S-u" . upcase-region)
                   ("C-S-d" . downcase-region)
                   ("C-u" . evil-scroll-page-up)
                   ("C-d" . evil-scroll-page-down)
                   ("p" . my/evil-paste-after-from-0)
-                  ("s-j" . drag-stuff-down)
-                  ("s-k" . drag-stuff-up)
+                  ("C-j" . drag-stuff-down)
+                  ("C-k" . drag-stuff-up)
                   :map evil-insert-state-map
                   ("C-d" . nil)
                   )
@@ -728,6 +728,7 @@
   #+BEGIN_SRC emacs-lisp
 
     (global-unset-key (kbd "s-H"))
+    (global-unset-key (kbd "s-h"))
     (global-unset-key (kbd "s-L"))
     (global-unset-key (kbd "s-e"))
 
