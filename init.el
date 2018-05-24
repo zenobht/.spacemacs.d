@@ -59,7 +59,6 @@
      (python :variables
              python-sort-imports-on-save t
              python-enable-yapf-format-on-save t)
-     ;; (ranger :variables ranger-override-dired t)
      react
      ruby
      (shell :variables
@@ -70,6 +69,7 @@
      spacemacs-org
      (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default t)
+     tern
      theming
      (treemacs :variables
                treemacs-use-filewatch-mode t
@@ -148,8 +148,8 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Operator Mono"
-                               :size 15
+   dotspacemacs-default-font '("Input Mono"
+                               :size 12
                                :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"
@@ -253,5 +253,4 @@ values."
   (setq-default right-fringe-width 15)
 
   (setq initial-buffer-choice t)
-
 )
