@@ -248,6 +248,7 @@ values."
   (add-hook 'emacs-startup-hook (setq gc-cons-threshold 16777216
                   gc-cons-percentage 0.1))
 
+  ;; set frame with proper margins and paddings
   (add-to-list 'default-frame-alist '(internal-border-width . 6))
   (setq-default left-fringe-width  15)
   (setq-default right-fringe-width 15)

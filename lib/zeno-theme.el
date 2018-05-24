@@ -317,6 +317,9 @@
   `(diredp-write-priv ((t (:foreground ,face3))))
   `(diredp-no-priv ((t (:foreground ,fg))))
 
+  `(evil-snipe-first-match-face ((t (:inherit isearch))))
+  `(evil-snipe-matches-face ((t (:inherit isearch))))
+
  ))
 
 ;;;###autoload
