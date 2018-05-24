@@ -340,9 +340,9 @@
 
         ;; ivy config
         (setq ivy-re-builders-alist
-              '((t . ivy--regex-ignore-order)))
-        (add-to-list 'ivy-highlight-functions-alist
-                     '(swiper--re-builder . ivy--highlight-ignore-order))
+              '((t . ivy--regex-fuzzy)))
+        ;; (add-to-list 'ivy-highlight-functions-alist
+        ;;              '(swiper--re-builder . ivy--highlight-ignore-order))
 
         (setq dumb-jump-selector 'ivy)
 
@@ -405,7 +405,6 @@
       :config
       (progn 
         (spacemacs/set-leader-keys "ft" #'treemacs)
-        (spacemacs/set-leader-keys "fT" #'treemacs-toggle)
         (setq treemacs-show-hidden-files t)
         (setq-default treemacs-width 30)))
 
@@ -752,7 +751,7 @@
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
-    ;; set line-spacing to 1
+    ;; set line-spacing to 2
     (setq-default line-spacing 2)
 
     (add-hook 'text-mode-hook 'auto-fill-mode)
