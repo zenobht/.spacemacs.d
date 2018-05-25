@@ -11,7 +11,10 @@
 * Custom Functions
   #+BEGIN_SRC emacs-lisp
 
-    (defvar my/skippable-buffers '("*spacemacs*" "*Messages*" "*scratch*" "*Help*")
+    (defvar my/skippable-buffers 
+      '(
+         "*spacemacs*" "*Messages*" "*scratch*" "*Help*" "*Warnings*"
+       )
       "Buffer names ignored by `my/next-buffer' and `my/previous-buffer'.")
 
     ;; buffer changer function
@@ -693,8 +696,8 @@
                   ("C-d" . evil-scroll-page-down)
                   ("C-S-u" . upcase-word)
                   ("C-S-d" . downcase-word)
-                  ("s-{" . my/next-buffer)
-                  ("s-}" . my/previous-buffer) 
+                  ("s-[" . my/next-buffer)
+                  ("s-]" . my/previous-buffer) 
                   ("C-h" . evil-first-non-blank)
                   ("C-l" . evil-last-non-blank)
                   ("M-d" . evil-multiedit-match-and-next)
