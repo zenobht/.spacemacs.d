@@ -1,6 +1,3 @@
-(setq gc-cons-threshold 402653184
-      gc-cons-percentage 0.6)
-
 (defun dotspacemacs/layers ()
   (setq-default
    dotspacemacs-distribution 'spacemacs
@@ -239,14 +236,9 @@ values."
   (load-directory "~/.spacemacs.d/lib")
   (org-babel-load-file "~/.spacemacs.d/config.org")
   (setq theming-modifications `((zeno
-           ;; (doom-modeline-bar :background "#F92672")
            (doom-modeline-bracket :foreground "#BDBAAD")
-           ;; (doom-modeline-panel :background "#F92672") 
            (doom-modeline-panel :background "#D2527F")
            (doom-modeline-persp :foreground "#F8F8F2"))))
-
-  (add-hook 'emacs-startup-hook (setq gc-cons-threshold 16777216
-                  gc-cons-percentage 0.1))
 
   ;; set frame with proper margins and paddings
   (add-to-list 'default-frame-alist '(internal-border-width . 6))

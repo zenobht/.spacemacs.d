@@ -778,39 +778,29 @@ with `evil-ex-substitute', and/or 4. The number of active `iedit' regions."
              (image-size (image-get-display-property) :pixels)
            (format "  %dx%d  " width height)))))
 
-(def-modeline-segment! bar 
+(def-modeline-segment! bar1 
   "The bar regulates the height of the mode-line in GUI Emacs.
 Returns \"\" to not break --no-window-system." 
   (if (display-graphic-p)
-      (if (active)
-          (+doom-modeline--make-xpm
-           (cond
-            ((evil-insert-state-p) evilInsertColor)
-            ((evil-visual-state-p) evilVisualColor)
-            ((evil-normal-state-p) evilNormalColor)
-            ;; (t "#ff00ff"))
-            )
-           +doom-modeline-height
-           +doom-modeline-bar-width)
-        (+doom-modeline--make-xpm
-         (face-background 'doom-modeline-inactive-bar nil t)
-         +doom-modeline-height
-         +doom-modeline-bar-width)
-        )
+      (+doom-modeline--make-xpm
+       (face-background 'doom-modeline-inactive-bar nil t)
+       +doom-modeline-height
+       +doom-modeline-bar-width)
     ""))
 
-;; (def-modeline-segment! bar
-;;   "The bar regulates the height of the mode-line in GUI Emacs.
-;; Returns \"\" to not break --no-window-system."
-;;   (if (display-graphic-p)
-;;       (+doom-modeline--make-xpm
-;;        (face-background (if (active)
-;;                             'doom-modeline-bar
-;;                           'doom-modeline-inactive-bar)
-;;                         nil t)
-;;        +doom-modeline-height
-;;        +doom-modeline-bar-width)
-;;     ""))
+(def-modeline-segment! bar2 
+  "The bar regulates the height of the mode-line in GUI Emacs.
+Returns \"\" to not break --no-window-system."
+  (if (active)
+      (if ( evil-insert-state-p )
+          (propertize " " 'face '(:background "#2ABB9B"))
+        (if ( evil-visual-state-p )
+            (propertize " " 'face '(:background "#344256"))
+          (propertize " " 'face '(:background "#D2527F"))
+          ))
+    (propertize " " 'face '(:background "#1D2130"))
+    )
+  )
 
 (defun +doom-modeline-eyebrowse-number ()
   (when (and (bound-and-true-p eyebrowse-mode)
@@ -849,26 +839,26 @@ Returns \"\" to not break --no-window-system."
 ;;
 
 (def-modeline! main
-  (bar matches window-number persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info)
+  (bar2 matches window-number persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info )
   ;; (buffer-encoding major-mode vcs flycheck))
-  (major-mode vcs flycheck))
+  (major-mode vcs flycheck bar1))
   ;; (major-mode vcs flycheck))
 
 (def-modeline! minimal
-  (bar matches window-number " " buffer-info)
-  (media-info major-mode))
+  (bar2 matches window-number " " buffer-info)
+  (media-info major-mode bar1))
 
 (def-modeline! special
-  (bar matches window-number " " buffer-info-simple "  %l:%c %p  " selection-info)
-  (buffer-encoding major-mode flycheck))
+  (bar2 matches window-number " " buffer-info-simple "  %l:%c %p  " selection-info)
+  (buffer-encoding major-mode flycheck bar1))
 
 (def-modeline! project
-  (bar buffer-project)
-  (major-mode))
+  (bar2 buffer-project)
+  (major-mode bar1))
 
 (def-modeline! media
-  (bar " %b  ")
-  (media-info major-mode))
+  (bar2 " %b  ")
+  (media-info major-mode bar1))
 
 
 ;;
