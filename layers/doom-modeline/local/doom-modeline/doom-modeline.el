@@ -791,6 +791,7 @@ Returns \"\" to not break --no-window-system."
 (def-modeline-segment! bar2 
   "The bar regulates the height of the mode-line in GUI Emacs.
 Returns \"\" to not break --no-window-system."
+  ;; Need to DRY this later
   (if (active)
       (if ( evil-insert-state-p )
           (propertize " " 'face '(:background "#2ABB9B"))
