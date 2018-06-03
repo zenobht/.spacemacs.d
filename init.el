@@ -35,6 +35,7 @@
      java
      (javascript :variables javascript-disable-tern-port-files t)
      kotlin
+     lua
      (markdown :variables
                markdown-command 'pandoc
                markdown-live-preview-engine 'vmd)
@@ -113,10 +114,11 @@
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
                                     evil-escape
-                                    vi-tilde-fringe
-                                    spaceline
+                                    evil-goggles
                                     linum-relative
                                     smartparens
+                                    spaceline
+                                    vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
 
@@ -145,7 +147,7 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
+   dotspacemacs-default-font '("Fira Code"
                                :size 13
                                :weight normal 
                                :width normal)
@@ -244,6 +246,7 @@ values."
   (add-to-list 'default-frame-alist '(internal-border-width . 6))
   (setq-default left-fringe-width  15)
   (setq-default right-fringe-width 15)
-
+  (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
 )
+
