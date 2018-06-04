@@ -249,4 +249,3 @@ values."
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
 )
-
