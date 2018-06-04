@@ -73,8 +73,8 @@
      (warning-bg-face        "#333333")
      (fullWhite              "#FFFFFF")
      (fullBlack              "#000000")
-     (hl-line-highlight      "#1F2029")
-     (line-highlight         "#000000")
+     (hl-line-highlight      "#343850")
+     (line-highlight         "#343850")
      (mode-line-active       "#2A3146")
      (mode-line-inactive     "#1d2130")
      
