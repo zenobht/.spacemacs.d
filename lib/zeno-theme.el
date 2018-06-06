@@ -215,36 +215,33 @@
  `(helm-swoop-target-line-face ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
 
  ;; ivy
- `(ivy-current-match ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
+ `(ivy-current-match ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
  `(ivy-highlight-face ((t (:background ,fullBlack :foreground ,face3 :slant ,slantType))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,m2))))
  `(ivy-virtual ((t (:inherit default ))))
- `(ivy-minibuffer-match-face-1 ((t (:inherit default :foreground ,face7))))
- `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face7))))
- `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face7))))
- `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face7))))
- `(swiper-line-face ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
- `(swiper-match-face-2 ((t (:foreground ,face7))))
+ `(ivy-minibuffer-match-face-1 ((t (:inherit default :foreground ,face10))))
+ `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face10))))
+ `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face10))))
+ `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face10))))
+ `(swiper-line-face ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
+ `(swiper-match-face-2 ((t (:foreground ,face10))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,face3))))
-
-
 
   ;; company
   `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
-  `(company-tooltip-mouse ((t (:foreground ,face7))))
+  `(company-tooltip-mouse ((t (:foreground ,face10))))
   `(company-template-field ((t (:background: ,bg :foreground ,fullWhite))))
-  `(company-tooltip-selection ((t (:background ,line-highlight :foreground ,face10 :slant ,slantType))))
+  `(company-tooltip-selection ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
   `(company-echo-common ((t (:foreground ,face3))))
   `(company-scrollbar-bg ((t (:background ,seperator))))
   `(company-scrollbar-fg ((t (:background ,line-highlight))))
   `(company-tooltip-annotation ((t (:foreground ,face3))))
   `(company-tooltip-annotation-selection ((t (:inherit company-tooltip-annotation))))
-  `(company-tooltip-common ((t (:foreground ,face7))))
+  `(company-tooltip-common ((t (:foreground ,face10))))
   `(company-preview ((t (:background ,line-highlight :slant ,slantType))))
   `(company-preview-common ((t (:inherit company-preview ))))
   `(company-preview-search ((t (:inherit company-preview))))
   
-
   ;; neotree
   `(neo-dir-link-face ((t (:foreground ,face10 ))))
   `(neo-root-dir-face ((t (:foreground ,face1 ))))
