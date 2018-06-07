@@ -59,7 +59,7 @@
      (face6                  "#FF84C9")
      (face7                  "#FF5996")
      (face8                  "#60FCEC")
-     (face9                  "#344256")
+     (face9                  "#4B4B4B")
      (face10                 "#84B5FF")
      (m1                     "#C1CAFF")
      (m2                     "#FD971F")
@@ -206,13 +206,13 @@
  `(helm-ff-executable ((t (:foreground ,fullWhite))))
  `(helm-ff-file ((t (:foreground ,fullWhite))))
  `(helm-prefarg ((t (:foreground ,face4))))
- `(helm-selection ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
+ `(helm-selection ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
  `(helm-buffer-directory ((t (:foreground ,face4))))
  `(helm-ff-directory ((t (:foreground ,face4))))
  `(helm-source-header ((t (:background ,fullBlack :foreground ,fullWhite
                                        :weight bold :height 1.3 :family "Sans Serif"))))
- `(helm-swoop-target-line-block-face ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
- `(helm-swoop-target-line-face ((t (:background ,line-highlight :foreground ,face3 :slant ,slantType))))
+ `(helm-swoop-target-line-block-face ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
+ `(helm-swoop-target-line-face ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
 
  ;; ivy
  `(ivy-current-match ((t (:background ,line-highlight :foreground ,face7 :slant ,slantType))))
@@ -293,8 +293,8 @@
 
 
   ;; indent-guide faces
-  `(indent-guide-face ((t (:foreground ,face9 ))))
-  `(highlight-indent-guides-character-face ((t (:foreground ,face9 ))))
+  `(indent-guide-face ((t (:foreground ,line-number-face ))))
+  `(highlight-indent-guides-character-face ((t (:foreground ,line-number-face ))))
 
   `(link ((t (:foreground ,face8 :background ,bg :underline t))))
 
