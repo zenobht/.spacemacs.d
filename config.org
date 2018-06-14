@@ -5,7 +5,7 @@
 
     (setq evilNormalColor "#D2527F") 
     (setq evilInsertColor "#2ABB9B")
-    (setq evilVisualColor "#4B4B4B")
+    (setq evilVisualColor "#7B5E83")
 
   #+END_SRC
 * Custom Functions
