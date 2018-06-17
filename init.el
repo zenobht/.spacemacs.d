@@ -219,9 +219,6 @@ values."
 
 (defun dotspacemacs/user-config ()
 
-  ;; set up emacs path using system's path
-  (exec-path-from-shell-copy-env "PATH")
-
   ;; function to load all el files from a specific path
   (defun load-directory (directory)
     "Load recursively all `.el' files in DIRECTORY."

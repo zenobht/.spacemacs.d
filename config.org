@@ -732,9 +732,6 @@
 
         ;;(setq evil-move-cursor-back nil)
     
-        ;; ESC to remove search highlig
-        (define-key evil-search-highlight-persist-map (kbd "ESC") 'evil-search-highlight-persist-remove-all)
-
         (evil-leader/set-key
           "jj" 'evil-avy-goto-char
           "od" 'make-directory
@@ -809,7 +806,7 @@
     (define-key global-map (kbd "C--") 'text-scale-decrease)
 
     ;; key-binding to insert new line between brackets and indent
-    (global-set-key (kbd "C-i") 'my/newline-and-indent)
+    ;; (global-set-key (kbd "C-i") 'my/newline-and-indent)
 
     ;; remap next-buffer to custom buffer functions
     (global-set-key [remap next-buffer] 'my/next-buffer)
@@ -827,7 +824,7 @@
     ;; switch org-journal using a function and keybinding
     (global-set-key [?\s-H] 'my/switch-journal)
 
-    (setq-default indent-tabs-mode nil)
+    ;; (setq-default indent-tabs-mode nil)
     (setq-default tab-width 4)
 
     ;; beautify titlebar of emacs :heart-eyes:
@@ -859,7 +856,6 @@
 
   #+END_SRC
 
-  
   
 * Fira Code Ligatures
   #+BEGIN_SRC emacs-lisp
