@@ -206,16 +206,16 @@
  `(helm-ff-executable ((t (:foreground ,fullWhite))))
  `(helm-ff-file ((t (:foreground ,fullWhite))))
  `(helm-prefarg ((t (:foreground ,face4))))
- `(helm-selection ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
+ `(helm-selection ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
  `(helm-buffer-directory ((t (:foreground ,face4))))
  `(helm-ff-directory ((t (:foreground ,face4))))
  `(helm-source-header ((t (:background ,fullBlack :foreground ,fullWhite
                                        :weight bold :height 1.3 :family "Sans Serif"))))
- `(helm-swoop-target-line-block-face ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
- `(helm-swoop-target-line-face ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
+ `(helm-swoop-target-line-block-face ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
+ `(helm-swoop-target-line-face ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
 
  ;; ivy
- `(ivy-current-match ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
+ `(ivy-current-match ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
  `(ivy-highlight-face ((t (:background ,fullBlack :foreground ,face3 :slant ,slantType))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,m2))))
  `(ivy-virtual ((t (:inherit default ))))
@@ -223,7 +223,7 @@
  `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face10))))
  `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face10))))
  `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face10))))
- `(swiper-line-face ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
+ `(swiper-line-face ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
  `(swiper-match-face-2 ((t (:foreground ,face10))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,face6))))
 
@@ -231,7 +231,7 @@
   `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
   `(company-tooltip-mouse ((t (:foreground ,face10))))
   `(company-template-field ((t (:background: ,bg :foreground ,fullWhite))))
-  `(company-tooltip-selection ((t (:background ,face9 :foreground ,fullWhite :slant ,slantType))))
+  `(company-tooltip-selection ((t (:background ,face5 :foreground ,fullWhite :slant ,slantType))))
   `(company-echo-common ((t (:foreground ,face6))))
   `(company-scrollbar-bg ((t (:background ,seperator))))
   `(company-scrollbar-fg ((t (:background ,line-highlight))))
