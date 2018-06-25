@@ -796,7 +796,7 @@ Returns \"\" to not break --no-window-system."
       (if ( evil-insert-state-p )
           (propertize " " 'face '(:background "#2ABB9B"))
         (if ( evil-visual-state-p )
-            (propertize " " 'face '(:background "#5E4764"))
+            (propertize " " 'face '(:background "#504764"))
           (propertize " " 'face '(:background "#D2527F"))
           ))
     (propertize " " 'face '(:background "#1D2130"))

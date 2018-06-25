@@ -147,9 +147,8 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Fira Code Retina"
                                :size 13
-                               :weight normal 
                                :width normal)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"

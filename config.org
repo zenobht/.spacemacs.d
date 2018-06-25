@@ -166,7 +166,7 @@
                       org-level-6
                       org-level-7
                       org-level-8))
-        (set-face-attribute face nil :height 1.0)))
+        (set-face-attribute face nil :height 1.2)))
 
   #+END_SRC
 * Org-mode config
@@ -204,7 +204,7 @@
         (add-hook 'org-mode-hook (setq org-pretty-entities t))
 
         ;; modify org heading in org-mode
-        (add-hook 'org-mode-hook 'my/org-heading-setup)
+        ;; (add-hook 'org-mode-hook 'my/org-heading-setup)
 
         (evil-define-key 'normal org-mode-map ",v" 'org-todo)
         (evil-define-key 'insert org-mode-map (kbd "s-<return>") 'org-insert-item)
@@ -825,7 +825,8 @@
     (global-set-key [?\s-H] 'my/switch-journal)
 
     ;; (setq-default indent-tabs-mode nil)
-    (setq-default tab-width 4)
+    (setq standard-indent 2)
+    (setq tab-width 2)
 
     ;; beautify titlebar of emacs :heart-eyes:
     (add-to-list 'default-frame-alist '(ns-transparent-titlebar . t))
