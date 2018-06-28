@@ -5,7 +5,7 @@
 
     (setq evilNormalColor "#D2527F") 
     (setq evilInsertColor "#2ABB9B")
-    (setq evilVisualColor "#7B5E83")
+    (setq evilVisualColor "#665C7E")
 
   #+END_SRC
 * Custom Functions
@@ -693,10 +693,8 @@
                   ("C-S-k" . evil-jump-backward)
                   ("C-j" . move-text-down)
                   ("C-k" . move-text-up)
-                  ("C-u" . evil-scroll-page-up)
-                  ("C-d" . evil-scroll-page-down)
-                  ("C-S-u" . upcase-word)
-                  ("C-S-d" . downcase-word)
+                  ("C-b" . evil-scroll-page-up)
+                  ("C-f" . evil-scroll-page-down)
                   ("s-{" . my/next-buffer)
                   ("s-}" . my/previous-buffer) 
                   ("C-h" . evil-first-non-blank)
@@ -705,10 +703,6 @@
                   ("M-D" . evil-multiedit-match-and-prev)
                   :map evil-visual-state-map
                   ("R" . evil-multiedit-match-all)
-                  ("C-S-u" . upcase-region)
-                  ("C-S-d" . downcase-region)
-                  ("C-u" . evil-scroll-page-up)
-                  ("C-d" . evil-scroll-page-down)
                   ("p" . my/evil-paste-after-from-0)
                   ("C-j" . drag-stuff-down)
                   ("C-k" . drag-stuff-up)
@@ -733,7 +727,8 @@
         ;;(setq evil-move-cursor-back nil)
     
         (evil-leader/set-key
-          "jj" 'evil-avy-goto-char
+          "jj" 'evil-avy-goto-char-2
+          "jJ" 'evil-avy-goto-char
           "od" 'make-directory
           "om" 'markdown-mode
           "oo" 'org-mode
@@ -802,8 +797,8 @@
     (spacemacs/load-theme 'zeno)
 
     ;; scale text
-    (define-key global-map (kbd "C-+") 'text-scale-increase)
-    (define-key global-map (kbd "C--") 'text-scale-decrease)
+    (define-key global-map (kbd "s-+") 'text-scale-increase)
+    (define-key global-map (kbd "s--") 'text-scale-decrease)
 
     ;; key-binding to insert new line between brackets and indent
     ;; (global-set-key (kbd "C-i") 'my/newline-and-indent)
@@ -811,8 +806,6 @@
     ;; remap next-buffer to custom buffer functions
     (global-set-key [remap next-buffer] 'my/next-buffer)
     (global-set-key [remap previous-buffer] 'my/previous-buffer)
-
-    (global-set-key [?\C-\s-f] 'toggle-frame-fullscreen)
 
     ;; as spacemacs is running as daemon, binding qq to kill frame
     (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)

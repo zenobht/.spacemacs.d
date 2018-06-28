@@ -796,7 +796,7 @@ Returns \"\" to not break --no-window-system."
       (if ( evil-insert-state-p )
           (propertize " " 'face '(:background "#2ABB9B"))
         (if ( evil-visual-state-p )
-            (propertize " " 'face '(:background "#504764"))
+            (propertize " " 'face '(:background "#665C7E"))
           (propertize " " 'face '(:background "#D2527F"))
           ))
     (propertize " " 'face '(:background "#1D2130"))
@@ -840,7 +840,8 @@ Returns \"\" to not break --no-window-system."
 ;;
 
 (def-modeline! main
-  (bar2 matches window-number persp-number buffer-project-name buffer-info "  %l:%c %p  " selection-info )
+  ;; remove buffer-project-name
+  (bar2 matches window-number persp-number buffer-info "  %l:%c %p  " selection-info )
   ;; (buffer-encoding major-mode vcs flycheck))
   (major-mode vcs flycheck bar1))
   ;; (major-mode vcs flycheck))
