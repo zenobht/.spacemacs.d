@@ -343,9 +343,9 @@
 
         ;; ivy config
         (setq ivy-re-builders-alist
-              '((ivy-switch-buffer . ivy--regex-fuzzy)
-                (counsel-projectile-find-file . ivy--regex-fuzzy)
-                (t . ivy--regex-plus)))
+              '(
+                (swiper . ivy--regex-plus)
+                (t . ivy--regex-fuzzy)))
         (add-to-list 'ivy-highlight-functions-alist
                      '(swiper--re-builder . ivy--highlight-ignore-order))
 
