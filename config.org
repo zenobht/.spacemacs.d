@@ -344,6 +344,7 @@
         ;; ivy config
         (setq ivy-re-builders-alist
               '(
+                (counsel-M-x . ivy--regex-plus)
                 (swiper . ivy--regex-plus)
                 (t . ivy--regex-fuzzy)))
         (add-to-list 'ivy-highlight-functions-alist
@@ -799,6 +800,7 @@
     ;; scale text
     (define-key global-map (kbd "s-+") 'text-scale-increase)
     (define-key global-map (kbd "s--") 'text-scale-decrease)
+    (define-key global-map (kbd "s-0") (lambda () (interactive) (text-scale-set 0)))
 
     ;; key-binding to insert new line between brackets and indent
     ;; (global-set-key (kbd "C-i") 'my/newline-and-indent)
@@ -849,8 +851,6 @@
     (setq custom-buffer-done-kill t)
 
   #+END_SRC
-
-  
 * Fira Code Ligatures
   #+BEGIN_SRC emacs-lisp
    
