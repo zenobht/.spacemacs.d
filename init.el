@@ -195,7 +195,6 @@ values."
    dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
    dotspacemacs-frame-title-format ""
    )
-
   )
 
 (defun dotspacemacs/user-init ()
