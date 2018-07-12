@@ -16,7 +16,7 @@
                       better-defaults-move-to-end-of-code-first nil)
      colors
      csv
-     doom-modeline
+     ;; doom-modeline
      emacs-lisp
      emoji
      evil-commentary
@@ -117,7 +117,6 @@
                                     evil-goggles
                                     linum-relative
                                     smartparens
-                                    spaceline
                                     vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
@@ -171,7 +170,7 @@ values."
    dotspacemacs-helm-no-header nil
    dotspacemacs-helm-position 'bottom
    dotspacemacs-helm-use-fuzzy 'always
-   dotspacemacs-enable-paste-transient-state nil
+   dotspacemacs-enable-paste-transient-state t
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
    dotspacemacs-loading-progress-bar nil
@@ -233,10 +232,10 @@ values."
           (load (file-name-sans-extension fullpath)))))))
   (load-directory "~/.spacemacs.d/lib")
   (org-babel-load-file "~/.spacemacs.d/config.org")
-  (setq theming-modifications `((zeno
-           (doom-modeline-bracket :foreground "#BDBAAD")
-           (doom-modeline-panel :background "#D2527F")
-           (doom-modeline-persp :foreground "#F8F8F2"))))
+  ;; (setq theming-modifications `((zeno
+  ;;          (doom-modeline-bracket :foreground "#BDBAAD")
+  ;;          (doom-modeline-panel :background "#D2527F")
+  ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
 
   ;; set frame with proper margins and paddings
   (add-to-list 'default-frame-alist '(internal-border-width . 6))
