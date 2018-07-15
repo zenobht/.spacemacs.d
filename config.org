@@ -73,7 +73,7 @@
       (projectile-invalidate-cache nil))
 
 
-    (defun my/enable-visual-line-mode ()
+    (defun my/enable-visual-line-navigation ()
       "enables visual-line-navigation which is word-wrap"
       (spacemacs/toggle-visual-line-navigation)
       )
@@ -752,9 +752,9 @@
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
-    ;; (setq-default line-spacing 2)
+    (setq-default line-spacing 2)
 
-    (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
+    ;; (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
 
     ;; (defun set-bigger-spacing ()
     ;;   (setq-local default-text-properties '(line-spacing 0.25 line-height 1.25)))
@@ -768,6 +768,7 @@
 
     (global-hl-line-mode +1)
     (show-paren-mode +1)
+    (global-visual-line-mode nil)
 
     (electric-pair-mode 1)
     (push '(?\' . ?\') electric-pair-pairs)
@@ -789,7 +790,7 @@
     (setq-default evil-escape-delay 0.2)
 
     ;; visual-line-mode for all text-modes
-    (add-hook 'text-mode-hook #'my/enable-visual-line-mode)
+    (add-hook 'text-mode-hook #'my/enable-visual-line-navigation)
 
     ;; company-tern property marker
     (setq company-tern-property-marker " =>")
@@ -855,6 +856,9 @@
 
     ;; required to kill customize buffers on pressing q
     (setq custom-buffer-done-kill t)
+
+    (setq sh-basic-offset 2)
+    (setq sh-indentation 2) 
 
   #+END_SRC
 * Fira Code Ligatures
