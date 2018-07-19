@@ -772,6 +772,7 @@
 
     (electric-pair-mode 1)
     (push '(?\' . ?\') electric-pair-pairs)
+    (global-evil-matchit-mode t)
 
     (setq package-check-signature nil)
     (setq frame-resize-pixelwise t)

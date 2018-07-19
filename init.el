@@ -77,7 +77,7 @@
                )
      typescript
      (version-control :variables
-                      version-control-diff-tool 'git-gutter+
+                      version-control-diff-tool 'git-gutter
                       version-control-diff-side 'right
                       version-control-global-margin t)
      yaml

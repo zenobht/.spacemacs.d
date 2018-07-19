@@ -61,7 +61,7 @@
      (face8                  "#60FCEC")
      (face9                  "#665C7E")
      (face10                 "#84B5FF")
-     (cursor                 "#D2527F")
+     (cursor-match           "#D2527F")
      (m1                     "#C1CAFF")
      (m2                     "#FD971F")
      (m3                     "#EF5939")
@@ -251,7 +251,7 @@
   `(treemacs-directory-face ((t (:foreground ,face10 ))))
 
   ;; parentheses matching
-  `(show-paren-match ((t (:background ,cursor :foreground ,fullBlack :weight bold))))
+  `(show-paren-match ((t (:background ,cursor-match :foreground ,fullBlack :weight bold))))
   `(show-paren-mismatch ((t (:background ,m7 :foreground ,fullWhite))))
   `(rainbow-delimiters-mismatched-face ((t (:inherit show-paren-mismatch :underline t))))
   `(rainbow-delimiters-unmatched-face ((t (:inherit show-paren-mismatch))))
