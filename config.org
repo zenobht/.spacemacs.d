@@ -696,8 +696,6 @@
                   ("C-k" . move-text-up)
                   ("C-b" . evil-scroll-page-up)
                   ("C-f" . evil-scroll-page-down)
-                  ("s-{" . my/next-buffer)
-                  ("s-}" . my/previous-buffer) 
                   ("C-h" . evil-first-non-blank)
                   ("C-l" . evil-last-non-blank)
                   ("M-d" . evil-multiedit-match-and-next)
@@ -717,13 +715,13 @@
       (progn 
 
         ;; default cursor as bar 
-        (setq-default cursor-type '(bar . 3))
+        (setq-default cursor-type '(bar . 2))
         (setq evil-normal-state-cursor `(box ,evilNormalColor)) 
-        (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
-        (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
-        (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
-        (setq evil-motion-state-cursor `((bar . 3) "HotPink1")) 
-        (setq evil-lisp-state-cursor '((bar . 3) "HotPink1")) 
+        (setq evil-insert-state-cursor `((bar . 2) ,evilInsertColor)) 
+        (setq evil-evilified-state-cursor '((bar . 2) "LightGoldenrod3")) 
+        (setq evil-emacs-state-cursor '((bar . 2) "SkyBlue2")) 
+        (setq evil-motion-state-cursor `((bar . 2) "HotPink1")) 
+        (setq evil-lisp-state-cursor '((bar . 2) "HotPink1")) 
 
         ;;(setq evil-move-cursor-back nil)
     
@@ -737,7 +735,6 @@
           "ot" 'text-mode
           "si" 'counsel-grep-or-swiper
           ) 
-
         ))
   #+END_SRC
 * Others
@@ -765,7 +762,6 @@
     (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
     (add-hook 'web-mode-hook (lambda () (flycheck-mode -1)))
 
-
     (global-hl-line-mode +1)
     (show-paren-mode +1)
     (global-visual-line-mode nil)
@@ -776,6 +772,9 @@
 
     (setq package-check-signature nil)
     (setq frame-resize-pixelwise t)
+
+    ;; / search is case sensitive
+    (setq evil-ex-search-case nil)
 
     ;; native line number configuration
     ;; (setq display-line-numbers-grow-only t)
