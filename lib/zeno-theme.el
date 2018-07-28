@@ -220,14 +220,14 @@
  `(ivy-highlight-face ((t (:background ,fullBlack :foreground ,face3))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,m2))))
  `(ivy-virtual ((t (:inherit default ))))
- `(ivy-minibuffer-match-face-1 ((t (:inherit default :foreground ,face10))))
- `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face10))))
- `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face10))))
- `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face10))))
+ `(ivy-minibuffer-match-face-1 ((t (:inherit default :foreground ,face7))))
+ `(ivy-minibuffer-match-face-2 ((t (:inherit default :foreground ,face7))))
+ `(ivy-minibuffer-match-face-3 ((t (:inherit default :foreground ,face7))))
+ `(ivy-minibuffer-match-face-4 ((t (:inherit default :foreground ,face7))))
  `(swiper-line-face ((t (:background ,face5 :foreground ,fullWhite))))
  `(swiper-match-face-2 ((t (:foreground ,face10))))
  `(ivy-modified-buffer ((t (:inherit default :foreground ,face6))))
-
+ 
   ;; company
   `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
   `(company-tooltip-mouse ((t (:foreground ,face10))))
@@ -238,7 +238,7 @@
   `(company-scrollbar-fg ((t (:background ,line-highlight))))
   `(company-tooltip-annotation ((t (:foreground ,face3))))
   `(company-tooltip-annotation-selection ((t (:inherit company-tooltip-annotation))))
-  `(company-tooltip-common ((t (:foreground ,face10))))
+  `(company-tooltip-common ((t (:foreground ,face7))))
   `(company-preview ((t (:background ,line-highlight))))
   `(company-preview-common ((t (:inherit company-preview ))))
   `(company-preview-search ((t (:inherit company-preview))))
