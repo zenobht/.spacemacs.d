@@ -113,6 +113,7 @@
                                       )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
+                                    ac-ispell
                                     evil-escape
                                     evil-goggles
                                     linum-relative

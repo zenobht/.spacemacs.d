@@ -694,6 +694,8 @@
                   ("C-S-k" . evil-jump-backward)
                   ("C-j" . move-text-down)
                   ("C-k" . move-text-up)
+                  ("s-{" . my/next-buffer)
+                  ("s-}" . my/previous-buffer)
                   ("C-b" . evil-scroll-page-up)
                   ("C-f" . evil-scroll-page-down)
                   ("C-h" . evil-first-non-blank)
@@ -715,16 +717,16 @@
       (progn 
 
         ;; default cursor as bar 
-        (setq-default cursor-type '(bar . 2))
+        (setq-default cursor-type '(bar . 3))
         (setq evil-normal-state-cursor `(box ,evilNormalColor)) 
-        (setq evil-insert-state-cursor `((bar . 2) ,evilInsertColor)) 
-        (setq evil-evilified-state-cursor '((bar . 2) "LightGoldenrod3")) 
-        (setq evil-emacs-state-cursor '((bar . 2) "SkyBlue2")) 
-        (setq evil-motion-state-cursor `((bar . 2) "HotPink1")) 
-        (setq evil-lisp-state-cursor '((bar . 2) "HotPink1")) 
+        (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
+        (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
+        (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
+        (setq evil-motion-state-cursor `((bar . 3) "HotPink1")) 
+        (setq evil-lisp-state-cursor '((bar . 3) "HotPink1")) 
 
         ;;(setq evil-move-cursor-back nil)
-    
+
         (evil-leader/set-key
           "jj" 'evil-avy-goto-char-2
           "jJ" 'evil-avy-goto-char
@@ -749,7 +751,7 @@
     (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
     (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
-    (setq-default line-spacing 2)
+    (setq-default line-spacing 1)
 
     ;; (setq default-text-properties '(line-spacing 0.25 line-height 1.25))
 
