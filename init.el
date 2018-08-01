@@ -25,7 +25,6 @@
      groovy
      ;;(helm :variables helm-no-header t)
      html
-     (ibuffer :variables ibuffer-group-buffers-by nil)
      (ivy :variables
           ivy-wrap t
           ivy-height 15
@@ -39,7 +38,6 @@
      (markdown :variables
                markdown-command 'pandoc
                markdown-live-preview-engine 'vmd)
-     octave
      (org :variables
           org-projectile-file "TODOs.org"
           org-enable-org-journal-support t
@@ -58,7 +56,6 @@
              python-sort-imports-on-save t
              python-enable-yapf-format-on-save t)
      react
-     ruby
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 20
@@ -68,14 +65,12 @@
      (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      tern
-     theming
      (treemacs :variables
                treemacs-use-filewatch-mode t
                treemacs-use-follow-mode t
                treemacs-git-mode 'extended 
                treemacs-use-collapsed-directories 3
                )
-     typescript
      (version-control :variables
                       version-control-diff-tool 'git-gutter
                       version-control-diff-side 'right
@@ -83,29 +78,15 @@
      yaml
      )
    dotspacemacs-additional-packages '(
-                                      all-the-icons-dired
-                                      all-the-icons-ivy
-                                      company-lsp
                                       dockerfile-mode
                                       dracula-theme
                                       drag-stuff
                                       evil-multiedit
                                       exotica-theme
-                                      flycheck-flow
-                                      flycheck-package
-                                      highlight-indent-guides
-                                      lsp-mode
-                                      lsp-ui
-                                      lsp-vue
                                       molokai-theme
                                       org-mime
                                       pcre2el
                                       pretty-mode
-                                      (reason-mode
-                                       :location (recipe
-                                                  :repo "reasonml-editor/reason-mode"
-                                                  :fetcher github
-                                                  :files ("reason-mode.el" "refmt.el" "reason-indent.el" "reason-interaction.el")))
                                       shrink-path
                                       subatomic-theme
                                       virtualenvwrapper
@@ -129,17 +110,22 @@ before layers configuration.
 You should not put any user code in there besides modifying the variable
 values."
   (setq-default
-   dotspacemacs-elpa-subdirectory nil
-   dotspacemacs-elpa-https nil
-   dotspacemacs-elpa-timeout 60
+   dotspacemacs-enable-emacs-pdumper nil
+   dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
+   dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
+   dotspacemacs-elpa-https t
+   dotspacemacs-elpa-timeout 5
+   dotspacemacs-gc-cons '(100000000 0.1)
+   dotspacemacs-use-spacelpa nil
+   dotspacemacs-verify-spacelpa-archives nil
    dotspacemacs-check-for-update nil
-   dotspacemacs-elpa-subdirectory nil
+   dotspacemacs-elpa-subdirectory 'emacs-version
    dotspacemacs-editing-style 'vim
    dotspacemacs-verbose-loading nil
    dotspacemacs-startup-banner 'official
    dotspacemacs-startup-lists nil
-   dotspacemacs-startup-buffer-responsive nil
-   dotspacemacs-scratch-mode 'org-mode
+   dotspacemacs-startup-buffer-responsive t 
+   dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(
                          exotica
                          spacemacs-dark
@@ -147,9 +133,10 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Code Retina"
+   dotspacemacs-default-font '("Source Code Pro"
                                :size 13
-                               :width normal)
+                               :width normal
+                               :weight normal)
    dotspacemacs-leader-key "SPC"
    dotspacemacs-emacs-command-key "SPC"
    dotspacemacs-ex-command-key ":"
@@ -157,24 +144,18 @@ values."
    dotspacemacs-major-mode-leader-key ","
    dotspacemacs-major-mode-emacs-leader-key "C-M-m"
    dotspacemacs-distinguish-gui-tab nil
-   dotspacemacs-remap-Y-to-y$ nil
-   dotspacemacs-retain-visual-state-on-shift t
-   dotspacemacs-visual-line-move-text t
-   dotspacemacs-ex-substitute-global nil
    dotspacemacs-default-layout-name "Default"
    dotspacemacs-display-default-layout nil
    dotspacemacs-auto-resume-layouts nil
+   dotspacemacs-auto-generate-layout-names nil
    dotspacemacs-large-file-size 1
    dotspacemacs-auto-save-file-location 'cache
    dotspacemacs-max-rollback-slots 5
-   dotspacemacs-helm-resize nil
-   dotspacemacs-helm-no-header nil
-   dotspacemacs-helm-position 'bottom
-   dotspacemacs-helm-use-fuzzy 'always
-   dotspacemacs-enable-paste-transient-state t
+   dotspacemacs-enable-paste-transient-state nil
    dotspacemacs-which-key-delay 0.4
    dotspacemacs-which-key-position 'bottom
-   dotspacemacs-loading-progress-bar nil
+   dotspacemacs-switch-to-buffer-prefers-purpose nil
+   dotspacemacs-loading-progress-bar t
    dotspacemacs-fullscreen-at-startup nil
    dotspacemacs-fullscreen-use-non-native nil
    dotspacemacs-maximized-at-startup t
@@ -182,37 +163,50 @@ values."
    dotspacemacs-inactive-transparency 90
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
-   dotspacemacs-mode-line-unicode-symbols nil 
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-mode-line-unicode-symbols t
+   dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
-   dotspacemacs-folding-method 'origami
-   dotspacemacs-smartparens-strict-mode nil 
-   dotspacemacs-smart-closing-parenthesis nil 
+   dotspacemacs-folding-method 'evil
+   dotspacemacs-smartparens-strict-mode nil
+   dotspacemacs-smart-closing-parenthesis nil
+   dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-persistent-server nil
+   dotspacemacs-enable-server t
+   dotspacemacs-server-socket-dir nil
+   dotspacemacs-persistent-server t
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
-   dotspacemacs-default-package-repository nil
-   dotspacemacs-whitespace-cleanup nil
-   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
    dotspacemacs-frame-title-format ""
+   dotspacemacs-icon-title-format nil
+   dotspacemacs-whitespace-cleanup nil
+   dotspacemacs-zone-out-when-idle nil
+   dotspacemacs-pretty-docs nil
+   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
    )
   )
 
+(defun dotspacemacs/user-env ()
+  "Environment variables setup.
+This function defines the environment variables for your Emacs session. By
+default it calls `spacemacs/load-spacemacs-env' which loads the environment
+variables declared in `~/.spacemacs.env' or `~/.spacemacs.d/.spacemacs.env'.
+See the header of this file for more information."
+  (spacemacs/load-spacemacs-env))
+
 (defun dotspacemacs/user-init ()
 
-  (defun spacemacs/title-prepare (TITLE-FORMAT) ())
+  ;; (defun spacemacs/title-prepare (TITLE-FORMAT) ())
 
-  ;; required to disable to spacelpa
-  (setq configuration-layer-elpa-archives
-          '(("melpa"    . "melpa.org/packages/")
-            ("org"      . "orgmode.org/elpa/")
-            ("gnu"      . "elpa.gnu.org/packages/")))
+  ;; ;; required to disable to spacelpa
+  ;; (setq configuration-layer-elpa-archives
+  ;;         '(("melpa"    . "melpa.org/packages/")
+  ;;           ("org"      . "orgmode.org/elpa/")
+  ;;           ("gnu"      . "elpa.gnu.org/packages/")))
 
-  (setq-default
-   evil-shift-round nil
-   avy-all-windows 'all-frames
-   )
-  (setq exec-path-from-shell-check-startup-files nil)
+  ;; (setq-default
+  ;;  evil-shift-round nil
+  ;;  avy-all-windows 'all-frames
+  ;;  )
+  ;; (setq exec-path-from-shell-check-startup-files nil)
   )
 
 (defun dotspacemacs/user-config ()
@@ -231,7 +225,8 @@ values."
          ((and (eq isdir nil) (string= (substring path -3) ".el"))
           (load (file-name-sans-extension fullpath)))))))
   (load-directory "~/.spacemacs.d/lib")
-  (org-babel-load-file "~/.spacemacs.d/config.org")
+  (load-file "~/.spacemacs.d/config.el")
+  ;; (org-babel-load-file "~/.spacemacs.d/config.org")
   ;; (setq theming-modifications `((zeno
   ;;          (doom-modeline-bracket :foreground "#BDBAAD")
   ;;          (doom-modeline-panel :background "#D2527F")
