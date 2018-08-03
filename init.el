@@ -78,6 +78,7 @@
      yaml
      )
    dotspacemacs-additional-packages '(
+                                      all-the-icons
                                       dockerfile-mode
                                       dracula-theme
                                       drag-stuff
@@ -193,20 +194,6 @@ See the header of this file for more information."
   (spacemacs/load-spacemacs-env))
 
 (defun dotspacemacs/user-init ()
-
-  ;; (defun spacemacs/title-prepare (TITLE-FORMAT) ())
-
-  ;; ;; required to disable to spacelpa
-  ;; (setq configuration-layer-elpa-archives
-  ;;         '(("melpa"    . "melpa.org/packages/")
-  ;;           ("org"      . "orgmode.org/elpa/")
-  ;;           ("gnu"      . "elpa.gnu.org/packages/")))
-
-  ;; (setq-default
-  ;;  evil-shift-round nil
-  ;;  avy-all-windows 'all-frames
-  ;;  )
-  ;; (setq exec-path-from-shell-check-startup-files nil)
   )
 
 (defun dotspacemacs/user-config ()
