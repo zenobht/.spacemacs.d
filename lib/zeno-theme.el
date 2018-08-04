@@ -213,7 +213,10 @@
  `(helm-source-header ((t (:background ,fullBlack :foreground ,fullWhite
                                        :weight bold :height 1.3 :family "Sans Serif"))))
  `(helm-swoop-target-line-block-face ((t (:background ,moderate_blue :foreground ,fullWhite))))
+ `(helm-swoop-target-word-face ((t (:foreground ,atlantis_green))))
  `(helm-swoop-target-line-face ((t (:background ,moderate_blue :foreground ,fullWhite))))
+ `(helm-match ((t (:inherit default :foreground ,atlantis_green))))
+ `(helm-grep-file ((t (:inherit default :foreground ,atlantis_green))))
 
  ;; ivy
  `(ivy-current-match ((t (:background ,moderate_blue :foreground ,fullWhite))))
