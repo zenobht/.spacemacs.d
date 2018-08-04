@@ -229,94 +229,94 @@
  `(ivy-modified-buffer ((t (:inherit default :foreground ,very_light_pink))))
  
   ;; company
-  `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
-  `(company-tooltip-mouse ((t (:foreground ,maya_blue))))
-  `(company-template-field ((t (:background: ,bg :foreground ,fullWhite))))
-  `(company-tooltip-selection ((t (:background ,moderate_blue :foreground ,fullWhite))))
-  `(company-echo-common ((t (:foreground ,atlantis_green))))
-  `(company-scrollbar-bg ((t (:background ,seperator))))
-  `(company-scrollbar-fg ((t (:background ,line-highlight))))
-  `(company-tooltip-annotation ((t (:foreground ,lime_green))))
-  `(company-tooltip-annotation-selection ((t (:inherit company-tooltip-annotation))))
-  `(company-tooltip-common ((t (:foreground ,atlantis_green))))
-  `(company-preview ((t (:background ,line-highlight))))
-  `(company-preview-common ((t (:inherit company-preview ))))
-  `(company-preview-search ((t (:inherit company-preview))))
+ `(company-tooltip ((t (:background ,bg :foreground ,fullWhite))))
+ `(company-tooltip-mouse ((t (:foreground ,maya_blue))))
+ `(company-template-field ((t (:background: ,bg :foreground ,fullWhite))))
+ `(company-tooltip-selection ((t (:background ,moderate_blue :foreground ,fullWhite))))
+ `(company-echo-common ((t (:foreground ,atlantis_green))))
+ `(company-scrollbar-bg ((t (:background ,seperator))))
+ `(company-scrollbar-fg ((t (:background ,line-highlight))))
+ `(company-tooltip-annotation ((t (:foreground ,lime_green))))
+ `(company-tooltip-annotation-selection ((t (:inherit company-tooltip-annotation))))
+ `(company-tooltip-common ((t (:foreground ,atlantis_green))))
+ `(company-preview ((t (:background ,line-highlight))))
+ `(company-preview-common ((t (:inherit company-preview ))))
+ `(company-preview-search ((t (:inherit company-preview))))
 
-  ;; neotree
-  `(neo-dir-link-face ((t (:foreground ,maya_blue ))))
-  `(neo-root-dir-face ((t (:foreground ,turquoise_blue ))))
+ ;; neotree
+ `(neo-dir-link-face ((t (:foreground ,maya_blue ))))
+ `(neo-root-dir-face ((t (:foreground ,turquoise_blue ))))
 
-  ;; treemacs
-  `(treemacs-directory-face ((t (:foreground ,maya_blue ))))
+ ;; treemacs
+ `(treemacs-directory-face ((t (:foreground ,maya_blue ))))
 
-  ;; parentheses matching
-  `(show-paren-match ((t (:background ,cranberry :foreground ,fullBlack :weight bold))))
-  `(show-paren-mismatch ((t (:background ,m7 :foreground ,fullWhite))))
-  `(rainbow-delimiters-mismatched-face ((t (:inherit show-paren-mismatch :underline t))))
-  `(rainbow-delimiters-unmatched-face ((t (:inherit show-paren-mismatch))))
+ ;; parentheses matching
+ `(show-paren-match ((t (:background ,cranberry :foreground ,fullBlack :weight bold))))
+ `(show-paren-mismatch ((t (:background ,m7 :foreground ,fullWhite))))
+ `(rainbow-delimiters-mismatched-face ((t (:inherit show-paren-mismatch :underline t))))
+ `(rainbow-delimiters-unmatched-face ((t (:inherit show-paren-mismatch))))
 
-  ;; dired
-  `(dired-directory ((t (:foreground ,maya_blue ))))
+ ;; dired
+ `(dired-directory ((t (:foreground ,maya_blue ))))
 
-  ;; Web-mode
-  `(web-mode-html-attr-custom-face ((t (:foreground ,reddish_pink))))
-  `(web-mode-html-attr-equal-face ((t (:foreground ,fullWhite))))
-  `(web-mode-html-attr-name-face ((t (:foreground ,lime_green))))
-  `(web-mode-html-attr-value-face ((t (:inherit font-lock-string-face ))))
-  `(web-mode-html-tag-bracket-face ((t (:foreground ,fullWhite))))
-  `(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
-  `(web-mode-html-tag-custom-face ((t (:inherit web-mode-html-tag-face))))
+ ;; Web-mode
+ `(web-mode-html-attr-custom-face ((t (:foreground ,reddish_pink))))
+ `(web-mode-html-attr-equal-face ((t (:foreground ,fullWhite))))
+ `(web-mode-html-attr-name-face ((t (:foreground ,lime_green))))
+ `(web-mode-html-attr-value-face ((t (:inherit font-lock-string-face ))))
+ `(web-mode-html-tag-bracket-face ((t (:foreground ,fullWhite))))
+ `(web-mode-html-tag-face ((t (:inherit font-lock-function-name-face))))
+ `(web-mode-html-tag-custom-face ((t (:inherit web-mode-html-tag-face))))
 
-  ;; linum relative line number face
-  `(linum-relative-current-face ((t (:inherit linum :foreground ,light_violet :weight normal))))
-  `(linum ((t (:background ,bg :foreground ,line-number-face :weight normal))))
+ ;; linum relative line number face
+ `(linum-relative-current-face ((t (:inherit linum :foreground ,light_violet :weight normal))))
+ `(linum ((t (:background ,bg :foreground ,line-number-face :weight normal))))
 
-  ;; native line number face
-  `(line-number ((t :background ,bg :foreground ,line-number-face :weight normal)))
-  `(line-number-current-line ((t :background ,bg :foreground, light_violet, :weight normal)))
+ ;; native line number face
+ `(line-number ((t :background ,bg :foreground ,line-number-face :weight normal)))
+ `(line-number-current-line ((t :background ,bg :foreground, light_violet, :weight normal)))
 
-  ;; imenu-list
-  `(imenu-list-entry-subalist-face-0 ((t (:foreground ,light_violet))))
-  `(imenu-list-entry-subalist-face-1 ((t (:foreground ,atlantis_green))))
-  `(imenu-list-entry-subalist-face-2 ((t (:foreground ,very_light_pink))))
-  `(imenu-list-entry-subalist-face-3 ((t (:foreground ,light_green_cyan))))
-  `(imenu-list-entry-face-0 ((t (:foreground ,turquoise_blue))))
-  `(imenu-list-entry-face-1 ((t (:foreground ,lime_green))))
-  `(imenu-list-entry-face-2 ((t (:foreground ,moderate_blue))))
-  `(imenu-list-entry-face-3 ((t (:foreground ,reddish_pink))))
+ ;; imenu-list
+ `(imenu-list-entry-subalist-face-0 ((t (:foreground ,light_violet))))
+ `(imenu-list-entry-subalist-face-1 ((t (:foreground ,atlantis_green))))
+ `(imenu-list-entry-subalist-face-2 ((t (:foreground ,very_light_pink))))
+ `(imenu-list-entry-subalist-face-3 ((t (:foreground ,light_green_cyan))))
+ `(imenu-list-entry-face-0 ((t (:foreground ,turquoise_blue))))
+ `(imenu-list-entry-face-1 ((t (:foreground ,lime_green))))
+ `(imenu-list-entry-face-2 ((t (:foreground ,moderate_blue))))
+ `(imenu-list-entry-face-3 ((t (:foreground ,reddish_pink))))
 
-  ;; avy
-  `(avy-lead-face ((t (:background ,turquoise_blue :foreground ,fullBlack :weight bold))))
-  `(avy-lead-face-0 ((t (:background ,light_violet :foreground ,fullBlack :weight bold))))
-  `(avy-lead-face-1 ((t (:background ,lime_green :foreground ,fullBlack :weight bold))))
-  `(avy-lead-face-2 ((t (:background ,atlantis_green :foreground ,fullBlack :weight bold))))
+ ;; avy
+ `(avy-lead-face ((t (:background ,turquoise_blue :foreground ,fullBlack :weight bold))))
+ `(avy-lead-face-0 ((t (:background ,light_violet :foreground ,fullBlack :weight bold))))
+ `(avy-lead-face-1 ((t (:background ,lime_green :foreground ,fullBlack :weight bold))))
+ `(avy-lead-face-2 ((t (:background ,atlantis_green :foreground ,fullBlack :weight bold))))
 
 
-  ;; indent-guide faces
-  `(indent-guide-face ((t (:foreground ,line-number-face ))))
-  `(highlight-indent-guides-character-face ((t (:foreground ,line-number-face ))))
+ ;; indent-guide faces
+ `(indent-guide-face ((t (:foreground ,line-number-face ))))
+ `(highlight-indent-guides-character-face ((t (:foreground ,line-number-face ))))
 
-  `(link ((t (:foreground ,light_green_cyan :background ,bg :underline t))))
+ `(link ((t (:foreground ,light_green_cyan :background ,bg :underline t))))
 
-  ;; diredp
-  `(diredp-dir-heading ((t (:foreground ,atlantis_green :underline t))))
-  `(diredp-dir-name ((t (:foreground ,maya_blue ))))
-  `(diredp-file-name ((t (:foreground ,fg))))
-  `(diredp-file-suffix ((t (:foreground ,fg))))
-  `(diredp-flag-mark ((t (:foreground ,light_violet))))
-  `(diredp-flag-mark-line ((t (:foreground ,light_violet))))
-  `(diredp-deletion ((t (:foreground ,reddish_pink))))
-  `(diredp-deletion-file-name ((t (:foreground ,reddish_pink))))
-  `(diredp-number ((t (:foreground ,turquoise_blue ))))
-  `(diredp-read-priv ((t (:foreground ,very_light_pink))))
-  `(diredp-exec-priv ((t (:foreground ,light_green_cyan))))
-  `(diredp-dir-priv ((t (:foreground ,maya_blue))))
-  `(diredp-write-priv ((t (:foreground ,lime_green))))
-  `(diredp-no-priv ((t (:foreground ,fg))))
+ ;; diredp
+ `(diredp-dir-heading ((t (:foreground ,atlantis_green :underline t))))
+ `(diredp-dir-name ((t (:foreground ,maya_blue ))))
+ `(diredp-file-name ((t (:foreground ,fg))))
+ `(diredp-file-suffix ((t (:foreground ,fg))))
+ `(diredp-flag-mark ((t (:foreground ,light_violet))))
+ `(diredp-flag-mark-line ((t (:foreground ,light_violet))))
+ `(diredp-deletion ((t (:foreground ,reddish_pink))))
+ `(diredp-deletion-file-name ((t (:foreground ,reddish_pink))))
+ `(diredp-number ((t (:foreground ,turquoise_blue ))))
+ `(diredp-read-priv ((t (:foreground ,very_light_pink))))
+ `(diredp-exec-priv ((t (:foreground ,light_green_cyan))))
+ `(diredp-dir-priv ((t (:foreground ,maya_blue))))
+ `(diredp-write-priv ((t (:foreground ,lime_green))))
+ `(diredp-no-priv ((t (:foreground ,fg))))
 
-  `(evil-snipe-first-match-face ((t (:inherit isearch))))
-  `(evil-snipe-matches-face ((t (:inherit isearch))))
+ `(evil-snipe-first-match-face ((t (:inherit isearch))))
+ `(evil-snipe-matches-face ((t (:inherit isearch))))
 
  ))
 

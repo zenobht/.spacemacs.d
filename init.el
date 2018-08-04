@@ -220,7 +220,9 @@ See the header of this file for more information."
   ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
 
   ;; set frame with proper margins and paddings
-  (add-to-list 'default-frame-alist '(internal-border-width . 6))
+  ;; (add-to-list 'default-frame-alist '(internal-border-width . 4))
+  (setq-default left-fringe-width 15)
+  (setq-default right-fringe-width 15)
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
 )
