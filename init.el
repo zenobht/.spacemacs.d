@@ -100,6 +100,7 @@
                                     evil-goggles
                                     linum-relative
                                     smartparens
+                                    smooth-scrolling
                                     vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
@@ -165,7 +166,7 @@ values."
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols nil
-   dotspacemacs-smooth-scrolling t
+   dotspacemacs-smooth-scrolling nil
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
@@ -181,7 +182,7 @@ values."
    dotspacemacs-whitespace-cleanup nil
    dotspacemacs-zone-out-when-idle nil
    dotspacemacs-pretty-docs nil
-   dotspacemacs-mode-line-theme '(spacemacs :separator slant :separator-scale 1.5)
+   dotspacemacs-mode-line-theme '(spacemacs :separator arrow :separator-scale 1.5)
    )
   )
 

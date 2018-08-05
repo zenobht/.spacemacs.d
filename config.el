@@ -620,8 +620,9 @@
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
-(setq scroll-step            1
-      scroll-conservatively  10000)
+;; (setq scroll-conservatively 101)
+;; (setq mouse-wheel-scroll-amount '(1))
+;; (setq mouse-wheel-progressive-speed nil)
 
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
@@ -670,6 +671,7 @@
 
 ;; (setq display-line-numbers-grow-only t)
 ;; (setq display-line-numbers-widen t)
+;; (setq display-line-numbers-type 'visual)
 ;; (dolist (hook 
 ;;          '(prog-mode-hook text-mode-hook))
 ;;   (add-hook hook 'display-line-numbers-mode))

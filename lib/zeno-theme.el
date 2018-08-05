@@ -76,7 +76,7 @@
      (fullBlack              "#000000")
      (hl-line-highlight      "#343850")
      (line-highlight         "#343850")
-     (mode-line-active       "#2A3146")
+     (mode-line-active       "#343850")
      (mode-line-inactive     "#1d2130")
      
      (slantType (if zeno-theme-enable-italics 'italic 'normal))
