@@ -173,9 +173,9 @@ values."
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
    dotspacemacs-server-socket-dir nil
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-frame-title-format ""
    dotspacemacs-icon-title-format nil
@@ -222,8 +222,9 @@ See the header of this file for more information."
 
   ;; set frame with proper margins and paddings
   ;; (add-to-list 'default-frame-alist '(internal-border-width . 4))
-  (setq-default left-fringe-width 15)
-  (setq-default right-fringe-width 15)
+  ;; without line-numbers use 15 as fringe-width
+  (setq-default left-fringe-width 10)
+  (setq-default right-fringe-width 10)
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
 )
