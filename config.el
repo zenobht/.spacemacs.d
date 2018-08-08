@@ -388,12 +388,10 @@
   :config
   (progn
 
-
-    ;; For moving between edit regions
-    (define-key evil-multiedit-state-map (kbd "C-n") 'evil-multiedit-next)
-    (define-key evil-multiedit-state-map (kbd "C-p") 'evil-multiedit-prev)
-    (define-key evil-multiedit-insert-state-map (kbd "C-n") 'evil-multiedit-next)
-    (define-key evil-multiedit-insert-state-map (kbd "C-p") 'evil-multiedit-prev)
+    (define-key evil-normal-state-map (kbd "M-d") 'evil-multiedit-match-and-next)
+    (define-key evil-normal-state-map (kbd "M-D") 'evil-multiedit-match-and-prev)
+    (define-key evil-normal-state-map (kbd "M-T") 'evil-multiedit-toggle-or-restrict-region)
+    (define-key evil-normal-state-map (kbd "M-A") 'evil-multiedit-match-all)
 
     ;; Ex command that allows you to invoke evil-multiedit with a regular expression, e.g.
     (evil-ex-define-cmd "ie[dit]" 'evil-multiedit-ex-match)
@@ -561,6 +559,7 @@
 (setq package-check-signature nil)
 (setq frame-resize-pixelwise t)
 (setq case-fold-search nil)
+(setq evil-ex-search-case nil)
 
 (setq-default evil-escape-delay 0.2)
 
