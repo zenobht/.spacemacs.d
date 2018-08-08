@@ -670,9 +670,9 @@
 
 ;; (setq display-line-numbers-grow-only t)
 ;; (setq display-line-numbers-widen t)
-(setq display-line-numbers-type 'visual)
-(setq display-line-numbers-width 2)
-(setq display-line-numbers-current-absolute nil)
-(dolist (hook 
-         '(prog-mode-hook text-mode-hook))
-  (add-hook hook 'display-line-numbers-mode))
+;; (setq display-line-numbers-type 'visual)
+;; (setq display-line-numbers-width 2)
+;; (setq display-line-numbers-current-absolute nil)
+;; (dolist (hook 
+;;          '(prog-mode-hook text-mode-hook))
+;;   (add-hook hook 'display-line-numbers-mode))

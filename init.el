@@ -223,8 +223,8 @@ See the header of this file for more information."
   ;; set frame with proper margins and paddings
   ;; (add-to-list 'default-frame-alist '(internal-border-width . 4))
   ;; without line-numbers use 15 as fringe-width
-  (setq-default left-fringe-width 10)
-  (setq-default right-fringe-width 10)
+  (setq-default left-fringe-width 15)
+  (setq-default right-fringe-width 15)
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
 )
