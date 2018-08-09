@@ -226,6 +226,4 @@ See the header of this file for more information."
   (setq-default right-fringe-width 15)
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
-
-  (which-key-setup-side-window-right)
 )

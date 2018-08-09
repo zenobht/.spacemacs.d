@@ -635,6 +635,9 @@
 (setq sh-basic-offset 2)
 (setq sh-indentation 2)
 
+;; disable mode-line in which-key minibuffer
+(add-hook 'which-key-init-buffer-hook (lambda () (setq-local mode-line-format nil)))
+
 ;; (when (window-system)
 ;;   (set-frame-font "Fira Code"))
 ;; (let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
