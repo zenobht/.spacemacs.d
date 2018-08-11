@@ -226,4 +226,5 @@ See the header of this file for more information."
   (setq-default right-fringe-width 15)
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
+  (setq projectile-keymap-prefix (kbd "C-c C-p"))
 )

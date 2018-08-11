@@ -1,4 +1,4 @@
-;;; zeno-theme.el --- A dark theme with vibrant colors
+;;; zeno-theme.el --- A dark theme using different shades of blue
 
 ;; Copyright (C) 2017 Bharat Joshi
 
@@ -7,7 +7,7 @@
 ;; URL: https://github.com/jbharat/zeno-theme
 ;; Package-Version: 20180211.1557
 ;; Created: 22th July 2017
-;; Keywords: faces, theme, dark, vibrant colors
+;; Keywords: faces, theme, dark, blue
 ;; Version: 1.0.2
 ;; Package-Requires: ((emacs "24"))
 
@@ -28,20 +28,20 @@
 
 ;;; Commentary:
 
-;; Bright colors over dark background with option to enable italics
-;; Inspired by Molokai-theme, Dracula-theme
+;; A dark theme using different shades of blue with option to enable italics
+;; Inspired by Dracula-theme
 
 ;;; Code:
 
 (deftheme zeno
-  "A dark theme with vibrant colors")
+  "A dark theme using different shades of blue")
 
 (defgroup zeno-theme nil
   "Zeno-theme options."
   :group 'faces)
 
 (defcustom zeno-theme-enable-italics nil
-  "Enable italics for functions, comments, directories"
+  "Enable italics for functions, comments, directories."
   :type 'boolean
   :group 'zeno-theme)
 
@@ -163,14 +163,14 @@
  `(ahs-definition-face ((t (:background ,lavender_blue :foreground ,light_green_cyan))))
 
  ;; org
- `(outline-1 ((t (:foreground ,turquoise_blue))))
- `(outline-2 ((t (:foreground ,light_violet))))
- `(outline-3 ((t (:foreground ,lime_green))))
- `(outline-4 ((t (:foreground ,atlantis_green))))
- `(outline-5 ((t (:foreground ,moderate_blue))))
- `(outline-6 ((t (:foreground ,very_light_pink))))
- `(outline-7 ((t (:foreground ,reddish_pink))))
- `(outline-8 ((t (:foreground ,light_green_cyan))))
+ `(outline-2 ((t (:background ,bg :foreground ,light_violet))))
+ `(outline-1 ((t (:background ,bg :foreground ,turquoise_blue))))
+ `(outline-3 ((t (:background ,bg :foreground ,lime_green))))
+ `(outline-4 ((t (:background ,bg :foreground ,atlantis_green))))
+ `(outline-5 ((t (:background ,bg :foreground ,moderate_blue))))
+ `(outline-6 ((t (:background ,bg :foreground ,very_light_pink))))
+ `(outline-7 ((t (:background ,bg :foreground ,reddish_pink))))
+ `(outline-8 ((t (:background ,bg :foreground ,light_green_cyan))))
  `(org-level-1 ((t (:foreground ,maya_blue  ))))
  `(org-level-2 ((t (:inherit outline-1 ))))
  `(org-level-3 ((t (:inherit outline-3  ))))
@@ -182,7 +182,7 @@
  `(rainbow-delimiters-depth-1-face ((t (:inherit outline-1))))
  `(rainbow-delimiters-depth-2-face ((t (:inherit outline-2))))
  `(rainbow-delimiters-depth-3-face ((t (:inherit outline-3))))
- `(rainbow-delimiters-depth-4-face ((t (:inherit outline-4)))) 
+ `(rainbow-delimiters-depth-4-face ((t (:inherit outline-4))))
  `(rainbow-delimiters-depth-5-face ((t (:inherit outline-5))))
  `(rainbow-delimiters-depth-6-face ((t (:inherit outline-6))))
  `(rainbow-delimiters-depth-7-face ((t (:inherit outline-7))))
@@ -317,10 +317,22 @@
  `(diredp-dir-priv ((t (:foreground ,maya_blue))))
  `(diredp-write-priv ((t (:foreground ,lime_green))))
  `(diredp-no-priv ((t (:foreground ,fg))))
+ `(diredp-compressed-file-name ((t (:foreground ,very_light_pink))))
+ `(diredp-compressed-file-suffix ((t (:foreground ,very_light_pink))))
+ `(diredp-ignored-file-name ((t (:foreground ,cranberry))))
+ `(diredp-symlink ((t (:foreground ,lime_green))))
+ `(diredp-rare-priv ((t (:foreground ,light_violet))))
 
  `(evil-snipe-first-match-face ((t (:inherit isearch))))
  `(evil-snipe-matches-face ((t (:inherit isearch))))
 
+ ;; markdown
+ `(markdown-header-face-1 ((t (:foreground ,maya_blue  ))))
+ `(markdown-header-face-2 ((t (:inherit outline-1  ))))
+ `(markdown-header-face-3 ((t (:inherit outline-2  ))))
+ `(markdown-header-face-4 ((t (:inherit outline-3  ))))
+ `(markdown-header-face-5 ((t (:inherit outline-4  ))))
+ `(markdown-header-face-6 ((t (:inherit outline-5  ))))
  ))
 
 ;;;###autoload
