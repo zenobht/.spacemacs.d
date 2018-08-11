@@ -246,7 +246,7 @@
           '("~/.spacemacs.d/snippets" 
             ))
     (yas-global-mode 1) 
-
+    (setq yas/indent-line nil) 
     ))
 
 (use-package rainbow-mode
