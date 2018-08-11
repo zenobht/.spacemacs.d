@@ -1,0 +1,10 @@
+
+# -*- mode: snippet -*-
+# name: react function component 
+# key: rfc 
+# --
+import React from 'react'
+
+const $1 = () => <div />
+
+export default $1

@@ -433,6 +433,7 @@
  (add-to-list 'magic-mode-alist '("\\(import.*from \'react\';\\|\/\/ @flow\nimport.*from \'react\';\\)" . rjsx-mode))
 ;;(add-to-list 'magic-mode-alist '("import React" . react-mode))
 (add-hook 'react-mode-hook #'my/react-mode-setup)
+(add-hook 'rjsx-mode-hook #'my/react-mode-setup)
 
 ;; js2-mode setup
 (add-to-list 'auto-mode-alist '("\\.js\\'" . rjsx-mode))

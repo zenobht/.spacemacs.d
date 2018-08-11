@@ -1,5 +1,0 @@
-# -*- mode: snippet -*-
-# name: React Inline Component 
-# key: ric
-# --
-<$0 /> 

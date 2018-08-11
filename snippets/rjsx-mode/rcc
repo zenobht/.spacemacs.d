@@ -1,0 +1,14 @@
+
+# -*- mode: snippet -*-
+# name: react class component 
+# key: rcc
+# --
+import React from 'react'
+
+class $1 extends React.Component {
+  render() {
+    return <div />
+  }
+}
+
+export default $1
