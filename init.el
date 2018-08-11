@@ -219,11 +219,8 @@ See the header of this file for more information."
   ;;          (doom-modeline-panel :background "#D2527F")
   ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
 
-  ;; set frame with proper margins and paddings
-  ;; (add-to-list 'default-frame-alist '(internal-border-width . 4))
-  ;; without line-numbers use 15 as fringe-width
-  (setq-default left-fringe-width 15)
-  (setq-default right-fringe-width 15)
+  (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
+  (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
   (setq projectile-keymap-prefix (kbd "C-c C-p"))
