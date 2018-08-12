@@ -218,6 +218,7 @@ See the header of this file for more information."
   ;;          (doom-modeline-bracket :foreground "#BDBAAD")
   ;;          (doom-modeline-panel :background "#D2527F")
   ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
+  (add-to-list 'default-frame-alist '(internal-border-width . 3))
   (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
   (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)

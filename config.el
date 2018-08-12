@@ -484,23 +484,21 @@
 (use-package evil
   :ensure t
   :bind (:map evil-normal-state-map
-              ("C-S-j" . evil-jump-forward)
-              ("C-S-k" . evil-jump-backward)
-              ("C-j" . move-text-down)
-              ("C-k" . move-text-up)
+              ("C-S-l" . evil-jump-forward)
+              ("C-S-h" . evil-jump-backward)
+              ("C-S-j" . move-text-down)
+              ("C-S-k" . move-text-up)
               ("C-b" . evil-scroll-page-up)
               ("C-f" . evil-scroll-page-down)
               ("s-{" . my/next-buffer)
               ("s-}" . my/previous-buffer) 
-              ("C-h" . evil-first-non-blank)
-              ("C-l" . evil-last-non-blank)
               ("M-d" . evil-multiedit-match-and-next)
               ("M-D" . evil-multiedit-match-and-prev)
               :map evil-visual-state-map
               ("R" . evil-multiedit-match-all)
               ("p" . my/evil-paste-after-from-0)
-              ("C-j" . drag-stuff-down)
-              ("C-k" . drag-stuff-up)
+              ("C-S-j" . drag-stuff-down)
+              ("C-S-k" . drag-stuff-up)
               :map evil-insert-state-map
               ("C-d" . nil)
               ("M-d" . evil-multiedit-match-and-next)
