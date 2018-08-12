@@ -471,9 +471,6 @@
 (use-package company
   :ensure t
   :init (global-company-mode)
-  :bind (:map company-mode-map  
-              ("s-j" . company-select-next)
-              ("s-k" . company-select-previous))
   )
 
 (use-package web-mode
