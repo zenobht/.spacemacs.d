@@ -580,7 +580,7 @@
 (define-key global-map (kbd "s-0") (lambda () (interactive) (text-scale-set 0)))
 
 ;; key-binding to insert new line between brackets and indent
-;; (global-set-key (kbd "C-i") 'my/newline-and-indent)
+ (global-set-key (kbd "s-i") 'my/newline-and-indent)
 
 ;; remap next-buffer to custom buffer functions
 (global-set-key [remap next-buffer] 'my/next-buffer)
@@ -615,9 +615,9 @@
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
-;; (setq scroll-conservatively 101)
-;; (setq mouse-wheel-scroll-amount '(1))
-;; (setq mouse-wheel-progressive-speed nil)
+(setq scroll-conservatively 101)
+(setq mouse-wheel-scroll-amount '(1))
+(setq mouse-wheel-progressive-speed nil)
 
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))

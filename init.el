@@ -115,7 +115,7 @@ values."
    dotspacemacs-emacs-pdumper-executable-file "emacs-27.0.50"
    dotspacemacs-emacs-dumper-dump-file "spacemacs.pdmp"
    dotspacemacs-elpa-https t
-   dotspacemacs-elpa-timeout 5
+   dotspacemacs-elpa-timeout 30
    dotspacemacs-gc-cons '(100000000 0.1)
    dotspacemacs-use-spacelpa nil
    dotspacemacs-verify-spacelpa-archives nil
