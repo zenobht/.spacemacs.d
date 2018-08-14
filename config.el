@@ -21,20 +21,6 @@
             (switch-to-buffer initial)
             (throw 'loop t)))))))
 
-(defun my/switch-journal () 
- (interactive)
- (if (string-equal org-journal-dir (getenv "wo15"))
-     (progn 
-       (setq org-journal-dir (getenv "ho15"))
-       (print "Setting hj")
-     )
-   (progn 
-     (setq org-journal-dir (getenv "wo15"))
-     (print "Setting wj")
-   )
- )
-)
-
 ;; custom next-buffer
 (defun my/next-buffer ()
   "Variant of `next-buffer' that skips `my/skippable-buffers'."
@@ -529,10 +515,15 @@
 
     ))
 
-(global-unset-key (kbd "s-H"))
-(global-unset-key (kbd "s-h"))
-(global-unset-key (kbd "s-L"))
-(global-unset-key (kbd "s-e"))
+;; disable few default key bindings
+(dolist (key '("C-a" "C-e" "s-H" "s-h" "s-L" "s-e"))
+  (global-unset-key (kbd key)))
+
+;; bind cmd+arrow keys to behave the same way as rest of the osx
+(global-set-key (kbd "s-<left>") 'move-beginning-of-line)
+(global-set-key (kbd "s-<right>") 'move-end-of-line)
+(global-set-key (kbd "s-<up>") 'beginning-of-buffer)
+(global-set-key (kbd "s-<down>") 'end-of-buffer)
 
 ;; treat _ as word
 (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
@@ -592,9 +583,6 @@
 ;; bind snippet expand to s-y
 (global-set-key [?\C-y] 'hippie-expand)
 (global-set-key [?\C-\s-y] 'dabbrev-completion)
-
-;; switch org-journal using a function and keybinding
-(global-set-key [?\s-H] 'my/switch-journal)
 
 ;; (setq-default indent-tabs-mode nil)
 (setq standard-indent 2)
