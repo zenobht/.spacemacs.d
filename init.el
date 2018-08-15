@@ -134,8 +134,8 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Source Code Pro"
-                               :size 13
+   dotspacemacs-default-font '("Operator Mono"
+                               :size 14
                                :width normal
                                :weight normal)
    dotspacemacs-leader-key "SPC"

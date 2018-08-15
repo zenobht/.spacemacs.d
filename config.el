@@ -529,7 +529,7 @@
 (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
 (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
 
-;; (setq-default line-spacing 2)
+ (setq-default line-spacing 2)
 
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
@@ -603,9 +603,8 @@
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
-(setq scroll-conservatively 101)
-(setq mouse-wheel-scroll-amount '(1))
-(setq mouse-wheel-progressive-speed nil)
+;; (setq scroll-step           1
+;;       scroll-conservatively 10000)
 
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
