@@ -660,3 +660,7 @@
 ;; (dolist (hook 
 ;;          '(prog-mode-hook text-mode-hook))
 ;;   (add-hook hook 'display-line-numbers-mode))
+
+;; handle long line scrolling with so-long
+(when (require 'so-long nil :noerror)
+  (so-long-enable))
