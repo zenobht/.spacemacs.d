@@ -134,8 +134,8 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Operator Mono"
-                               :size 14
+   dotspacemacs-default-font '("Fira Code"
+                               :size 13
                                :width normal
                                :weight normal)
    dotspacemacs-leader-key "SPC"
@@ -196,7 +196,17 @@ See the header of this file for more information."
 (defun dotspacemacs/user-init ()
   )
 
+(defun killSpacemacsHomeBuffer()
+  (when (get-buffer "*spacemacs*")
+    (kill-buffer "*spacemacs*"))
+  (spacemacs/switch-to-scratch-buffer))
+
 (defun dotspacemacs/user-config ()
+
+  (setq inhibit-startup-screen nil)
+  ;; for daemon mode
+  (add-hook 'after-init-hook #'killSpacemacsHomeBuffer)
+  (killSpacemacsHomeBuffer)
 
   ;; function to load all el files from a specific path
   (defun load-directory (directory)
