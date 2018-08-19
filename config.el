@@ -106,17 +106,11 @@
   (setq css-indent-offset n) ; css-mode
   ) 
 
-(defun my/js-symbols-setup () 
-  (interactive)
-  (mapc (lambda (pair) (push pair prettify-symbols-alist))
-        '(
-          ("=>" . ?⇒)
-          )))
-
 (defun my/react-mode-setup ()
   (prettier-js-mode t)
-  ;; (my/js-symbols-setup)
   (my/block-comment-setup)
+  (setup-project-paths)
+  (my/eslint-setup)
   (flycheck-mode)
   )
 
@@ -268,8 +262,10 @@
   :ensure t
   :config
   (progn 
+    (setq projectile-globally-ignored-files
+          (append '(".DS_Store") projectile-globally-ignored-files))
 
-    (setq projectile-indexing-method 'alien)
+    (setq projectile-indexing-method 'native)
     (setq projectile-enable-caching t)
 
     (add-hook 'projectile-after-switch-project-hook #'setup-project-paths)
@@ -571,7 +567,9 @@
 (define-key global-map (kbd "s-0") (lambda () (interactive) (text-scale-set 0)))
 
 ;; key-binding to insert new line between brackets and indent
- (global-set-key (kbd "s-i") 'my/newline-and-indent)
+(global-set-key (kbd "s-i") 'my/newline-and-indent)
+
+(global-set-key (kbd "s-b") 'ivy-switch-buffer)
 
 ;; remap next-buffer to custom buffer functions
 (global-set-key [remap next-buffer] 'my/next-buffer)
@@ -597,14 +595,13 @@
 (spacemacs|diminish prettier-mode " PR")
 
 ;; set symbola font to be used for all unicode symbols
-;; other than 
-;; (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-12") 
+(set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-12") 
 
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
-;; (setq scroll-step           1
-;;       scroll-conservatively 10000)
+(setq scroll-step           1
+      scroll-conservatively 10000)
 
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
@@ -621,6 +618,7 @@
 ;; handle long line scrolling with so-long
 (when (require 'so-long nil :noerror)
   (so-long-enable))
+
 ;;; Fira code
 ;; This works when using emacs --daemon + emacsclient
 (add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
@@ -637,8 +635,8 @@
                (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
                (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
                (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
-               ;; (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               ;; (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
+               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
+               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
                (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
                (48 . ".\\(?:x[a-zA-Z]\\)")
                (58 . ".\\(?:::\\|[:=]\\)")
@@ -659,3 +657,9 @@
   (dolist (char-regexp alist)
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
+
+(setq display-line-numbers-widen t)
+(setq display-line-numbers-width nil)
+;; (setq display-line-numbers-width-start t)
+(dolist (hook '(prog-mode-hook text-mode-hook))
+  (add-hook hook 'display-line-numbers-mode))

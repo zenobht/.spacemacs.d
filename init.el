@@ -75,10 +75,12 @@
                       version-control-diff-tool 'git-gutter
                       version-control-diff-side 'right
                       version-control-global-margin t)
+     vimscript
      yaml
      )
    dotspacemacs-additional-packages '(
                                       all-the-icons
+                                      dart-mode
                                       dockerfile-mode
                                       dracula-theme
                                       drag-stuff
@@ -228,8 +230,8 @@ See the header of this file for more information."
   ;;          (doom-modeline-bracket :foreground "#BDBAAD")
   ;;          (doom-modeline-panel :background "#D2527F")
   ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
-  (add-to-list 'default-frame-alist '(internal-border-width . 3))
-  (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
+  ;; (add-to-list 'default-frame-alist '(internal-border-width . 1))
+  ;; (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
   (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
