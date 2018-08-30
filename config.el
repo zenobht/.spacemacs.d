@@ -4,8 +4,8 @@
 
 (defvar my/skippable-buffers 
   '(
-     "*spacemacs*" "*Messages*" "*Help*" "*Warnings*"
-   )
+    "*spacemacs*" "*Messages*" "*Help*" "*Warnings*"
+    )
   "Buffer names ignored by `my/next-buffer' and `my/previous-buffer'.")
 
 ;; buffer changer function
@@ -52,7 +52,7 @@
 
 (defun my/enable-visual-line-navigation ()
   "enables visual-line-navigation which is word-wrap"
-  (spacemacs/toggle-visual-line-navigation)
+  (spacemacs/toggle-visual-line-navigation-on)
   )
 
 
@@ -215,7 +215,7 @@
      'spaceline-evil-visual nil :background evilVisualColor :foreground "white")
     (set-face-attribute
      'spaceline-evil-insert nil :background evilInsertColor :foreground "black")
-   ))
+    ))
 
 (use-package yasnippet
   :ensure t
@@ -262,12 +262,11 @@
   :ensure t
   :config
   (progn 
-    (setq projectile-globally-ignored-files
-          (append '(".DS_Store") projectile-globally-ignored-files))
-
-    (setq projectile-indexing-method 'native)
+    (setq projectile-indexing-method 'alien)
     (setq projectile-enable-caching t)
 
+    (setq projectile-globally-ignored-files
+          (append '(".DS_Store") projectile-globally-ignored-files))
     (add-hook 'projectile-after-switch-project-hook #'setup-project-paths)
 
     ;; invalidates projectile cache on git actions
@@ -276,7 +275,7 @@
     (advice-add 'magit-branch-and-checkout ; This is `b c'.
                 :after #'my/run-projectile-invalidate-cache)
 
-   (setq magit-bury-buffer-function 'magit-mode-quit-window)
+    (setq magit-bury-buffer-function 'magit-mode-quit-window)
 
     ))
 
@@ -412,7 +411,7 @@
 (my/indent-setup 2)
 
 ;; react-mode setup
- (add-to-list 'magic-mode-alist '("\\(import.*from \'react\';\\|\/\/ @flow\nimport.*from \'react\';\\)" . rjsx-mode))
+(add-to-list 'magic-mode-alist '("\\(import.*from \'react\';\\|\/\/ @flow\nimport.*from \'react\';\\)" . rjsx-mode))
 ;;(add-to-list 'magic-mode-alist '("import React" . react-mode))
 (add-hook 'react-mode-hook #'my/react-mode-setup)
 (add-hook 'rjsx-mode-hook #'my/react-mode-setup)
@@ -553,7 +552,7 @@
 (setq company-tern-property-marker " =>")
 
 ;; enable symbols by default
-(global-prettify-symbols-mode -1)
+;; (global-prettify-symbols-mode -1)
 
 ;; global move visual block up/down: life-saver
 (drag-stuff-global-mode 1)
@@ -576,7 +575,7 @@
 (global-set-key [remap previous-buffer] 'my/previous-buffer)
 
 ;; as spacemacs is running as daemon, binding qq to kill frame
-(spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
+;; (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
 
 ;; bind snippet expand to s-y
 (global-set-key [?\C-y] 'hippie-expand)
@@ -595,7 +594,7 @@
 (spacemacs|diminish prettier-mode " PR")
 
 ;; set symbola font to be used for all unicode symbols
-(set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-12") 
+;; (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-12") 
 
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
@@ -607,7 +606,7 @@
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
 
 ;; use font awesome folder icon
-(set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
+;; (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
 
 ;; required to kill customize buffers on pressing q
 (setq custom-buffer-done-kill t)
@@ -660,6 +659,7 @@
 
 (setq display-line-numbers-widen t)
 (setq display-line-numbers-width nil)
+(setq display-line-numbers-type 'relative)
 ;; (setq display-line-numbers-width-start t)
 (dolist (hook '(prog-mode-hook text-mode-hook))
   (add-hook hook 'display-line-numbers-mode))

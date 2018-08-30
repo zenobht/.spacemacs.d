@@ -174,9 +174,9 @@ values."
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-enable-server nil
+   dotspacemacs-enable-server t
    dotspacemacs-server-socket-dir nil
-   dotspacemacs-persistent-server nil
+   dotspacemacs-persistent-server t
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-frame-title-format ""
    dotspacemacs-icon-title-format nil
