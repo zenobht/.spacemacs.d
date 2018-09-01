@@ -102,7 +102,6 @@
                                     evil-goggles
                                     linum-relative
                                     smartparens
-                                    smooth-scrolling
                                     vi-tilde-fringe
                                     )
    dotspacemacs-install-packages 'used-only))
@@ -169,7 +168,7 @@ values."
    dotspacemacs-show-transient-state-title t
    dotspacemacs-show-transient-state-color-guide t
    dotspacemacs-mode-line-unicode-symbols nil
-   dotspacemacs-smooth-scrolling nil
+   dotspacemacs-smooth-scrolling t
    dotspacemacs-line-numbers nil
    dotspacemacs-folding-method 'evil
    dotspacemacs-smartparens-strict-mode nil
@@ -206,7 +205,6 @@ See the header of this file for more information."
   (spacemacs/switch-to-scratch-buffer))
 
 (defun dotspacemacs/user-config ()
-
   (setq inhibit-startup-screen nil)
   ;; for daemon mode
   (add-hook 'after-init-hook #'killSpacemacsHomeBuffer)
@@ -232,10 +230,10 @@ See the header of this file for more information."
   ;;          (doom-modeline-bracket :foreground "#BDBAAD")
   ;;          (doom-modeline-panel :background "#D2527F")
   ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
-  ;; (add-to-list 'default-frame-alist '(internal-border-width . 1))
-  ;; (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
+  (add-to-list 'default-frame-alist '(internal-border-width . 1))
+  (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
   (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
   (setq projectile-keymap-prefix (kbd "C-c C-p"))
-)
+  )

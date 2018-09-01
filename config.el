@@ -599,9 +599,6 @@
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
-(setq scroll-step           1
-      scroll-conservatively 10000)
-
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
 
