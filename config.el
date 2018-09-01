@@ -575,7 +575,7 @@
 (global-set-key [remap previous-buffer] 'my/previous-buffer)
 
 ;; as spacemacs is running as daemon, binding qq to kill frame
-;; (spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
+(spacemacs/set-leader-keys "qq" #'spacemacs/frame-killer)
 
 ;; bind snippet expand to s-y
 (global-set-key [?\C-y] 'hippie-expand)
@@ -657,9 +657,9 @@
     (set-char-table-range composition-function-table (car char-regexp)
                           `([,(cdr char-regexp) 0 font-shape-gstring]))))
 
-(setq display-line-numbers-widen t)
-(setq display-line-numbers-width nil)
-(setq display-line-numbers-type 'relative)
-;; (setq display-line-numbers-width-start t)
-(dolist (hook '(prog-mode-hook text-mode-hook))
-  (add-hook hook 'display-line-numbers-mode))
+;; (setq display-line-numbers-widen t)
+;; (setq display-line-numbers-width nil)
+;; (setq display-line-numbers-type 'relative)
+;; ;; (setq display-line-numbers-width-start t)
+;; (dolist (hook '(prog-mode-hook text-mode-hook))
+;;   (add-hook hook 'display-line-numbers-mode))

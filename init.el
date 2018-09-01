@@ -94,6 +94,7 @@
                                       subatomic-theme
                                       virtualenvwrapper
                                       vue-mode
+                                      zeno-theme
                                       )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
@@ -130,6 +131,7 @@ values."
    dotspacemacs-startup-buffer-responsive t 
    dotspacemacs-scratch-mode 'text-mode
    dotspacemacs-themes '(
+                         zeno
                          exotica
                          spacemacs-dark
                          molokai
