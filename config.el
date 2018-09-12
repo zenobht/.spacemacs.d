@@ -331,19 +331,6 @@
 
     ))
 
-;; (use-package treemacs
-;;   :ensure t
-;;   :config
-;;   (progn 
-;;     (spacemacs/set-leader-keys "ft" #'treemacs)
-;;     (setq treemacs-show-hidden-files t)
-;;     (setq-default treemacs-width 30)))
-
-;; (with-eval-after-load 'treemacs
-;;   (defun treemacs-ignore-gitignore (file _)
-;;     (string= file ".DS_Store"))
-;;   (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
-
 (use-package markdown-mode
   :ensure t
   :commands (markdown-mode gfm-mode)
@@ -507,6 +494,7 @@
     (evil-leader/set-key
       "jj" 'evil-avy-goto-char-2
       "jJ" 'evil-avy-goto-char
+      "jW" 'evil-avy-goto-word-0
       "od" 'make-directory
       "om" 'markdown-mode
       "oo" 'org-mode
