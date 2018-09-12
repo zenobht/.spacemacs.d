@@ -16,19 +16,16 @@
                       better-defaults-move-to-end-of-code-first nil)
      colors
      csv
-     ;; doom-modeline
      emacs-lisp
      emoji
      evil-commentary
      (evil-snipe :variables evil-snipe-enable-alternate-f-and-t-behaviors t)
      git
      groovy
-     ;;(helm :variables helm-no-header t)
      html
      (ivy :variables
           ivy-wrap t
           ivy-height 15
-          ;; ivy-enable-advanced-buffer-information t
           ivy-use-virtual-buffers t
           )
      java
@@ -40,14 +37,6 @@
                markdown-live-preview-engine 'vmd)
      (org :variables
           org-projectile-file "TODOs.org"
-          org-enable-org-journal-support t
-          org-journal-file-format "%Y-%m-%d"
-          org-journal-date-prefix "#+TITLE: "
-          org-journal-date-format "%A, %B %d %Y"
-          org-journal-time-prefix "* "
-          org-journal-time-format "%I:%M%p%n"
-          org-journal-dir (getenv "ho15")
-          org-enable-reveal-js-support t
           org-enable-github-support t)
      (osx :variables
           osx-command-as 'super)
@@ -65,12 +54,6 @@
      (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default t)
      tern
-     (treemacs :variables
-               treemacs-use-filewatch-mode t
-               treemacs-use-follow-mode t
-               treemacs-git-mode 'extended 
-               treemacs-use-collapsed-directories 3
-               )
      (version-control :variables
                       version-control-diff-tool 'git-gutter
                       version-control-diff-side 'right
@@ -175,9 +158,9 @@ values."
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-smart-closing-parenthesis nil
    dotspacemacs-highlight-delimiters 'all
-   dotspacemacs-enable-server t
+   dotspacemacs-enable-server nil
    dotspacemacs-server-socket-dir nil
-   dotspacemacs-persistent-server t
+   dotspacemacs-persistent-server nil
    dotspacemacs-search-tools '("rg" "ag" "pt" "ack" "grep")
    dotspacemacs-frame-title-format ""
    dotspacemacs-icon-title-format nil
@@ -207,8 +190,8 @@ See the header of this file for more information."
 (defun dotspacemacs/user-config ()
   (setq inhibit-startup-screen nil)
   ;; for daemon mode
-  (add-hook 'after-init-hook #'killSpacemacsHomeBuffer)
-  (killSpacemacsHomeBuffer)
+  ;;(add-hook 'after-init-hook #'killSpacemacsHomeBuffer)
+  ;;(killSpacemacsHomeBuffer)
 
   ;; function to load all el files from a specific path
   (defun load-directory (directory)
@@ -225,13 +208,8 @@ See the header of this file for more information."
           (load (file-name-sans-extension fullpath)))))))
   (load-directory "~/.spacemacs.d/lib")
   (load-file "~/.spacemacs.d/config.el")
-  ;; (org-babel-load-file "~/.spacemacs.d/config.org")
-  ;; (setq theming-modifications `((zeno
-  ;;          (doom-modeline-bracket :foreground "#BDBAAD")
-  ;;          (doom-modeline-panel :background "#D2527F")
-  ;;          (doom-modeline-persp :foreground "#F8F8F2"))))
-  (add-to-list 'default-frame-alist '(internal-border-width . 1))
-  (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
+  ;; (add-to-list 'default-frame-alist '(internal-border-width . 1))
+  ;; (setq-default left-margin-width 1 right-margin-width 1) ; Define new widths.
   (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)

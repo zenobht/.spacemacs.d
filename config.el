@@ -331,18 +331,18 @@
 
     ))
 
-(use-package treemacs
-  :ensure t
-  :config
-  (progn 
-    (spacemacs/set-leader-keys "ft" #'treemacs)
-    (setq treemacs-show-hidden-files t)
-    (setq-default treemacs-width 30)))
+;; (use-package treemacs
+;;   :ensure t
+;;   :config
+;;   (progn 
+;;     (spacemacs/set-leader-keys "ft" #'treemacs)
+;;     (setq treemacs-show-hidden-files t)
+;;     (setq-default treemacs-width 30)))
 
-(with-eval-after-load 'treemacs
-  (defun treemacs-ignore-gitignore (file _)
-    (string= file ".DS_Store"))
-  (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
+;; (with-eval-after-load 'treemacs
+;;   (defun treemacs-ignore-gitignore (file _)
+;;     (string= file ".DS_Store"))
+;;   (push #'treemacs-ignore-gitignore treemacs-ignored-file-predicates))
 
 (use-package markdown-mode
   :ensure t
@@ -457,7 +457,14 @@
 (use-package web-mode
   :ensure t
   :bind (:map web-mode-map  
-              ("s-;" . nil)))
+              ("s-;" . nil))
+  :config
+  (progn
+    (setq web-mode-enable-auto-expanding t)
+    (setq web-mode-enable-auto-pairing t)
+    (setq web-mode-enable-auto-closing t)
+    )
+  )
 
 (use-package evil
   :ensure t
@@ -557,9 +564,6 @@
 ;; global move visual block up/down: life-saver
 (drag-stuff-global-mode 1)
 
-(setq zeno-theme-enable-italics t)
-(spacemacs/load-theme 'zeno)
-
 ;; scale text
 (define-key global-map (kbd "s-+") 'text-scale-increase)
 (define-key global-map (kbd "s--") 'text-scale-decrease)
@@ -593,14 +597,25 @@
 (spacemacs|diminish emoji-cheat-sheet-plus-display-mode " EM")
 (spacemacs|diminish prettier-mode " PR")
 
-;; set symbola font to be used for all unicode symbols
-;; (set-fontset-font "fontset-default" '(#x00C1 . #x2648) "Symbola-12") 
-
 ;; native pixel scroll mode
 (pixel-scroll-mode t)
 
 (setq frame-title-format 
       '((:eval (spacemacs/title-prepare dotspacemacs-frame-title-format))))
+
+(use-package evil-snipe
+  :config
+  (progn
+    (evil-define-key 'motion map
+      "'" 'evil-snipe-repeat
+      "," 'evil-snipe-repeat-reverse)
+    (define-key evil-normal-state-map ";" 'evil-ex)
+    ))
+
+(setq zeno-theme-enable-italics t)
+(spacemacs/load-theme 'zeno)
+
+(setq vc-follow-symlinks t)
 
 ;; use font awesome folder icon
 ;; (set-fontset-font t '(#Xf07c . #Xf07c) "fontawesome")
@@ -615,48 +630,49 @@
 (when (require 'so-long nil :noerror)
   (so-long-enable))
 
-;;; Fira code
-;; This works when using emacs --daemon + emacsclient
-(add-hook 'after-make-frame-functions (lambda (frame) (set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")))
-;; This works when using emacs without server/client
-(set-fontset-font t '(#Xe100 . #Xe16f) "Fira Code Symbol")
-;; I haven't found one statement that makes both of the above situations work, so I use both for now
+(defun my-correct-symbol-bounds (pretty-alist)
+  "Prepend a TAB character to each symbol in this alist,
+this way compose-region called by prettify-symbols-mode
+will use the correct width of the symbols
+instead of the width measured by char-width."
+  (mapcar (lambda (el)
+            (setcdr el (string ?\t (cdr el)))
+            el)
+          pretty-alist))
 
-(when (window-system)
-  (set-frame-font "Fira Code"))
-(let ((alist '((33 . ".\\(?:\\(?:==\\|!!\\)\\|[!=]\\)")
-               (35 . ".\\(?:###\\|##\\|_(\\|[#(?[_{]\\)")
-               (36 . ".\\(?:>\\)")
-               (37 . ".\\(?:\\(?:%%\\)\\|%\\)")
-               (38 . ".\\(?:\\(?:&&\\)\\|&\\)")
-               (42 . ".\\(?:\\(?:\\*\\*/\\)\\|\\(?:\\*[*/]\\)\\|[*/>]\\)")
-               (43 . ".\\(?:\\(?:\\+\\+\\)\\|[+>]\\)")
-               (45 . ".\\(?:\\(?:-[>-]\\|<<\\|>>\\)\\|[<>}~-]\\)")
-               (46 . ".\\(?:\\(?:\\.[.<]\\)\\|[.=-]\\)")
-               (47 . ".\\(?:\\(?:\\*\\*\\|//\\|==\\)\\|[*/=>]\\)")
-               (48 . ".\\(?:x[a-zA-Z]\\)")
-               (58 . ".\\(?:::\\|[:=]\\)")
-               (59 . ".\\(?:;;\\|;\\)")
-               (60 . ".\\(?:\\(?:!--\\)\\|\\(?:~~\\|->\\|\\$>\\|\\*>\\|\\+>\\|--\\|<[<=-]\\|=[<=>]\\||>\\)\\|[*$+~/<=>|-]\\)")
-               (61 . ".\\(?:\\(?:/=\\|:=\\|<<\\|=[=>]\\|>>\\)\\|[<=>~]\\)")
-               (62 . ".\\(?:\\(?:=>\\|>[=>-]\\)\\|[=>-]\\)")
-               (63 . ".\\(?:\\(\\?\\?\\)\\|[:=?]\\)")
-               (91 . ".\\(?:]\\)")
-               (92 . ".\\(?:\\(?:\\\\\\\\\\)\\|\\\\\\)")
-               (94 . ".\\(?:=\\)")
-               (119 . ".\\(?:ww\\)")
-               (123 . ".\\(?:-\\)")
-               (124 . ".\\(?:\\(?:|[=|]\\)\\|[=>|]\\)")
-               (126 . ".\\(?:~>\\|~~\\|[>=@~-]\\)")
-               )
-             ))
-  (dolist (char-regexp alist)
-    (set-char-table-range composition-function-table (car char-regexp)
-                          `([,(cdr char-regexp) 0 font-shape-gstring]))))
+(defun my-ligature-list (ligatures codepoint-start)
+  "Create an alist of strings to replace with
+codepoints starting from codepoint-start."
+  (let ((codepoints (-iterate '1+ codepoint-start (length ligatures))))
+    (-zip-pair ligatures codepoints)))
 
-;; (setq display-line-numbers-widen t)
-;; (setq display-line-numbers-width nil)
-;; (setq display-line-numbers-type 'relative)
-;; ;; (setq display-line-numbers-width-start t)
-;; (dolist (hook '(prog-mode-hook text-mode-hook))
-;;   (add-hook hook 'display-line-numbers-mode))
+                                        ; list can be found at https://github.com/i-tu/Hasklig/blob/master/GlyphOrderAndAliasDB#L1588
+(setq my-fira-code-ligatures
+      (let* ((ligs '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+                     "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+                     "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+                     "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+                     ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+                     "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+                     "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+                     "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+                     ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+                     "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+                     "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+                     "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+                     "x" ":" "+" "+" "*")))
+        (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
+
+;; nice glyphs for prog and text-mode with fira-code
+(defun my-set-fira-code-ligatures ()
+  "Add fira-code ligatures for use with prettify-symbols-mode."
+  (setq prettify-symbols-alist
+        (append my-fira-code-ligatures prettify-symbols-alist))
+  (prettify-symbols-mode))
+
+(dolist (hook '(prog-mode-hook text-mode-hook))
+  (add-hook hook 'my-set-fira-code-ligatures))
+
+(dolist (hook '(prog-mode-hook text-mode-hook))
+  (add-hook hook 'display-line-numbers-mode))
+
