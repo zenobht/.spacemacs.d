@@ -45,6 +45,7 @@
              python-sort-imports-on-save t
              python-enable-yapf-format-on-save t)
      react
+     ruby
      (shell :variables
             shell-default-shell 'eshell
             shell-default-height 20
@@ -214,4 +215,7 @@ See the header of this file for more information."
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
   (setq projectile-keymap-prefix (kbd "C-c C-p"))
+  (use-package all-the-icons)
+  (setq neo-theme 'icons)
   )
+

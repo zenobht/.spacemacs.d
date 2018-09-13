@@ -464,8 +464,11 @@
               ("C-f" . evil-scroll-page-down)
               ("s-{" . my/next-buffer)
               ("s-}" . my/previous-buffer) 
+              ("H"   . my/next-buffer)
+              ("L"   . my/previous-buffer) 
               ("M-d" . evil-multiedit-match-and-next)
               ("M-D" . evil-multiedit-match-and-prev)
+              ("C-p" . counsel-projectile-find-file)
               :map evil-visual-state-map
               ("R" . evil-multiedit-match-all)
               ("p" . my/evil-paste-after-from-0)
@@ -596,7 +599,7 @@
   (progn
     (evil-define-key 'motion map
       "'" 'evil-snipe-repeat
-      "," 'evil-snipe-repeat-reverse)
+      "\"" 'evil-snipe-repeat-reverse)
     (define-key evil-normal-state-map ";" 'evil-ex)
     ))
 
