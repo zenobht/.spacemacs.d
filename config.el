@@ -667,3 +667,17 @@ codepoints starting from codepoint-start."
 (dolist (hook '(prog-mode-hook text-mode-hook))
   (add-hook hook 'display-line-numbers-mode))
 
+
+(setq projectile-keymap-prefix (kbd "C-c C-p"))
+
+(use-package all-the-icons)
+(setq neo-theme 'icons)
+
+(defun my/disable-electric-pair ()
+  (electric-pair-mode -1))
+(defun my/enable-electric-pair ()
+  (electric-pair-mode +1))
+(add-hook 'minibuffer-setup-hook #'my/disable-electric-pair)
+(add-hook 'minibuffer-exit-hook #'my/enable-electric-pair)
+
+(setq require-final-newline t)
