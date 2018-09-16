@@ -366,6 +366,7 @@
 
     ))
 
+
 (use-package dumb-jump
   :ensure t
   :config
@@ -439,6 +440,10 @@
 (use-package company
   :ensure t
   :init (global-company-mode)
+  :config
+  (progn
+    (define-key company-active-map (kbd "C-f") 'company-complete-selection)
+    )
   )
 
 (use-package web-mode
@@ -484,13 +489,13 @@
   (progn 
 
     ;; default cursor as bar 
-    (setq-default cursor-type '(bar . 3))
-    (setq evil-normal-state-cursor `(box ,evilNormalColor)) 
-    (setq evil-insert-state-cursor `((bar . 3) ,evilInsertColor)) 
-    (setq evil-evilified-state-cursor '((bar . 3) "LightGoldenrod3")) 
-    (setq evil-emacs-state-cursor '((bar . 3) "SkyBlue2")) 
-    (setq evil-motion-state-cursor `((bar . 3) "HotPink1")) 
-    (setq evil-lisp-state-cursor '((bar . 3) "HotPink1")) 
+    (setq-default cursor-type '(bar . 2))
+    (setq evil-normal-state-cursor `(box ,evilNormalColor))
+    (setq evil-insert-state-cursor `((bar . 2) ,evilInsertColor))
+    (setq evil-evilified-state-cursor '((bar . 2) "LightGoldenrod3"))
+    (setq evil-emacs-state-cursor '((bar . 2) "SkyBlue2"))
+    (setq evil-motion-state-cursor `((bar . 2) "HotPink1"))
+    (setq evil-lisp-state-cursor '((bar . 2) "HotPink1"))
 
     ;;(setq evil-move-cursor-back nil)
 
@@ -681,3 +686,42 @@ codepoints starting from codepoint-start."
 (add-hook 'minibuffer-exit-hook #'my/enable-electric-pair)
 
 (setq require-final-newline t)
+
+;; (global-evil-mc-mode 1)
+
+;;   (defun col-at-point (point)
+;;     (save-excursion (goto-char point) (current-column)))
+
+;;   (defun evil--mc-make-cursor-at-col-append (_startcol endcol orig-line)
+;;     (end-of-line)
+;;     (when (> endcol (current-column))
+;;       (insert-char ?\s (- endcol (current-column))))
+;;     (move-to-column (- endcol 1))
+;;     (unless (= (line-number-at-pos) orig-line)
+;;       (evil-mc-make-cursor-here)))
+
+;;   (defun evil--mc-make-cursor-at-col-insert (startcol _endcol orig-line)
+;;     (end-of-line)
+;;     (move-to-column startcol)
+;;     (unless (or (= (line-number-at-pos) orig-line) (> startcol (current-column)))
+;;       (evil-mc-make-cursor-here)))
+
+;;   (defun evil--mc-make-vertical-cursors (beg end func)
+;;     (evil-mc-pause-cursors)
+;;     (apply-on-rectangle func
+;;                         beg end (line-number-at-pos (point)))
+;;     (evil-mc-resume-cursors)
+;;     (evil-normal-state))
+
+;;   (defun evil-mc-insert-vertical-cursors (beg end)
+;;     (interactive (list (region-beginning) (region-end)))
+;;     (evil--mc-make-vertical-cursors beg end 'evil--mc-make-cursor-at-col-insert)
+;;     (move-to-column (min (col-at-point beg) (col-at-point end))))
+
+;;   (defun evil-mc-append-vertical-cursors (beg end)
+;;     (interactive (list (region-beginning) (region-end)))
+;;     (evil--mc-make-vertical-cursors beg end 'evil--mc-make-cursor-at-col-append)
+;;     (move-to-column (- (max (col-at-point beg) (col-at-point end)) 1)))
+
+;;   (evil-define-key 'visual global-map "gI" 'evil-mc-insert-vertical-cursors)
+;;   (evil-define-key 'visual global-map "gA" 'evil-mc-append-vertical-cursors)

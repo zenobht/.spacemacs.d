@@ -215,4 +215,6 @@ See the header of this file for more information."
   (set-window-buffer nil (current-buffer)) ; Use them now.
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
+  (setq scroll-margin 1)
 )
+
