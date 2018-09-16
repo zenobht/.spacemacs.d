@@ -107,10 +107,10 @@
   ) 
 
 (defun my/react-mode-setup ()
-  (prettier-js-mode t)
   (my/block-comment-setup)
   (setup-project-paths)
   (my/eslint-setup)
+  (my/prettier-setup)
   (flycheck-mode)
   )
 
@@ -121,10 +121,23 @@
                 (or (buffer-file-name) default-directory)
                 "node_modules"))
          (eslint (and root
-                      (expand-file-name "node_modules/eslint/bin/eslint.js"
+                      (expand-file-name "node_modules/.bin/eslint"
                                         root))))
     (when (and eslint (file-executable-p eslint))
       (setq-local flycheck-javascript-eslint-executable eslint))))
+
+;;workaround to disable prettier if prettier is not in package.json
+;;But this fails if prettier is a dependency of a dependency
+(defun my/prettier-setup ()
+  (let* ((root (locate-dominating-file
+                (or (buffer-file-name) default-directory)
+                "node_modules"))
+         (prettier (and root
+                      (expand-file-name "node_modules/.bin/prettier"
+                                        root))))
+    (when (and prettier (file-executable-p prettier))
+      (prettier-js-mode t))))
+
 
 (defun my/org-heading-setup ()
   "Stop the org-level headers from increasing in height relative to the other text."
@@ -467,10 +480,8 @@
               ("C-S-k" . move-text-up)
               ("C-b" . evil-scroll-page-up)
               ("C-f" . evil-scroll-page-down)
-              ("s-{" . my/next-buffer)
-              ("s-}" . my/previous-buffer) 
-              ("H"   . my/next-buffer)
-              ("L"   . my/previous-buffer) 
+              ("s-[" . my/next-buffer)
+              ("s-]" . my/previous-buffer)
               ("M-d" . evil-multiedit-match-and-next)
               ("M-D" . evil-multiedit-match-and-prev)
               ("C-p" . counsel-projectile-find-file)
@@ -510,7 +521,6 @@
       "ot" 'text-mode
       "si" 'counsel-grep-or-swiper
       ) 
-
     ))
 
 ;; disable few default key bindings
