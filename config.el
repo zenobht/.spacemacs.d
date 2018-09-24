@@ -478,13 +478,13 @@
               ("C-S-h" . evil-jump-backward)
               ("C-S-j" . move-text-down)
               ("C-S-k" . move-text-up)
-              ("C-b" . evil-scroll-page-up)
-              ("C-f" . evil-scroll-page-down)
-              ("s-[" . my/next-buffer)
-              ("s-]" . my/previous-buffer)
+              ("C-f"   . ivy-switch-buffer)
+              ;;("C-b" . evil-scroll-page-up)
+              ;;("C-f" . evil-scroll-page-down)
+              ("s-{" . my/next-buffer)
+              ("s-}" . my/previous-buffer)
               ("M-d" . evil-multiedit-match-and-next)
               ("M-D" . evil-multiedit-match-and-prev)
-              ("C-p" . counsel-projectile-find-file)
               :map evil-visual-state-map
               ("R" . evil-multiedit-match-all)
               ("p" . my/evil-paste-after-from-0)
@@ -578,8 +578,6 @@
 ;; key-binding to insert new line between brackets and indent
 (global-set-key (kbd "s-i") 'my/newline-and-indent)
 
-(global-set-key (kbd "s-b") 'ivy-switch-buffer)
-
 ;; remap next-buffer to custom buffer functions
 (global-set-key [remap next-buffer] 'my/next-buffer)
 (global-set-key [remap previous-buffer] 'my/previous-buffer)
@@ -619,7 +617,7 @@
     ))
 
 (setq zeno-theme-enable-italics t)
-(spacemacs/load-theme 'zeno)
+(enable-theme 'zeno)
 
 (setq vc-follow-symlinks t)
 
@@ -678,6 +676,8 @@ codepoints starting from codepoint-start."
 
 (dolist (hook '(prog-mode-hook text-mode-hook))
   (add-hook hook 'my-set-fira-code-ligatures))
+
+(setq display-line-numbers-grow-only t)
 
 (dolist (hook '(prog-mode-hook text-mode-hook))
   (add-hook hook 'display-line-numbers-mode))

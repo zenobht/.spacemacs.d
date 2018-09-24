@@ -58,7 +58,7 @@
      tern
      (version-control :variables
                       version-control-diff-tool 'git-gutter
-                      version-control-diff-side 'right
+                      version-control-diff-side 'left
                       version-control-global-margin t)
      vimscript
      yaml
