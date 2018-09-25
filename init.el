@@ -217,4 +217,3 @@ See the header of this file for more information."
   (setq initial-buffer-choice t)
   (setq scroll-margin 1)
 )
-

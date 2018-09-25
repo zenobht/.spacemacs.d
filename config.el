@@ -108,10 +108,14 @@
 
 (defun my/react-mode-setup ()
   (my/block-comment-setup)
+  (my/setup-tools-from-node)
+  (flycheck-mode)
+  )
+
+(defun my/setup-tools-from-node ()
   (setup-project-paths)
   (my/eslint-setup)
   (my/prettier-setup)
-  (flycheck-mode)
   )
 
 (setq tab-always-indent t)
@@ -354,7 +358,7 @@
   (progn
 
     (setq markdown-command "multimarkdown")
-    ;; (prettier-js-mode t)
+    (my/setup-tools-from-node)
 
     ))
 
@@ -423,13 +427,13 @@
 
 ;; json-mode setup
 (add-to-list 'auto-mode-alist '("\\.json\\'" . json-mode))
-(add-hook 'json-mode-hook 'prettier-js-mode)
+(add-hook 'json-mode-hook #'my/setup-tools-from-node)
 
 ;; css-mode setup
-(add-hook 'css-mode-hook 'prettier-js-mode)
+(add-hook 'css-mode-hook #'my/setup-tools-from-node)
 (setq css-fontify-colors nil)
 
-;;(add-hook 'web-mode-hook 'prettier-js-mode)
+;; (add-hook 'web-mode-hook #'my/setup-tools-from-node)
 
 (add-hook 'java-mode-hook 'my/block-comment-setup)
 
