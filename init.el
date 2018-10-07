@@ -122,7 +122,7 @@ values."
                          subatomic
                          )
    dotspacemacs-colorize-cursor-according-to-state t
-   dotspacemacs-default-font '("Fira Code"
+   dotspacemacs-default-font '("Fira Code Mod"
                                :size 13
                                :width normal
                                :weight normal)
@@ -216,4 +216,5 @@ See the header of this file for more information."
   (setq create-lockfiles nil)
   (setq initial-buffer-choice t)
   (setq scroll-margin 1)
+  (blink-cursor-mode +1)
 )

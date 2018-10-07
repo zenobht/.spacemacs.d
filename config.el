@@ -1,4 +1,4 @@
-(setq evilNormalColor "#D2527F") 
+(setq evilNormalColor "#FFC600")
 (setq evilInsertColor "#2ABB9B")
 (setq evilVisualColor "#665C7E")
 
@@ -536,12 +536,19 @@
 (global-set-key (kbd "s-<right>") 'move-end-of-line)
 (global-set-key (kbd "s-<up>") 'beginning-of-buffer)
 (global-set-key (kbd "s-<down>") 'end-of-buffer)
+(global-set-key (kbd "s-1") 'winum-select-window-1)
+(global-set-key (kbd "s-2") 'winum-select-window-2)
+(global-set-key (kbd "s-3") 'winum-select-window-3)
+(global-set-key (kbd "s-4") 'winum-select-window-4)
+(global-set-key (kbd "s-5") 'winum-select-window-5)
+(global-set-key (kbd "s-6") 'winum-select-window-6)
+(global-set-key (kbd "s-7") 'winum-select-window-7)
+(global-set-key (kbd "s-8") 'winum-select-window-8)
+(global-set-key (kbd "s-9") 'winum-select-window-9)
 
 ;; treat _ as word
 (add-hook 'prog-mode-hook 'my/modify-underscore-syntax)
 (add-hook 'text-mode-hook 'my/modify-underscore-syntax)
-
-;; (setq-default line-spacing 1)
 
 (add-hook 'text-mode-hook 'auto-fill-mode)
 (remove-hook 'prog-mode-hook 'spacemacs//show-trailing-whitespace)
@@ -554,6 +561,8 @@
 (electric-pair-mode 1)
 (push '(?\' . ?\') electric-pair-pairs)
 (global-evil-matchit-mode t)
+
+;; (global-emojify-mode +1)
 
 (setq package-check-signature nil)
 (setq frame-resize-pixelwise t)
@@ -581,6 +590,10 @@
 
 ;; key-binding to insert new line between brackets and indent
 (global-set-key (kbd "s-i") 'my/newline-and-indent)
+
+(global-set-key (kbd "s-h") 'my/next-buffer)
+(global-set-key (kbd "s-l") 'my/previous-buffer)
+
 
 ;; remap next-buffer to custom buffer functions
 (global-set-key [remap next-buffer] 'my/next-buffer)
@@ -638,48 +651,48 @@
 (when (require 'so-long nil :noerror)
   (so-long-enable))
 
-(defun my-correct-symbol-bounds (pretty-alist)
-  "Prepend a TAB character to each symbol in this alist,
-this way compose-region called by prettify-symbols-mode
-will use the correct width of the symbols
-instead of the width measured by char-width."
-  (mapcar (lambda (el)
-            (setcdr el (string ?\t (cdr el)))
-            el)
-          pretty-alist))
+;; (defun my-correct-symbol-bounds (pretty-alist)
+;;   "Prepend a TAB character to each symbol in this alist,
+;; this way compose-region called by prettify-symbols-mode
+;; will use the correct width of the symbols
+;; instead of the width measured by char-width."
+;;   (mapcar (lambda (el)
+;;             (setcdr el (string ?\t (cdr el)))
+;;             el)
+;;           pretty-alist))
 
-(defun my-ligature-list (ligatures codepoint-start)
-  "Create an alist of strings to replace with
-codepoints starting from codepoint-start."
-  (let ((codepoints (-iterate '1+ codepoint-start (length ligatures))))
-    (-zip-pair ligatures codepoints)))
+;; (defun my-ligature-list (ligatures codepoint-start)
+;;   "Create an alist of strings to replace with
+;; codepoints starting from codepoint-start."
+;;   (let ((codepoints (-iterate '1+ codepoint-start (length ligatures))))
+;;     (-zip-pair ligatures codepoints)))
 
-                                        ; list can be found at https://github.com/i-tu/Hasklig/blob/master/GlyphOrderAndAliasDB#L1588
-(setq my-fira-code-ligatures
-      (let* ((ligs '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
-                     "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
-                     "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
-                     "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
-                     ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
-                     "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
-                     "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
-                     "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
-                     ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
-                     "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
-                     "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
-                     "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
-                     "x" ":" "+" "+" "*")))
-        (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
+;;                                         ; list can be found at https://github.com/i-tu/Hasklig/blob/master/GlyphOrderAndAliasDB#L1588
+;; (setq my-fira-code-ligatures
+;;       (let* ((ligs '("www" "**" "***" "**/" "*>" "*/" "\\\\" "\\\\\\"
+;;                      "{-" "[]" "::" ":::" ":=" "!!" "!=" "!==" "-}"
+;;                      "--" "---" "-->" "->" "->>" "-<" "-<<" "-~"
+;;                      "#{" "#[" "##" "###" "####" "#(" "#?" "#_" "#_("
+;;                      ".-" ".=" ".." "..<" "..." "?=" "??" ";;" "/*"
+;;                      "/**" "/=" "/==" "/>" "//" "///" "&&" "||" "||="
+;;                      "|=" "|>" "^=" "$>" "++" "+++" "+>" "=:=" "=="
+;;                      "===" "==>" "=>" "=>>" "<=" "=<<" "=/=" ">-" ">="
+;;                      ">=>" ">>" ">>-" ">>=" ">>>" "<*" "<*>" "<|" "<|>"
+;;                      "<$" "<$>" "<!--" "<-" "<--" "<->" "<+" "<+>" "<="
+;;                      "<==" "<=>" "<=<" "<>" "<<" "<<-" "<<=" "<<<" "<~"
+;;                      "<~~" "</" "</>" "~@" "~-" "~=" "~>" "~~" "~~>" "%%"
+;;                      "x" ":" "+" "+" "*")))
+;;         (my-correct-symbol-bounds (my-ligature-list ligs #Xe100))))
 
-;; nice glyphs for prog and text-mode with fira-code
-(defun my-set-fira-code-ligatures ()
-  "Add fira-code ligatures for use with prettify-symbols-mode."
-  (setq prettify-symbols-alist
-        (append my-fira-code-ligatures prettify-symbols-alist))
-  (prettify-symbols-mode))
+;; ;; nice glyphs for prog and text-mode with fira-code
+;; (defun my-set-fira-code-ligatures ()
+;;   "Add fira-code ligatures for use with prettify-symbols-mode."
+;;   (setq prettify-symbols-alist
+;;         (append my-fira-code-ligatures prettify-symbols-alist))
+;;   (prettify-symbols-mode))
 
-(dolist (hook '(prog-mode-hook text-mode-hook))
-  (add-hook hook 'my-set-fira-code-ligatures))
+;; (dolist (hook '(prog-mode-hook text-mode-hook))
+;;   (add-hook hook 'my-set-fira-code-ligatures))
 
 (setq display-line-numbers-grow-only t)
 
