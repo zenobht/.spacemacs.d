@@ -26,7 +26,7 @@
      (ivy :variables
           ivy-wrap t
           ivy-height 15
-          ivy-use-virtual-buffers t
+          ivy-use-virtual-buffers nil
           )
      java
      (javascript :variables javascript-disable-tern-port-files t)
@@ -49,9 +49,9 @@
      ruby
      (shell :variables
             shell-default-shell 'eshell
-            shell-default-height 20
+            shel-default-width  50
             shell-default-term-shell "/bin/zsh"
-            shell-default-position 'bottom)
+            shell-default-position 'right)
      spacemacs-org
      (spell-checking :variables spell-checking-enable-by-default nil)
      (syntax-checking :variables syntax-checking-enable-by-default t)
