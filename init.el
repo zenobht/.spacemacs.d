@@ -67,6 +67,7 @@
                                       all-the-icons
                                       dart-mode
                                       dockerfile-mode
+                                      docker-compose-mode
                                       dracula-theme
                                       drag-stuff
                                       evil-multiedit
@@ -83,6 +84,7 @@
                                       )
    dotspacemacs-frozen-packages '()
    dotspacemacs-excluded-packages '(
+                                    editorconfig
                                     evil-escape
                                     evil-goggles
                                     linum-relative
@@ -124,6 +126,7 @@ values."
    dotspacemacs-colorize-cursor-according-to-state t
    dotspacemacs-default-font '("Fira Code Mod"
                                :size 13
+                               :antialias 1
                                :width normal
                                :weight normal)
    dotspacemacs-leader-key "SPC"
@@ -190,6 +193,7 @@ See the header of this file for more information."
   (spacemacs/switch-to-scratch-buffer))
 
 (defun dotspacemacs/user-config ()
+  (set-face-attribute 'default nil :font "Fira Code Mod Retina-13")
   (setq inhibit-startup-screen nil)
   ;; for daemon mode
   ;;(add-hook 'after-init-hook #'killSpacemacsHomeBuffer)
@@ -218,3 +222,4 @@ See the header of this file for more information."
   (setq scroll-margin 1)
   (blink-cursor-mode +1)
 )
+
